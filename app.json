@@ -1,12 +1,18 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/baseInfo/baseInfo",
+    "pages/workInfo/workInfo",
+    "pages/otherInfo/otherInfo",
+    "pages/collectResume/collectResume",
+    "pages/recentlyViewed/recentlyViewed",
+    "pages/searchReusme/searchReusme",
+    "pages/selfIntroduction/selfIntroduction"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#83D944",
+    "navigationBarTitleText": "demo",
     "navigationBarTextStyle":"black"
   },
   "debug": true
