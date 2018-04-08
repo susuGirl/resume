@@ -1,0 +1,18 @@
+<template name="info">
+    <view class="baseStyle">
+        <view wx:for="{{ baseArray || cardArray || workArray }}" wx:key="{{ index }}">
+            <text class="titleStyle">{{ item.title }}</text>
+            <text class="valueStyle">{{ item.value }}</text>
+            <!-- <rich-text name="br"></rich-text> -->
+        </view>
+        <slot></slot>
+    </view>
+</template>
+
+<template name="card">
+    <block wx:for="{{ cardArray }}" wx:for-item="cardArray" wx:key="{{ index }}">
+        <view class="cardStyle" data-work-index="{{ index }}" bind:tap="showDialog">
+            <template is="info" data="{{ cardArray }}" />
+        </view>
+    </block>
+</template>

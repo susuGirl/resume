@@ -1,0 +1,26 @@
+
+.baseStyle {
+    margin-top: 30rpx;
+    text-align: left;
+}
+.baseStyle .titleStyle {
+    margin-left: 20rpx;
+    font-weight: 700;
+}
+.baseStyle .valueStyle {
+    vertical-align: text-top;
+    margin-left: 20rpx;
+    display: inline-block;
+}
+
+.cardStyle {
+    margin: 25rpx;
+    width: 700rpx;
+    height: 300rpx;
+    background: greenyellow;
+    border-radius: 5px;
+}
+.cardStyle .baseStyle .valueStyle {
+    width: 450rpx;
+    overflow: hidden;
+}
