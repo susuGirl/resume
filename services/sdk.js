@@ -1,13 +1,15 @@
 
-let query = new wx.BaaS.Query()
-let baseInfo = (ctx, cb) => {
+
+const allTableId = require('./tableId.js')
+
+let createBaseInfo = (ctx, cb) => {
   
-    //   let tableId = getApp().globalData.tableId
-      let resume = new wx.BaaS.TableObject('31373')
+      let tableId = allTableId.baseInfo.createBaseInfo
+      let resume = new wx.BaaS.TableObject(tableId)
       console.log('2222222222222----resume', resume)
-      let createBaseInfo = resume.create()
+      let createInfo = resume.create()
   
-      createBaseInfo.set(ctx)
+      createInfo.set(ctx)
       .save()
       .then(res => cb(res))
       .catch(err => console.dir(err))
@@ -80,5 +82,5 @@ let getBooks = (ctx, cb) => {
     addBook,
     updateBook,
     deleteBook,
-    baseInfo
+    createBaseInfo
   }

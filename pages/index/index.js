@@ -55,8 +55,8 @@ Page({
 
 
   requestTap: function() {
-    sdkApi.baseInfo({
-      real_name: '苏苏'
+    sdkApi.createBaseInfo({
+      real_name: '苏苏222'
     }, res => {
       console.log('请求成功了吗-------6666-----res', res)
     })
