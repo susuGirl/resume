@@ -6,6 +6,7 @@
     "pages/baseInfo/baseInfo",
     "pages/workInfo/workInfo",
     "pages/otherInfo/otherInfo",
+    "pages/editResume/editResume",
     "pages/collectResume/collectResume",
     "pages/recentlyViewed/recentlyViewed",
     "pages/searchReusme/searchReusme",

@@ -8,12 +8,13 @@ App({
     clientId: '1dd3e890aaacdd76723a',// 从 BaaS 后台获取 ClientID
     // tableId: 31373, // 从 https://cloud.minapp.com/dashboard/ 管理后台的数据表中获取
   },
+  
   onLaunch: function () {
     // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
     // wx.setStorageSync('tctoken', '哈哈哈哈')
-    wx.setStorageSync('tctoken', 'value222222222')
+    // wx.setStorageSync('tctoken', 'value222222222')
     require('./utils/sdk-v1.2.1.js') 
     let clientId = this.globalData.clientId
     wx.BaaS.init(clientId)

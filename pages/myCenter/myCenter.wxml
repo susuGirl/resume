@@ -1,6 +1,6 @@
 <view>
-    <button>edit</button>
-    <button>collect</button>
-    <button>recently viewed</button>
-    <button>seach resume</button>
+    <button bind:tap="editResumeTap">edit</button>
+    <button bind:tap="collectResumeTap">collect</button>
+    <button bind:tap="recentlyViewedResumeTap">recently viewed</button>
+    <button bind:tap="searchReusmeTap">search resume</button>
 </view>
