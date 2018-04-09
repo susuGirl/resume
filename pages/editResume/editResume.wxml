@@ -3,11 +3,19 @@
     <form bindsubmit="handleFormSubmit">
         <view>
             <view>userName:</view>
-            <input name="userName" placeholder="please inpiut your name" />
+            <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
         </view>
         <view>
-            <view>password:</view>
-            <input name="password" password  placeholder="please inpiut your password" />
+            <view>userGender:</view>
+            <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
+        </view>
+        <view>
+            <view>birthData:</view>
+            <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
+        </view>
+        <view>
+            <view>eMail:</view>
+            <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
         </view>
         <button form-type="submit">submit</button>
     </form>

@@ -31,6 +31,7 @@ const request = (url, obj = {}) => {
   // decodeURIComponent 编码  encodeURIComponent 解码
   // JSON.parse(decodeURIComponent(JSON.stringify(res.data)))
 
+
   module.exports = {
     request: request
   }
