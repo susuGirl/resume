@@ -1,1 +1,6 @@
-<view>me</view>
+<view>
+    <button>edit</button>
+    <button>collect</button>
+    <button>recently viewed</button>
+    <button>seach resume</button>
+</view>

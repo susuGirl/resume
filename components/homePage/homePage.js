@@ -18,18 +18,17 @@ Component({
     detached: function(){},
   
     methods: {
-      onMyButtonTap: function(){
-        this.setData({
-          // 更新属性和数据的方法与更新页面数据的方法类似
-        })
+      _baseInfoTap: function () {
+        this.triggerEvent('baseInfoTap')
       },
-      _myPrivateMethod: function(){
-        // 内部方法建议以下划线开头
-        this.replaceDataOnPath(['A', 0, 'B'], 'myPrivateData') // 这里将 data.A[0].B 设为 'myPrivateData'
-        this.applyDataUpdates()
+      _workInfoTap: function () {
+        this.triggerEvent('workInfoTap')
       },
-      _propertyChange: function(newVal, oldVal) {
-  
+      _otherInfoTap: function () {
+        this.triggerEvent('otherInfoTap')
+      },
+      _selfIntroductionTap: function () {
+        this.triggerEvent('selfIntroductionTap')
       }
     }
   

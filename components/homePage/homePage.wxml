@@ -2,8 +2,8 @@
     <view>
         <image src="../../images/fen.png"></image>
     </view>
-    <button>one</button>
-    <button>two</button>
-    <button>three</button>
-    <button>four</button>
+    <button catch:tap="_baseInfoTap">baseInfo</button>
+    <button catch:tap="_workInfoTap">workInfoTap</button>
+    <button catch:tap="_otherInfoTap">otherInfoTap</button>
+    <button catch:tap="_selfIntroductionTap">selfIntroductionTap</button>
 </view>
