@@ -1,1 +1,14 @@
-<view>editResume</view>
+<view>editResume: left right slid and paging</view>
+<view>
+    <form bindsubmit="handleFormSubmit">
+        <view>
+            <view>userName:</view>
+            <input name="userName" placeholder="please inpiut your name" />
+        </view>
+        <view>
+            <view>password:</view>
+            <input name="password" password  placeholder="please inpiut your password" />
+        </view>
+        <button form-type="submit">submit</button>
+    </form>
+</view>
