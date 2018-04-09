@@ -1,5 +1,7 @@
 {
-  "pages":[
+  "pages": [
+    "pages/lookResume/lookResume",
+    "pages/myCenter/myCenter",
     "pages/index/index",
     "pages/baseInfo/baseInfo",
     "pages/workInfo/workInfo",
@@ -9,11 +11,31 @@
     "pages/searchReusme/searchReusme",
     "pages/selfIntroduction/selfIntroduction"
   ],
-  "window":{
+  "window": {
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#83D944",
     "navigationBarTitleText": "demo",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+     "color": "green",
+     "selectedColor": "red",
+     "backgroundColor": "#83D944",
+     "borderStyle": "white",
+     "list": [
+       {
+         "pagePath": "pages/lookResume/lookResume",
+         "text": "look",
+         "iconPath": "images/img2.png",
+         "selectedIconPath": "images/img1.png"
+       },
+       {
+        "pagePath": "pages/myCenter/myCenter",
+        "text": "me",
+        "iconPath": "images/img3.png",
+        "selectedIconPath": "images/img1.png"
+      }
+     ]
   },
   "debug": true
 }

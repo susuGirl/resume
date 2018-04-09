@@ -1,0 +1,9 @@
+<view>
+    <view>
+        <image src="../../images/fen.png"></image>
+    </view>
+    <button>one</button>
+    <button>two</button>
+    <button>three</button>
+    <button>four</button>
+</view>
