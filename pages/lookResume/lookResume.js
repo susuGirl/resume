@@ -1,4 +1,10 @@
 Page({
+    onShow: function () {
+
+    },
+    onReady: function () {
+
+    },
 
     baseInfoTap () {
         console.log('6666666666666---baseInfoTap')
