@@ -9,9 +9,27 @@
     height: 100%;
     width: 100%;
     display: none;
+    overflow: hidden;
 }
+.infoCardStyle view {
+    /* height: 50px;
+    line-height: 50px; */
+    border: 1px solid gray;
+    margin: 10px;
+    display: flex;
+}
+.infoCardStyle view text {
+    padding-right: 5px;
+    /* background: yellow; */
+}
+.infoCardStyle view input {
+    flex: 1;
+    /* background: palevioletred; */
+    overflow: hidden;
+}
+
 .baseInfoCard {
-    background: orchid;
+    /* background: orchid; */
 }
 .workInfoCard {
     background: green;

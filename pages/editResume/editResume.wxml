@@ -1,63 +1,76 @@
 <view class="editResumeStyle" bind:touchstart="handleTouchstart" bind:touchmove="handleTouchmove" bind:touchend="handleTouchend">
-    <!-- <view>editResume: left right slid and paging</view> -->
+    
     <view class="infoCardStyle baseInfoCard {{card === 'baseInfoCard'?'showCard':''}}">
         <form bindsubmit="handleFormSubmit">
             <view>
-                <view>userName:</view>
+                <text>userName:</text>
                 <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
             </view>
+
             <view>
-                <view>userGender:</view>
-                <input name="userGender" value="{{ baseInfo.userGender }}"  placeholder="please inpiut your userGender" />
+                <radio-group name="userGender" class="radio-group">
+                    <label class="radio">
+                        <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}">girl</radio>
+                        <radio name="boy" value="1" checked="{{ baseInfo.userGender === 1 }}">boy</radio>
+                        <radio name="unknow" value="2" checked="{{ baseInfo.userGender === 2 }}">unknow</radio>
+                    </label>
+                </radio-group>
             </view>
+
             <view>
-                <view>birthData:</view>
-                <input name="birthData" value="{{ baseInfo.birthData }}"  placeholder="please inpiut your birthData" />
+                <picker name="birthData" mode="date"  start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                    <text>
+                        birthData: {{ baseInfo.birthData }}
+                    </text>
+                </picker>
             </view>
+
             <view>
-                <view>eMail:</view>
+                <text>eMail:</text>
                 <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
             </view>
             <button form-type="submit">submit</button>
         </form>
     </view>
+
     <view class="infoCardStyle workInfoCard {{card === 'workInfoCard'?'showCard':''}}">
         <form bindsubmit="handleFormSubmit">
             <view>
-                <view>userName2:</view>
+                <text>userName2:</text>
                 <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
             </view>
             <view>
-                <view>userGender2:</view>
+                <text>userGender2:</text>
                 <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
             </view>
             <view>
-                <view>birthData2:</view>
+                <text>birthData2:</text>
                 <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
             </view>
             <view>
-                <view>eMail2:</view>
+                <text>eMail2:</text>
                 <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
             </view>
             <button form-type="submit">submit</button>
         </form>
     </view>
+
     <view class="infoCardStyle otherInfoCard {{card === 'otherInfoCard'?'showCard':''}}">
             <form bindsubmit="handleFormSubmit">
                 <view>
-                    <view>userName3:</view>
+                    <text>userName3:</text>
                     <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
                 </view>
                 <view>
-                    <view>userGender3:</view>
+                    <text>userGender3:</text>
                     <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
                 </view>
                 <view>
-                    <view>birthData3:</view>
+                    <text>birthData3:</text>
                     <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
                 </view>
                 <view>
-                    <view>eMail3:</view>
+                    <text>eMail3:</text>
                     <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
                 </view>
                 <button form-type="submit">submit</button>

@@ -3,7 +3,6 @@ const sdkApi = require('../../services/sdk.js')
 Page({
 
     data: {
-        // showCard: 'showCard',
         card: 'baseInfoCard',
         cardArray: ['baseInfoCard', 'workInfoCard', 'otherInfoCard'],
         cardIndex: 0,
@@ -23,6 +22,13 @@ Page({
     onReady: function () {
         // this.findBaseInfo()
     },
+
+    bindDateChange: function(e) {
+        console.log('picker发送选择改变，携带值为', e.detail.value)
+        this.setData({
+          'baseInfo.birthData': e.detail.value
+        })
+      },
 
     handleTouchstart: function(event) {
         console.log('handleTouch start-------111', event)
@@ -80,6 +86,7 @@ Page({
 
     handleFormSubmit: function (e) {
         console.log('form submit data ----- @_@', e.detail.value)
+        return
         let params = {
             user_name: e.detail.value.userName,
             user_gender: e.detail.value.userGender,
