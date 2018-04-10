@@ -3,16 +3,29 @@
 const allTableId = require('./tableId.js')
 const app = getApp()
 
-const createBaseInfo = (ctx, cb) => {
+const addBaseInfo = (ctx, cb) => {
   
       let tableId = allTableId.baseInfo.createBaseInfo
       let resume = new wx.BaaS.TableObject(tableId)
       let createInfo = resume.create()
       Object.assign(ctx, {open_id: app.globalData.loginInfo.openid})
-      console.log('66666666----传递的参数---ctx', ctx)
+      console.log('66666666--save--传递的参数---ctx', ctx)
   
       createInfo.set(ctx)
       .save()
+      .then(res => cb(res))
+      .catch(err => console.dir(err))
+  }
+
+const updateBaseInfo = (ctx, cb) => {
+      let tableId = allTableId.baseInfo.createBaseInfo
+      let resume = new wx.BaaS.TableObject(tableId)
+      let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
+      Object.assign(ctx, {open_id: app.globalData.loginInfo.openid})
+      console.log('5555555---update----传递的参数---ctx', ctx)
+
+      updateInfo.set(ctx)
+      .update()
       .then(res => cb(res))
       .catch(err => console.dir(err))
   }
@@ -32,6 +45,7 @@ const findBaseInfo = (ctx, cb) => {
   }
   
   module.exports = {
-    createBaseInfo,
-    findBaseInfo
+    addBaseInfo,
+    findBaseInfo,
+    updateBaseInfo
   }
