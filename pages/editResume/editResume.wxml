@@ -1,6 +1,6 @@
 <view class="editResumeStyle" bind:touchstart="handleTouchstart" bind:touchmove="handleTouchmove" bind:touchend="handleTouchend">
     
-    <view class="infoCardStyle baseInfoCard {{card === 'baseInfoCard'?'showCard':''}}">
+    <view class="infoCardStyle baseInfoCard {{card === 'baseInfo'?'showCard':''}}">
         <form bindsubmit="handleFormSubmit">
             <view>
                 <text>userName:</text>
@@ -18,7 +18,7 @@
             </view>
 
             <view>
-                <picker name="birthData" mode="date"  start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                <picker name="birthData" mode="date"  start="2015-09-01" end="2017-09-01" bindchange="handleDateChange">
                     <text>
                         birthData: {{ baseInfo.birthData }}
                     </text>
@@ -33,46 +33,29 @@
         </form>
     </view>
 
-    <view class="infoCardStyle workInfoCard {{card === 'workInfoCard'?'showCard':''}}">
+    <view class="infoCardStyle workInfoCard {{card === 'workInfo'?'showCard':''}}">
         <form bindsubmit="handleFormSubmit">
             <view>
-                <text>userName2:</text>
-                <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
+                <text>companyName:</text>
+                <input name="companyName" value="{{ companyName }}" placeholder="please inpiut your companyName" />
             </view>
             <view>
-                <text>userGender2:</text>
-                <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
-            </view>
-            <view>
-                <text>birthData2:</text>
-                <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
-            </view>
-            <view>
-                <text>eMail2:</text>
-                <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
+                <text>datesEmployed:</text>
+                <input name="datesEmployed" value="{{ datesEmployed }}"  placeholder="please inpiut your datesEmployed" />
             </view>
             <button form-type="submit">submit</button>
         </form>
     </view>
 
-    <view class="infoCardStyle otherInfoCard {{card === 'otherInfoCard'?'showCard':''}}">
+    <view class="infoCardStyle otherInfoCard {{card === 'otherInfo'?'showCard':''}}">
             <form bindsubmit="handleFormSubmit">
-                <view>
-                    <text>userName3:</text>
-                    <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
-                </view>
-                <view>
-                    <text>userGender3:</text>
-                    <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
-                </view>
-                <view>
-                    <text>birthData3:</text>
-                    <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
-                </view>
-                <view>
-                    <text>eMail3:</text>
-                    <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
-                </view>
+                <block wx:for="{{ otherInfo }}" wx:key="index">
+                    <view>
+                        <input data-add-info-index="{{ index }}" name="addTitle{{index}}" value="{{ item.title }}:" bindblur="hangdleTitleBindblur" />
+                        <input data-add-info-index="{{ index }}" name="addInfo{{index}}" value="{{ item.value }}"  bindblur="hangdleValueBindblur" />
+                        <button data-add-info-index="{{ index }}" catch:tap="handleAddInfo">+</button>
+                    </view>
+               </block>
                 <button form-type="submit">submit</button>
             </form>
         </view>

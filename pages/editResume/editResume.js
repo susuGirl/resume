@@ -1,10 +1,11 @@
 const sdkApi = require('../../services/sdk.js')
+const app = getApp()
 
 Page({
 
     data: {
-        card: 'baseInfoCard',
-        cardArray: ['baseInfoCard', 'workInfoCard', 'otherInfoCard'],
+        card: 'baseInfo',
+        cardArray: ['baseInfo', 'workInfo', 'otherInfo'],
         cardIndex: 0,
         currentGesture: '', // left right up down
         baseInfo: {
@@ -13,6 +14,12 @@ Page({
             birthData: '',
             eMail: ''
         },
+        otherInfo: [
+            {
+                title: 'hobby',
+                value: ''
+            }
+        ],
         noModification: true, // It's not modifying information
         recordID: '', // the id of a piece data
         lastX: 0, // last pageX
@@ -22,14 +29,37 @@ Page({
     onReady: function () {
         // this.findBaseInfo()
     },
+    
+    // init user data
+    findBaseInfo: function() {
+        wx.showLoading({
+            title: '获取数据中...'
+          })
+        sdkApi.findBaseInfo({},res => {
+            console.log('请求数据---get----6666-----res', res)
+            if ( res.objects.length > 0) {
+              res.objects[0].brith_data = res.objects[0].brith_data.substring(0, 10)
+               this.setData({
+                  'baseInfo.userName': res.objects[0].user_name,
+                  'baseInfo.userGender': res.objects[0].user_gender,
+                  'baseInfo.birthData': res.objects[0].brith_data,
+                  'baseInfo.eMail': res.objects[0].e_mail,
+                  'noModification': false,
+                  'recordID': res.objects[0].id
+               })
+               wx.hideLoading()
+            }
+       })
+    },
 
-    bindDateChange: function(e) {
-        console.log('picker发送选择改变，携带值为', e.detail.value)
+    // date picker change event
+    handleDateChange: function(e) {
         this.setData({
           'baseInfo.birthData': e.detail.value
         })
       },
 
+    // touch event
     handleTouchstart: function(event) {
         console.log('handleTouch start-------111', event)
         this.data.lastX = event.touches[0].pageX
@@ -64,32 +94,39 @@ Page({
 
     },
 
-    findBaseInfo: function() {
-        wx.showLoading({
-            title: '获取数据中...'
-          })
-        sdkApi.findBaseInfo({},res => {
-            console.log('请求数据---get----6666-----res', res)
-            if ( res.objects.length > 0) {
-               this.setData({
-                  'baseInfo.userName': res.objects[0].user_name,
-                  'baseInfo.userGender': res.objects[0].user_gender,
-                  'baseInfo.birthData': res.objects[0].brith_data,
-                  'baseInfo.eMail': res.objects[0].e_mail,
-                  'noModification': false,
-                  'recordID': res.objects[0].id
-               })
-               wx.hideLoading()
-            }
-       })
+    // other info
+    hangdleTitleBindblur: function (e) {
+        this.setData({
+            ['otherInfo[' + e.currentTarget.dataset.addInfoIndex + '].title']: e.detail.value ? e.detail.value : ''
+        })
+        console.log('otherInfo-----', this.data.otherInfo)
     },
 
+    hangdleValueBindblur: function (e) {
+        this.setData({
+            ['otherInfo[' + e.currentTarget.dataset.addInfoIndex + '].value']: e.detail.value ? e.detail.value : ''
+        })
+        console.log('otherInfo-----', this.data.otherInfo)
+    },
+
+    handleAddInfo: function (e) {
+        var temp = []
+        temp = this.data.otherInfo.slice(0)
+        temp.splice(e.currentTarget.dataset.addInfoIndex + 1, 0, {title: 'title', value: ''})
+
+        this.setData({
+            'otherInfo': temp
+        })
+        app.globalData.otherInfo = temp
+        console.log('globalData----------哈哈', app.globalData)
+    },
+
+    // submit
     handleFormSubmit: function (e) {
         console.log('form submit data ----- @_@', e.detail.value)
-        return
         let params = {
             user_name: e.detail.value.userName,
-            user_gender: e.detail.value.userGender,
+            user_gender: Number(e.detail.value.userGender),
             brith_data: e.detail.value.birthData,
             e_mail: e.detail.value.eMail
         }
