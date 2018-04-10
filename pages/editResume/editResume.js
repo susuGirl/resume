@@ -3,16 +3,59 @@ const sdkApi = require('../../services/sdk.js')
 Page({
 
     data: {
-        userName: '',
-        userGender: 2,
-        birthData: '',
-        eMail: '',
+        // showCard: 'showCard',
+        card: 'baseInfoCard',
+        cardArray: ['baseInfoCard', 'workInfoCard', 'otherInfoCard'],
+        cardIndex: 0,
+        currentGesture: '', // left right up down
+        baseInfo: {
+            userName: '',
+            userGender: 2,
+            birthData: '',
+            eMail: ''
+        },
         noModification: true, // It's not modifying information
-        recordID: '' // the id of a piece data
+        recordID: '', // the id of a piece data
+        lastX: 0, // last pageX
+        lastY: 0 // last pageY
     },
 
     onReady: function () {
-        this.findBaseInfo()
+        // this.findBaseInfo()
+    },
+
+    handleTouchstart: function(event) {
+        console.log('handleTouch start-------111', event)
+        this.data.lastX = event.touches[0].pageX
+        this.data.lastY = event.touches[0].pageY
+    },
+    handleTouchmove: function(event) {
+        console.log('handleTouch move-------222', event)
+        let currentX = event.touches[0].pageX
+        let currentY = event.touches[0].pageY
+        if ((currentX - this.data.lastX) < 0) {
+            this.setData({
+                'currentGesture': 'left'
+            })
+        } else if ((currentX - this.data.lastX) > 0) {
+            this.setData({
+                'currentGesture': 'right'
+            })
+        }
+        // save the current coordinates for the next calculation
+        this.data.lastX = currentX
+        this.data.lastY = currentY
+    },
+    handleTouchend: function (event) {
+        if (this.data.currentGesture === 'left' && this.data.cardIndex < this.data.cardArray.length - 1) {
+            this.data.cardIndex = this.data.cardIndex + 1
+        } else if (this.data.currentGesture === 'right' && this.data.cardIndex > 0) {
+            this.data.cardIndex = this.data.cardIndex - 1
+        }
+        this.setData({
+            'card': this.data.cardArray[this.data.cardIndex]
+        })
+
     },
 
     findBaseInfo: function() {
@@ -23,12 +66,12 @@ Page({
             console.log('请求数据---get----6666-----res', res)
             if ( res.objects.length > 0) {
                this.setData({
-                  userName: res.objects[0].user_name,
-                  userGender: res.objects[0].user_gender,
-                  birthData: res.objects[0].brith_data,
-                  eMail: res.objects[0].e_mail,
-                  noModification: false,
-                  recordID: res.objects[0].id
+                  'baseInfo.userName': res.objects[0].user_name,
+                  'baseInfo.userGender': res.objects[0].user_gender,
+                  'baseInfo.birthData': res.objects[0].brith_data,
+                  'baseInfo.eMail': res.objects[0].e_mail,
+                  'noModification': false,
+                  'recordID': res.objects[0].id
                })
                wx.hideLoading()
             }

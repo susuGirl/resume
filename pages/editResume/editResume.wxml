@@ -1,22 +1,66 @@
-<view>editResume: left right slid and paging</view>
-<view>
-    <form bindsubmit="handleFormSubmit">
-        <view>
-            <view>userName:</view>
-            <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
+<view class="editResumeStyle" bind:touchstart="handleTouchstart" bind:touchmove="handleTouchmove" bind:touchend="handleTouchend">
+    <!-- <view>editResume: left right slid and paging</view> -->
+    <view class="infoCardStyle baseInfoCard {{card === 'baseInfoCard'?'showCard':''}}">
+        <form bindsubmit="handleFormSubmit">
+            <view>
+                <view>userName:</view>
+                <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
+            </view>
+            <view>
+                <view>userGender:</view>
+                <input name="userGender" value="{{ baseInfo.userGender }}"  placeholder="please inpiut your userGender" />
+            </view>
+            <view>
+                <view>birthData:</view>
+                <input name="birthData" value="{{ baseInfo.birthData }}"  placeholder="please inpiut your birthData" />
+            </view>
+            <view>
+                <view>eMail:</view>
+                <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
+            </view>
+            <button form-type="submit">submit</button>
+        </form>
+    </view>
+    <view class="infoCardStyle workInfoCard {{card === 'workInfoCard'?'showCard':''}}">
+        <form bindsubmit="handleFormSubmit">
+            <view>
+                <view>userName2:</view>
+                <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
+            </view>
+            <view>
+                <view>userGender2:</view>
+                <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
+            </view>
+            <view>
+                <view>birthData2:</view>
+                <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
+            </view>
+            <view>
+                <view>eMail2:</view>
+                <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
+            </view>
+            <button form-type="submit">submit</button>
+        </form>
+    </view>
+    <view class="infoCardStyle otherInfoCard {{card === 'otherInfoCard'?'showCard':''}}">
+            <form bindsubmit="handleFormSubmit">
+                <view>
+                    <view>userName3:</view>
+                    <input name="userName" value="{{ userName }}" placeholder="please inpiut your name" />
+                </view>
+                <view>
+                    <view>userGender3:</view>
+                    <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
+                </view>
+                <view>
+                    <view>birthData3:</view>
+                    <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
+                </view>
+                <view>
+                    <view>eMail3:</view>
+                    <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
+                </view>
+                <button form-type="submit">submit</button>
+            </form>
         </view>
-        <view>
-            <view>userGender:</view>
-            <input name="userGender" value="{{ userGender }}"  placeholder="please inpiut your userGender" />
-        </view>
-        <view>
-            <view>birthData:</view>
-            <input name="birthData" value="{{ birthData }}"  placeholder="please inpiut your birthData" />
-        </view>
-        <view>
-            <view>eMail:</view>
-            <input name="eMail" value="{{ eMail }}"  placeholder="please inpiut your eMail" />
-        </view>
-        <button form-type="submit">submit</button>
-    </form>
 </view>
