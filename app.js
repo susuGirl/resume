@@ -7,9 +7,11 @@ App({
     userInfo: null,
     clientId: '1dd3e890aaacdd76723a',// 从 BaaS 后台获取 ClientID
     // tableId: 31373, // 从 https://cloud.minapp.com/dashboard/ 管理后台的数据表中获取
+    systemInfo: null
   },
   
   onLaunch: function () {
+    let that = this
     // 展示本地存储能力
     // var logs = wx.getStorageSync('logs') || []
     // logs.unshift(Date.now())
@@ -22,13 +24,13 @@ App({
 
    
     wx.BaaS.login().then(res => {
-      this.globalData.loginInfo = res
-      console.log('22222222222222------222', this.globalData)
+      that.globalData.loginInfo = res
+      console.log('22222222222222------222', that.globalData)
 
       wx.getUserInfo({
         success: info => {
           console.log('用户信息----666', info)
-          this.globalData.userInfo = info.userInfo
+          that.globalData.userInfo = info.userInfo
           // var encryptedData = encodeURIComponent(res2.encryptedData) // 加密过的字符串 一定要把加密串转成URI编码
           // var iv = res2.iv // 加密算法的初始向量
             // 请求自己的服务器
@@ -44,6 +46,12 @@ App({
         }
       } else {
         console.log('用户拒绝授权,用户基本信息', res)
+      }
+    }),
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log('getSystemInfo---------------@_#', res)
+          that.globalData.systemInfo = res
       }
     })
 

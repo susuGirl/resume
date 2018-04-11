@@ -1,7 +1,9 @@
-<view class="editResumeStyle" bind:touchstart="handleTouchstart" bind:touchmove="handleTouchmove" bind:touchend="handleTouchend">
-    
-    <view class="infoCardStyle baseInfoCard {{card === 'baseInfo'?'showCard':''}}">
-        <form bindsubmit="handleFormSubmit">
+<view class="editResumeStyle" style="height: {{windowHeight}}px;">
+    <!-- <view class="editResumeStyle" bind:touchstart="handleTouchstart" bind:touchmove="handleTouchmove" bind:touchend="handleTouchend"> -->
+    <swiper class="swiperStyle" indicator-dots>
+    <swiper-item>
+    <view class="infoCardStyle baseInfoCard">
+        <form bindsubmit="handleBaseFormSubmit">
             <view>
                 <text>userName:</text>
                 <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
@@ -18,7 +20,7 @@
             </view>
 
             <view>
-                <picker name="birthData" mode="date"  start="2015-09-01" end="2017-09-01" bindchange="handleDateChange">
+                <picker name="birthData" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
                     <text>
                         birthData: {{ baseInfo.birthData }}
                     </text>
@@ -32,31 +34,37 @@
             <button form-type="submit">submit</button>
         </form>
     </view>
+    </swiper-item>
 
-    <view class="infoCardStyle workInfoCard {{card === 'workInfo'?'showCard':''}}">
-        <form bindsubmit="handleFormSubmit">
+    <swiper-item>
+    <view class="infoCardStyle workInfoCard">
+        <form bindsubmit="handleWorkFormSubmit">
             <view>
                 <text>companyName:</text>
-                <input name="companyName" value="{{ companyName }}" placeholder="please inpiut your companyName" />
+                <input name="companyName" value="{{ workInfo.companyName }}" placeholder="please inpiut"/>
             </view>
             <view>
                 <text>datesEmployed:</text>
-                <input name="datesEmployed" value="{{ datesEmployed }}"  placeholder="please inpiut your datesEmployed" />
+                <input name="datesEmployed" value="{{ workInfo.datesEmployed }}"  placeholder="please inpiut" />
             </view>
             <button form-type="submit">submit</button>
         </form>
     </view>
+    </swiper-item>
 
-    <view class="infoCardStyle otherInfoCard {{card === 'otherInfo'?'showCard':''}}">
-            <form bindsubmit="handleFormSubmit">
-                <block wx:for="{{ otherInfo }}" wx:key="index">
-                    <view>
-                        <input data-add-info-index="{{ index }}" name="addTitle{{index}}" value="{{ item.title }}:" bindblur="hangdleTitleBindblur" />
-                        <input data-add-info-index="{{ index }}" name="addInfo{{index}}" value="{{ item.value }}"  bindblur="hangdleValueBindblur" />
-                        <button data-add-info-index="{{ index }}" catch:tap="handleAddInfo">+</button>
-                    </view>
-               </block>
-                <button form-type="submit">submit</button>
-            </form>
-        </view>
+    <swiper-item>
+    <view class="infoCardStyle otherInfoCard">
+        <form bindsubmit="handleOtherFormSubmit">
+            <block wx:for="{{ otherInfo }}" wx:key="index">
+                <view>
+                    <input data-add-info-index="{{ index }}" name="addTitle{{index}}" value="{{ item.title }}" bindblur="hangdleTitleBindblur" placeholder="please inpiut" />
+                    <input data-add-info-index="{{ index }}" name="addInfo{{index}}" value="{{ item.value }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" />
+                    <button data-add-info-index="{{ index }}" catch:tap="handleAddInfo">+</button>
+                </view>
+            </block>
+            <button form-type="submit">submit</button>
+        </form>
+    </view>
+    </swiper-item>
+    </swiper>
 </view>
