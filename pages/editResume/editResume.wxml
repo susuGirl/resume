@@ -1,70 +1,77 @@
-<view class="editResumeStyle" style="height: {{windowHeight}}px;">
+<view class="editResumeStyle" style="height:{{windowHeight}}px;">
     <!-- <view class="editResumeStyle" bind:touchstart="handleTouchstart" bind:touchmove="handleTouchmove" bind:touchend="handleTouchend"> -->
     <swiper class="swiperStyle" indicator-dots>
-    <swiper-item>
-    <view class="infoCardStyle baseInfoCard">
-        <form bindsubmit="handleBaseFormSubmit">
-            <view>
-                <text>userName:</text>
-                <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
-            </view>
+        <swiper-item>
+            <view class="infoCardStyle baseInfoCard">
+                <form bindsubmit="handleBaseFormSubmit">
+                    <view>
+                        <text>userName:</text>
+                        <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
+                    </view>
 
-            <view>
-                <radio-group name="userGender" class="radio-group">
-                    <label class="radio">
-                        <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}">girl</radio>
-                        <radio name="boy" value="1" checked="{{ baseInfo.userGender === 1 }}">boy</radio>
-                        <radio name="unknow" value="2" checked="{{ baseInfo.userGender === 2 }}">unknow</radio>
-                    </label>
-                </radio-group>
-            </view>
+                    <view>
+                        <radio-group name="userGender" class="radio-group">
+                            <label class="radio">
+                                <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}">girl</radio>
+                                <radio name="boy" value="1" checked="{{ baseInfo.userGender === 1 }}">boy</radio>
+                                <radio name="unknow" value="2" checked="{{ baseInfo.userGender === 2 }}">unknow</radio>
+                            </label>
+                        </radio-group>
+                    </view>
 
-            <view>
-                <picker name="birthData" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
-                    <text>
-                        birthData: {{ baseInfo.birthData }}
-                    </text>
-                </picker>
-            </view>
+                    <view>
+                        <picker name="birthData" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                            <text>
+                                birthData: {{ baseInfo.birthData }}
+                            </text>
+                        </picker>
+                    </view>
 
-            <view>
-                <text>eMail:</text>
-                <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
+                    <view>
+                        <text>eMail:</text>
+                        <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
+                    </view>
+                    <button form-type="submit">submit</button>
+                </form>
             </view>
-            <button form-type="submit">submit</button>
-        </form>
-    </view>
-    </swiper-item>
+        </swiper-item>
 
-    <swiper-item>
-    <view class="infoCardStyle workInfoCard">
-        <form bindsubmit="handleWorkFormSubmit">
-            <view>
-                <text>companyName:</text>
-                <input name="companyName" value="{{ workInfo.companyName }}" placeholder="please inpiut"/>
-            </view>
-            <view>
-                <text>datesEmployed:</text>
-                <input name="datesEmployed" value="{{ workInfo.datesEmployed }}"  placeholder="please inpiut" />
-            </view>
-            <button form-type="submit">submit</button>
-        </form>
-    </view>
-    </swiper-item>
+        <swiper-item>
+            <showworkdialog wx:if="{{ !hideWorkDialog }}" singleWorkInfo="{{ singleWorkInfo }}" bind:closeDialog="closeDialog" bind:closeDialog="closeDialog" bind:saveContent="saveContent"></showworkdialog>
+            <view class="infoCardStyle workInfoCard">
+                <block wx:for="{{ workInfo }}" wx:key="{{ index }}">
 
-    <swiper-item>
-    <view class="infoCardStyle otherInfoCard">
-        <form bindsubmit="handleOtherFormSubmit">
-            <block wx:for="{{ otherInfo }}" wx:key="index">
-                <view>
-                    <input data-add-info-index="{{ index }}" name="addTitle{{index}}" value="{{ item.title }}" bindblur="hangdleTitleBindblur" placeholder="please inpiut" />
-                    <input data-add-info-index="{{ index }}" name="addInfo{{index}}" value="{{ item.value }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" />
-                    <button data-add-info-index="{{ index }}" catch:tap="handleAddInfo">+</button>
-                </view>
-            </block>
-            <button form-type="submit">submit</button>
-        </form>
-    </view>
-    </swiper-item>
+                    <view class="workExperience" wx:if="{{ item.id }}" data-single-work-info="{{ index }}" bind:tap="handleWorkInfoCardTap">
+                        <view>
+                            <text>companyName:</text>
+                            <text name="companyName">{{ item.companyName }}</text>
+                        </view>
+                        <view>
+                            <text>datesEmployed:</text>
+                            <text name="datesEmployed">{{ item.datesEmployed }}</text>
+                        </view>
+                    </view>
+
+                    <view class="workExperience" wx:if="{{ !item.id }}" bind:tap="handleWorkInfoCardTap">
+                        click add work info
+                    </view>
+                </block>
+            </view>
+        </swiper-item>
+
+        <swiper-item>
+            <view class="infoCardStyle otherInfoCard">
+                <form bindsubmit="handleOtherFormSubmit">
+                    <block wx:for="{{ otherInfo }}" wx:key="{{ index }}">
+                        <view>
+                            <input data-add-info-index="{{ index }}" name="addTitle{{index}}" value="{{ item.title }}" bindblur="hangdleTitleBindblur" placeholder="please inpiut" />
+                            <input data-add-info-index="{{ index }}" name="addInfo{{index}}" value="{{ item.value }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" />
+                            <button data-add-info-index="{{ index }}" catch:tap="handleAddInfo">+</button>
+                        </view>
+                    </block>
+                    <button form-type="submit">submit</button>
+                </form>
+            </view>
+        </swiper-item>
     </swiper>
 </view>

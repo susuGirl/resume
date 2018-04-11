@@ -1,0 +1,17 @@
+<view class="workDialogStyle">
+
+    <form bindsubmit="handleWorkFormSubmit">
+        <view>
+            <text>companyName:</text>
+            <input name="companyName" value="{{ singleWorkInfo.companyName }}" placeholder="please inpiut"/>
+        </view>
+        <view>
+            <text>datesEmployed:</text>
+            <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}"  placeholder="please inpiut" />
+        </view>
+        <!-- <button form-type="submit">submit</button> -->
+        <button catch:tap="_closeDialog">cancel</button>
+        <button form-type="submit" catch:tap="_saveContent">save</button>
+    </form>
+
+</view>

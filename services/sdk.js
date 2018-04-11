@@ -21,7 +21,7 @@ const updateBaseInfo = (ctx, cb) => {
       let tableId = allTableId.baseInfo.createBaseInfo
       let resume = new wx.BaaS.TableObject(tableId)
       let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
-      Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
+      // Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
       console.log('5555555---update----传递的参数---ctx', ctx)
 
       updateInfo.set(ctx)
@@ -61,7 +61,7 @@ const updateworkInfo = (ctx, cb) => {
     let tableId = allTableId.workInfo.creatWorkInfo
     let resume = new wx.BaaS.TableObject(tableId)
     let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
-    Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
+    // Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
     console.log('5555555---update----传递的参数---ctx', ctx)
 
     updateInfo.set(ctx)

@@ -11,11 +11,23 @@ Page({
             birthData: '',
             eMail: ''
         },
-        workInfo: {
-            companyName: '',
-            datesEmployed: '',
-            workCardId: null
-        },
+        workInfo: [
+            // {
+            //     companyName: '66666',
+            //     datesEmployed: '555555555',
+            //     id: '22222'
+            // },
+            // {
+            //     companyName: '56565656565656',
+            //     datesEmployed: '77878787878787878',
+            //     id: '22222'
+            // },
+            {
+                companyName: '',
+                datesEmployed: '',
+                id: null
+            }
+        ],
         otherInfo: [
             {
                 title: 'hobby',
@@ -24,13 +36,19 @@ Page({
         ],
         lastX: 0, // last pageX
         lastY: 0, // last pageY
-        windowHeight: app.globalData.systemInfo.windowHeight
+        windowHeight: app.globalData.systemInfo.windowHeight,
+        hideWorkDialog: true,
+        singleWorkInfo: {
+            companyName: '',
+            datesEmployed: '',
+            id: null
+        }
     },
 
-    onReady: function () {
+    onLoad: function () {
         let that = this
-        // that.findBaseInfo()
-        // this.findworkInfo()
+        that.findBaseInfo()
+        that.findworkInfo()
         that.setData({
             windowHeight: app.globalData.systemInfo.windowHeight
         })
@@ -43,7 +61,7 @@ Page({
           })
         sdkApi.findBaseInfo({}, res => {
             wx.hideLoading()
-            console.log('请求数据---get----6666-----res', res)
+            // console.log('请求数据---get----6666-----res', res)
             if ( res.objects.length > 0) {
                res.objects[0].birthData = res.objects[0].birthData.substring(0, 10)
                this.setData({
@@ -56,9 +74,11 @@ Page({
     // init user work info data
     findworkInfo: function() {
         sdkApi.findworkInfo({}, res => {
-            console.log('请求数据---get----6666-----res---openId', res)
+            console.log('请求数据---呵呵哒---------res', res)
             if ( res.objects.length > 0) {
-            
+                this.setData({
+                    'workInfo': res.objects
+                })
             }
        })
     },
@@ -103,41 +123,27 @@ Page({
         }
     },
 
-    // work info submit
-    handleWorkFormSubmit: function (e) {
-        console.log('form submit data ----- @_@', e.detail.value)
-        return
-        let params = {
-            ...e.detail.value,
-            workCardId: Math.random().replace(/\./, app.globalData.openid)
-        }
-        return params
-        
-        // if (this.data.noModification) { // add new user information operation
-            sdkApi.addBaseInfo(params, res => {
-                 console.log('请求成功了吗----add---6666-----res', res)
-                 wx.showToast({
-                    title: '成功',
-                    icon: 'success',
-                    duration: 1500
-                  })
-                 
-            })
-
-        // } else { // modify information operation 
-        //     Object.assign(params, {recordID: this.data.baseInfo.id})
-        //     sdkApi.updateBaseInfo(params, res => {
-        //          console.log('请求成功了吗----update---6666-----res', res)
-        //          wx.showToast({
-        //             title: '成功',
-        //             icon: 'success',
-        //             duration: 1500
-        //           })
-                 
-        //     })
-
-        // }
+    // work info
+    handleWorkInfoCardTap: function (e) {
+        this.setData({
+            'hideWorkDialog': false,
+            'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
+        })
+        console.log('777777777777777777777----singleWorkInfo', this.data.singleWorkInfo)
     },
+    closeDialog: function (e) {
+        this.setData({
+            'hideWorkDialog': true
+        })
+    },
+    saveContent: function (e) {
+        console.log('_saveContent------7878787878787878-------save', e.detail)
+        this.findworkInfo()
+        this.setData({
+            'hideWorkDialog': true
+        })
+    },
+
     
     // other info
     hangdleTitleBindblur: function (e) {

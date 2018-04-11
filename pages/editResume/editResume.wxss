@@ -17,11 +17,6 @@
     /* overflow: hidden; */
     overflow-y: auto
 }
-.infoCardStyle view {
-    border: 1px solid gray;
-    margin: 10px;
-    display: flex;
-}
 .infoCardStyle view text {
     padding-right: 5px;
     /* background: yellow; */
@@ -35,11 +30,27 @@
 .baseInfoCard {
     /* background: orchid; */
 }
+.baseInfoCard view {
+    border: 1px solid gray;
+    margin: 10px;
+    display: flex;
+}
+.otherInfoCard view {
+    border: 1px solid gray;
+    margin: 10px;
+    display: flex;
+}
 .workInfoCard {
     /* background: green; */
 }
 .otherInfoCard {
     /* background: orange; */
+}
+.workExperience {
+    background: orange;
+    /* width: 100%; */
+    height: 200px;
+    margin: 10px;
 }
 .showCard {
     display: block;
