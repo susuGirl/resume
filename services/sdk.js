@@ -57,7 +57,7 @@ const findBaseInfo = (ctx, cb) => {
     .catch(err => console.dir(err))
 }
 
-const updateworkInfo = (ctx, cb) => {
+const updateWorkInfo = (ctx, cb) => {
     let tableId = allTableId.workInfo.creatWorkInfo
     let resume = new wx.BaaS.TableObject(tableId)
     let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
@@ -68,6 +68,15 @@ const updateworkInfo = (ctx, cb) => {
     .update()
     .then(res => cb(res))
     .catch(err => console.dir(err))
+}
+
+const deleteWorkInfo = (ctx, cb) => {
+  let tableId = allTableId.workInfo.creatWorkInfo
+  let resume = new wx.BaaS.TableObject(tableId)
+  console.log('5555555---update----传递的参数---ctx', ctx)
+
+  resume.delete(ctx)
+  .then(res => cb(res))
 }
 
 const findworkInfo = (ctx, cb) => {
@@ -88,6 +97,7 @@ const findworkInfo = (ctx, cb) => {
     updateBaseInfo,
     findBaseInfo,
     addworkInfo,
-    updateworkInfo,
+    updateWorkInfo,
+    deleteWorkInfo,
     findworkInfo
   }

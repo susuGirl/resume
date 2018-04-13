@@ -50,6 +50,9 @@
                             <text>datesEmployed:</text>
                             <text name="datesEmployed">{{ item.datesEmployed }}</text>
                         </view>
+                        <view catch:tap="deleteCard" data-card-id="{{ item.id }}">
+                            <icon type="cancel" size="40"></icon>
+                        </view>
                     </view>
 
                     <view class="workExperience" wx:if="{{ !item.id }}" bind:tap="handleWorkInfoCardTap">

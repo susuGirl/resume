@@ -53,13 +53,13 @@ Component({
                         icon: 'success',
                         duration: 1500
                     })
-                    this.triggerEvent('findworkInfoDialog')
+                    this.triggerEvent('findworkInfoDialog', 'addNullCard')
                   
               })
 
           } else { // modify information operation 
               Object.assign(params, {recordID: this.data.singleWorkInfo.id})
-              sdkApi.updateworkInfo(params, res => {
+              sdkApi.updateWorkInfo(params, res => {
                    console.log('请求成功了吗----update---6666-----res', res)
                    wx.showToast({
                       title: '成功',
@@ -69,7 +69,7 @@ Component({
                     this.setData({
                         'workInfo': []
                     })
-                    this.triggerEvent('findworkInfoDialog') // 触发的事件名 findworkInfoDialog 不能与外部定义的事件名一样，否则会触发两次请求
+                    this.triggerEvent('findworkInfoDialog', 'addNullCard') // 触发的事件名 findworkInfoDialog 不能与外部定义的事件名一样，否则会触发两次请求
               })
 
           }

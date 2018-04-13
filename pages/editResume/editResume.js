@@ -47,7 +47,7 @@ Page({
 
     onLoad: function () {
         let that = this
-        // that.findBaseInfo()
+        that.findBaseInfo()
         that.findworkInfo()
         that.setData({
             windowHeight: app.globalData.systemInfo.windowHeight
@@ -73,17 +73,27 @@ Page({
 
     // init user work info data
     findworkInfo: function(e) {
+        // console.log('findworkInfo---------------params', e)
         sdkApi.findworkInfo({}, res => {
-            console.log('请求数据---呵呵哒---------res', res)
+            console.log('请求数据---呵呵哒-----findworkInfo----res', res)
             if ( res.objects.length > 0) {
                 res.objects.push({
                     companyName: '',
                     datesEmployed: '',
                     id: null
                 })
+                
                 this.setData({
                     'workInfo': res.objects,
                     'hideWorkDialog': true
+                })
+            } else {
+                this.setData({
+                    'workInfo': [{
+                        companyName: '',
+                        datesEmployed: '',
+                        id: null
+                    }]
                 })
             }
        })
@@ -130,12 +140,27 @@ Page({
     },
 
     // work info
+
+    // click card : tap event
     handleWorkInfoCardTap: function (e) {
         this.setData({
             'hideWorkDialog': false,
             'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
         })
     },
+    // delete card
+    deleteCard: function (e) {
+        let that = this
+        console.log('555555555555555555---------e', e.currentTarget.dataset.cardId)
+        sdkApi.deleteWorkInfo(e.currentTarget.dataset.cardId, res => {
+            that.findworkInfo()
+            console.log('success-------------delete', res)
+            console.log('success-------------delete-----workInfo', this.data.workInfo)
+        }, res => {
+            console.log('fail--------------delete', res)
+        })
+    },
+    // close dialog
     _closeDialog: function (e) {
         this.setData({
             'hideWorkDialog': true
