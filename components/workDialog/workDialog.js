@@ -34,9 +34,6 @@ Component({
         _closeDialog: function () {
           this.triggerEvent('closeDialog')
         },
-        _saveContent: function (e) {
-            this.triggerEvent('saveContent')
-        },
 
         // work info submit
         handleWorkFormSubmit: function (e) {
@@ -47,17 +44,16 @@ Component({
           }
           
           console.log('work--------------work------', params)
-          // return
           
           if (!this.data.singleWorkInfo.id) { // add new user information operation
               sdkApi.addworkInfo(params, res => {
                   console.log('请求成功了吗----add---6666-----res', res)
                   wx.showToast({
-                      title: '成功',
-                      icon: 'success',
-                      duration: 1500
+                        title: '成功',
+                        icon: 'success',
+                        duration: 1500
                     })
-                    // this.findworkInfo()
+                    this.triggerEvent('findworkInfoDialog')
                   
               })
 
@@ -70,8 +66,10 @@ Component({
                       icon: 'success',
                       duration: 1500
                     })
-                    // this.findworkInfo()
-                  
+                    this.setData({
+                        'workInfo': []
+                    })
+                    this.triggerEvent('findworkInfoDialog') // 触发的事件名 findworkInfoDialog 不能与外部定义的事件名一样，否则会触发两次请求
               })
 
           }

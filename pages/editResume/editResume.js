@@ -47,7 +47,7 @@ Page({
 
     onLoad: function () {
         let that = this
-        that.findBaseInfo()
+        // that.findBaseInfo()
         that.findworkInfo()
         that.setData({
             windowHeight: app.globalData.systemInfo.windowHeight
@@ -72,12 +72,18 @@ Page({
     },
 
     // init user work info data
-    findworkInfo: function() {
+    findworkInfo: function(e) {
         sdkApi.findworkInfo({}, res => {
             console.log('请求数据---呵呵哒---------res', res)
             if ( res.objects.length > 0) {
+                res.objects.push({
+                    companyName: '',
+                    datesEmployed: '',
+                    id: null
+                })
                 this.setData({
-                    'workInfo': res.objects
+                    'workInfo': res.objects,
+                    'hideWorkDialog': true
                 })
             }
        })
@@ -129,16 +135,8 @@ Page({
             'hideWorkDialog': false,
             'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
         })
-        console.log('777777777777777777777----singleWorkInfo', this.data.singleWorkInfo)
     },
-    closeDialog: function (e) {
-        this.setData({
-            'hideWorkDialog': true
-        })
-    },
-    saveContent: function (e) {
-        console.log('_saveContent------7878787878787878-------save', e.detail)
-        this.findworkInfo()
+    _closeDialog: function (e) {
         this.setData({
             'hideWorkDialog': true
         })

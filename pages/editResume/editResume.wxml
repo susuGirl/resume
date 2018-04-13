@@ -37,7 +37,7 @@
         </swiper-item>
 
         <swiper-item>
-            <showworkdialog wx:if="{{ !hideWorkDialog }}" singleWorkInfo="{{ singleWorkInfo }}" bind:closeDialog="closeDialog" bind:closeDialog="closeDialog" bind:saveContent="saveContent"></showworkdialog>
+            <showworkdialog wx:if="{{ !hideWorkDialog }}" singleWorkInfo="{{ singleWorkInfo }}" bind:findworkInfoDialog="findworkInfo" bind:closeDialog="_closeDialog"></showworkdialog>
             <view class="infoCardStyle workInfoCard">
                 <block wx:for="{{ workInfo }}" wx:key="{{ index }}">
 
