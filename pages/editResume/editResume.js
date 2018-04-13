@@ -12,16 +12,6 @@ Page({
             eMail: ''
         },
         workInfo: [
-            // {
-            //     companyName: '66666',
-            //     datesEmployed: '555555555',
-            //     id: '22222'
-            // },
-            // {
-            //     companyName: '56565656565656',
-            //     datesEmployed: '77878787878787878',
-            //     id: '22222'
-            // },
             {
                 companyName: '',
                 datesEmployed: '',
@@ -29,6 +19,10 @@ Page({
             }
         ],
         otherInfo: [
+            {
+                title: 'hobby',
+                value: '66666666666'
+            },
             {
                 title: 'hobby',
                 value: ''
@@ -47,8 +41,9 @@ Page({
 
     onLoad: function () {
         let that = this
-        that.findBaseInfo()
-        that.findworkInfo()
+        // that.findBaseInfo()
+        // that.findworkInfo()
+        that.findOtherkInfo()
         that.setData({
             windowHeight: app.globalData.systemInfo.windowHeight
         })
@@ -98,6 +93,43 @@ Page({
             }
        })
     },
+
+    // init user other info data
+    findOtherkInfo: function (e) {
+        sdkApi.findOtherkInfo({}, res=> {
+            console.log('findOtherkInfo------------init---data', res)
+            if (res.objects.length > 0) {
+                // let datas = [].slice.call(res.objects[0])
+                // console.log('555555555555555555-------datas', datas)
+                // let temp = []
+                // datas.forEach((val, index) => {
+                //     // val.title[index].substr(-3)
+                //     console.log('6666666666666666666666666666666666666666666666')
+                //     console.log('7777777777777777-------@_@', val.title[index].substr(-3))
+                //     // if (val.title[index])
+                //     // temp.push({
+                //     //     title: 'hobby',
+                //     //     value: ''
+                //     // })
+                // })
+
+
+                this.setData({
+                    'otherInfo': res.objects[0]
+                })
+            } else {
+                this.setData({
+                    'otherInfo': [{
+                            title: 'title',
+                            value: ''
+                        }]
+                })
+            }
+            
+            console.log('otherInfo--------------666-----@_@', this.data.otherInfo)
+        })
+    },
+
 
     // base info date picker change event
     handleDateChange: function(e) {
@@ -184,15 +216,34 @@ Page({
     },
 
     handleAddInfo: function (e) {
-        var temp = []
-        temp = this.data.otherInfo.slice(0)
-        temp.splice(e.currentTarget.dataset.addInfoIndex + 1, 0, {title: 'title', value: ''})
+        if (e.currentTarget.dataset.addInfoIndex < 20) { // limit 20 line
+            var temp = []
+            temp = this.data.otherInfo.slice(0)
+            temp.splice(e.currentTarget.dataset.addInfoIndex + 1, 0, {title: 'title', value: ''})
 
-        this.setData({
-            'otherInfo': temp
-        })
-        app.globalData.otherInfo = temp
-        console.log('globalData----------哈哈', app.globalData)
+            this.setData({
+                'otherInfo': temp
+            })
+            app.globalData.otherInfo = temp
+            console.log('globalData----------哈哈', app.globalData)
+        }
     },
 
+    handleOtherFormSubmit: function (e) {
+        console.log('handleOtherFormSubmit-----------submit', e)
+        let detailValue = e.detail.value
+        let params = {
+            ...e.detail.value
+        }
+        if (!this.data.otherInfo.id) {
+            sdkApi.addOtherkInfo(params, res => {
+                console.log('other-info------add---res--@_@', res)
+            })
+        } else {
+            Object.assign(params, {recordID: this.data.otherInfo.id})
+            sdkApi.updateOtherkInfo(params, res => {
+                console.log('other-info------update---res', res)
+            })
+        }
+    }
 })

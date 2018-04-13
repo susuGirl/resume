@@ -7,7 +7,12 @@ const workInfo = {
     creatWorkInfo: '31388'
 }
 
+const otherInfo = {
+    creatOtherInfo: '31391'
+}
+
 module.exports = {
     baseInfo,
-    workInfo
+    workInfo,
+    otherInfo
   }
