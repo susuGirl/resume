@@ -20,14 +20,11 @@ Page({
         ],
         otherInfo: [
             {
-                title: 'hobby',
-                value: '66666666666'
-            },
-            {
-                title: 'hobby',
-                value: ''
+                title0: 'title',
+                content0: ''
             }
         ],
+        recordId: '',
         lastX: 0, // last pageX
         lastY: 0, // last pageY
         windowHeight: app.globalData.systemInfo.windowHeight,
@@ -56,12 +53,12 @@ Page({
           })
         sdkApi.findBaseInfo({}, res => {
             wx.hideLoading()
-            // console.log('请求数据---get----6666-----res', res)
             if ( res.objects.length > 0) {
                res.objects[0].birthData = res.objects[0].birthData.substring(0, 10)
                this.setData({
                 'baseInfo': res.objects[0]
                })
+            //    console.log('请求数据---get----6666-----res', this.data.baseInfo)
             }
        })
     },
@@ -82,6 +79,7 @@ Page({
                     'workInfo': res.objects,
                     'hideWorkDialog': true
                 })
+                console.log('请求数据---呵呵哒-----findworkInfo----res', this.data.workInfo)
             } else {
                 this.setData({
                     'workInfo': [{
@@ -99,29 +97,45 @@ Page({
         sdkApi.findOtherkInfo({}, res=> {
             console.log('findOtherkInfo------------init---data', res)
             if (res.objects.length > 0) {
+                if (res.objects[0].id) {
+                    this.setData({
+                        'recordId': res.objects[0].id
+                    })
+                }
                 // let datas = [].slice.call(res.objects[0])
                 // console.log('555555555555555555-------datas', datas)
                 // let temp = []
-                // datas.forEach((val, index) => {
-                //     // val.title[index].substr(-3)
-                //     console.log('6666666666666666666666666666666666666666666666')
-                //     console.log('7777777777777777-------@_@', val.title[index].substr(-3))
-                //     // if (val.title[index])
-                //     // temp.push({
-                //     //     title: 'hobby',
-                //     //     value: ''
-                //     // })
-                // })
+                let titleArray = []
+                let contentArray = []
+                for (let i in res.objects[0]) {
+                    // temp.push({[i]: res.objects[0][i]})
+                    if (i.substr(0, 5) === 'title') {
+                        titleArray.push({[i]: res.objects[0][i]})
+                        // console.log('66666666666666666------titleArray', titleArray)
+                    }
+                    if (i.substr(0, 7) === 'content') {
+                        contentArray.push({[i]: res.objects[0][i]})
+                        // console.log('5555555555555555------contentArray', contentArray)
+                    }
+                }
+
+                titleArray.forEach((val, index) => {
+                    // val['content' + index] = contentArray[index]
+                    Object.assign(val, contentArray[index])
+                    console.log('7777777777777777-------@_@', val, contentArray[index])
+                })
+                // titleArray[titleArray.length] = {id: res.objects[0].id}
+                console.log('33333333333333333333333333---titleArray', titleArray)
 
 
                 this.setData({
-                    'otherInfo': res.objects[0]
+                    'otherInfo': titleArray
                 })
             } else {
                 this.setData({
                     'otherInfo': [{
-                            title: 'title',
-                            value: ''
+                            title0: 'title',
+                            content0: ''
                         }]
                 })
             }
@@ -157,7 +171,7 @@ Page({
             })
 
         } else { // modify information operation 
-            Object.assign(params, {recordID: this.data.baseInfo.id})
+            Object.assign(params, {recordId: this.data.baseInfo.id})
             sdkApi.updateBaseInfo(params, res => {
                  console.log('请求成功了吗----update---6666-----res', res)
                  wx.showToast({
@@ -202,29 +216,36 @@ Page({
     
     // other info
     hangdleTitleBindblur: function (e) {
+        let index = e.currentTarget.dataset.addInfoIndex
         this.setData({
-            ['otherInfo[' + e.currentTarget.dataset.addInfoIndex + '].title']: e.detail.value ? e.detail.value : ''
+            ['otherInfo[' + index + '].title' + index]: e.detail.value ? e.detail.value : ''
         })
         console.log('otherInfo-----', this.data.otherInfo)
     },
 
     hangdleValueBindblur: function (e) {
+        let index = e.currentTarget.dataset.addInfoIndex
         this.setData({
-            ['otherInfo[' + e.currentTarget.dataset.addInfoIndex + '].value']: e.detail.value ? e.detail.value : ''
+            ['otherInfo[' + index + '].content' + index]: e.detail.value ? e.detail.value : ''
         })
         console.log('otherInfo-----', this.data.otherInfo)
     },
 
     handleAddInfo: function (e) {
         if (e.currentTarget.dataset.addInfoIndex < 20) { // limit 20 line
-            var temp = []
+            let temp = []
+            let index = e.currentTarget.dataset.addInfoIndex + 1
             temp = this.data.otherInfo.slice(0)
-            temp.splice(e.currentTarget.dataset.addInfoIndex + 1, 0, {title: 'title', value: ''})
+            temp.splice(index, 0, {
+                ['title' + index]: 'title', 
+                ['content' + index]: ''
+            })
+            console.log('-----55555------@_@', temp)
 
             this.setData({
                 'otherInfo': temp
             })
-            app.globalData.otherInfo = temp
+            // app.globalData.otherInfo = temp
             console.log('globalData----------哈哈', app.globalData)
         }
     },
@@ -235,12 +256,12 @@ Page({
         let params = {
             ...e.detail.value
         }
-        if (!this.data.otherInfo.id) {
+        if (!this.data.recordId) {
             sdkApi.addOtherkInfo(params, res => {
                 console.log('other-info------add---res--@_@', res)
             })
         } else {
-            Object.assign(params, {recordID: this.data.otherInfo.id})
+            Object.assign(params, {recordID: this.data.recordId})
             sdkApi.updateOtherkInfo(params, res => {
                 console.log('other-info------update---res', res)
             })
