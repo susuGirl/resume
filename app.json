@@ -18,6 +18,10 @@
     "navigationBarTitleText": "demo",
     "navigationBarTextStyle":"black"
   },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
   "tabBar": {
      "color": "green",
      "selectedColor": "red",

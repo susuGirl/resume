@@ -69,6 +69,7 @@
                         <view>
                             <input data-add-info-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindblur="hangdleTitleBindblur" placeholder="please inpiut" />
                             <input data-add-info-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" />
+                            <button data-add-info-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
                             <button data-add-info-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
                     </block>

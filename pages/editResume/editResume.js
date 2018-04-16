@@ -24,7 +24,8 @@ Page({
                 content0: ''
             }
         ],
-        recordId: '',
+        recordId: null,
+        deleteRow: false,
         lastX: 0, // last pageX
         lastY: 0, // last pageY
         windowHeight: app.globalData.systemInfo.windowHeight,
@@ -103,7 +104,7 @@ Page({
                     })
                 }
                 // let datas = [].slice.call(res.objects[0])
-                // console.log('555555555555555555-------datas', datas)
+                console.log('555555555555555555-------recordId', this.data.recordId)
                 // let temp = []
                 let titleArray = []
                 let contentArray = []
@@ -122,10 +123,10 @@ Page({
                 titleArray.forEach((val, index) => {
                     // val['content' + index] = contentArray[index]
                     Object.assign(val, contentArray[index])
-                    console.log('7777777777777777-------@_@', val, contentArray[index])
+                    // console.log('7777777777777777-------@_@', val, contentArray[index])
                 })
                 // titleArray[titleArray.length] = {id: res.objects[0].id}
-                console.log('33333333333333333333333333---titleArray', titleArray)
+                // console.log('33333333333333333333333333---titleArray', titleArray)
 
 
                 this.setData({
@@ -231,6 +232,33 @@ Page({
         console.log('otherInfo-----', this.data.otherInfo)
     },
 
+    handleDeleteInfo: function(e) {
+        // console.log('delete---------row------e', e)
+        let temp = []
+        let infoArray = []
+        temp = this.data.otherInfo.slice(0)
+        // console.log('-----55555------@_@', temp)
+        temp.splice(e.currentTarget.dataset.addInfoIndex, 1)
+        // console.log('-------4444444------@_@', temp)
+        temp.forEach((val, index) => {
+            // console.log('111111111111------val', val['title' + index])
+            if (index < e.currentTarget.dataset.addInfoIndex) {
+                infoArray.push(val)
+            } else {
+                // console.log('111111111111------val', index, '-------', val['title' + (index + 1)])
+                infoArray.push({
+                    ['title' + index]: val['title' + (index + 1)],
+                    ['content' + index]: val['content' + (index + 1)],
+                })
+            }
+        })
+        this.setData({
+            'otherInfo': infoArray,
+            'deleteRow': true
+        })
+        console.log('222222222222222------otherInfo---delete', this.data.otherInfo)
+    },
+
     handleAddInfo: function (e) {
         if (e.currentTarget.dataset.addInfoIndex < 20) { // limit 20 line
             let temp = []
@@ -240,13 +268,12 @@ Page({
                 ['title' + index]: 'title', 
                 ['content' + index]: ''
             })
-            console.log('-----55555------@_@', temp)
 
             this.setData({
                 'otherInfo': temp
             })
             // app.globalData.otherInfo = temp
-            console.log('globalData----------哈哈', app.globalData)
+            console.log('otherInfo-----add-----哈哈', this.data.otherInfo)
         }
     },
 
