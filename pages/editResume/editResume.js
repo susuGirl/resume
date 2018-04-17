@@ -25,7 +25,6 @@ Page({
             }
         ],
         recordId: null,
-        deleteRow: false,
         lastX: 0, // last pageX
         lastY: 0, // last pageY
         windowHeight: app.globalData.systemInfo.windowHeight,
@@ -33,14 +32,13 @@ Page({
         singleWorkInfo: {
             companyName: '',
             datesEmployed: '',
-            id: null
         }
     },
 
     onLoad: function () {
         let that = this
-        // that.findBaseInfo()
-        // that.findworkInfo()
+        that.findBaseInfo()
+        that.findworkInfo()
         that.findOtherkInfo()
         that.setData({
             windowHeight: app.globalData.systemInfo.windowHeight
@@ -72,8 +70,7 @@ Page({
             if ( res.objects.length > 0) {
                 res.objects.push({
                     companyName: '',
-                    datesEmployed: '',
-                    id: null
+                    datesEmployed: ''
                 })
                 
                 this.setData({
@@ -85,8 +82,7 @@ Page({
                 this.setData({
                     'workInfo': [{
                         companyName: '',
-                        datesEmployed: '',
-                        id: null
+                        datesEmployed: ''
                     }]
                 })
             }
@@ -172,7 +168,7 @@ Page({
             })
 
         } else { // modify information operation 
-            Object.assign(params, {recordId: this.data.baseInfo.id})
+            Object.assign(params, {recordID: this.data.baseInfo.id})
             sdkApi.updateBaseInfo(params, res => {
                  console.log('请求成功了吗----update---6666-----res', res)
                  wx.showToast({
@@ -187,7 +183,6 @@ Page({
     },
 
     // work info
-
     // click card : tap event
     handleWorkInfoCardTap: function (e) {
         this.setData({
@@ -217,7 +212,7 @@ Page({
     
     // other info
     hangdleTitleBindblur: function (e) {
-        let index = e.currentTarget.dataset.addInfoIndex
+        let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
             ['otherInfo[' + index + '].title' + index]: e.detail.value ? e.detail.value : ''
         })
@@ -225,56 +220,64 @@ Page({
     },
 
     hangdleValueBindblur: function (e) {
-        let index = e.currentTarget.dataset.addInfoIndex
+        let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
             ['otherInfo[' + index + '].content' + index]: e.detail.value ? e.detail.value : ''
         })
-        console.log('otherInfo-----', this.data.otherInfo)
+        console.log('otherInfo-----index-------', index)
     },
 
+    // delete row
     handleDeleteInfo: function(e) {
-        // console.log('delete---------row------e', e)
         let temp = []
         let infoArray = []
         temp = this.data.otherInfo.slice(0)
-        // console.log('-----55555------@_@', temp)
-        temp.splice(e.currentTarget.dataset.addInfoIndex, 1)
-        // console.log('-------4444444------@_@', temp)
-        temp.forEach((val, index) => {
-            // console.log('111111111111------val', val['title' + index])
-            if (index < e.currentTarget.dataset.addInfoIndex) {
-                infoArray.push(val)
-            } else {
-                // console.log('111111111111------val', index, '-------', val['title' + (index + 1)])
-                infoArray.push({
-                    ['title' + index]: val['title' + (index + 1)],
-                    ['content' + index]: val['content' + (index + 1)],
-                })
-            }
-        })
-        this.setData({
-            'otherInfo': infoArray,
-            'deleteRow': true
-        })
-        console.log('222222222222222------otherInfo---delete', this.data.otherInfo)
+        temp.splice(e.currentTarget.dataset.operationalDataIndex, 1)
+        this.handleOperationalData(temp, e.currentTarget.dataset.operationalDataIndex)
     },
 
+    // add row
     handleAddInfo: function (e) {
-        if (e.currentTarget.dataset.addInfoIndex < 20) { // limit 20 line
+        if (this.data.otherInfo.length < 10) { // limit 20 row
             let temp = []
-            let index = e.currentTarget.dataset.addInfoIndex + 1
+            let index = e.currentTarget.dataset.operationalDataIndex + 1
             temp = this.data.otherInfo.slice(0)
-            temp.splice(index, 0, {
-                ['title' + index]: 'title', 
-                ['content' + index]: ''
-            })
-
-            this.setData({
-                'otherInfo': temp
-            })
-            // app.globalData.otherInfo = temp
-            console.log('otherInfo-----add-----哈哈', this.data.otherInfo)
+            this.handleOperationalData(temp, index, 'add')
         }
+    },
+
+    // handle the data hen the row is deleted or added
+    handleOperationalData: function (array, operationalDataIndex, type) {
+        let infoArray = []
+        array.forEach((val, index) => {
+            if (index < operationalDataIndex) {
+                infoArray.push(val)
+            } else {
+                if (type === 'add') {
+                    infoArray.push({
+                        ['title' + (index + 1)]: val['title' + index],
+                        ['content' + (index + 1)]: val['content' + index],
+                    })
+                } else {
+                    infoArray.push({
+                        ['title' + index]: val['title' + (index + 1)],
+                        ['content' + index]: val['content' + (index + 1)],
+                    })
+                }
+                
+            }
+        })
+        if (type === 'add') {
+            infoArray.splice(operationalDataIndex, 0, {
+                ['title' + operationalDataIndex]: 'title', 
+                ['content' + operationalDataIndex]: ''
+            })
+        }
+        
+        this.setData({
+            'otherInfo': infoArray
+        })
+        console.log('222222222222222------otherInfo---delete', this.data.otherInfo)
     },
 
     handleOtherFormSubmit: function (e) {
