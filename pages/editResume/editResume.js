@@ -25,8 +25,6 @@ Page({
             }
         ],
         recordId: null,
-        lastX: 0, // last pageX
-        lastY: 0, // last pageY
         windowHeight: app.globalData.systemInfo.windowHeight,
         hideWorkDialog: true,
         singleWorkInfo: {
