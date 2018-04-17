@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/editResume/editResume",
     "pages/lookResume/lookResume",
     "pages/myCenter/myCenter",
     "pages/index/index",
     "pages/baseInfo/baseInfo",
     "pages/workInfo/workInfo",
     "pages/otherInfo/otherInfo",
+    "pages/editResume/editResume",
     "pages/collectResume/collectResume",
     "pages/recentlyViewed/recentlyViewed",
     "pages/searchReusme/searchReusme",
@@ -29,7 +29,7 @@
      "borderStyle": "white",
      "list": [
        {
-         "pagePath": "pages/editResume/editResume",
+         "pagePath": "pages/lookResume/lookResume",
          "text": "look",
          "iconPath": "images/img2.png",
          "selectedIconPath": "images/img1.png"
