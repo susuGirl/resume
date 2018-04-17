@@ -25,7 +25,7 @@ Page({
             }
         ],
         recordId: null,
-        windowHeight: app.globalData.systemInfo.windowHeight,
+        windowHeight: app.globalData.systemInfo.windowHeight, // swiper component's height
         hideWorkDialog: true,
         singleWorkInfo: {
             companyName: '',
@@ -209,6 +209,7 @@ Page({
 
     
     // other info
+    // titile input blur
     hangdleTitleBindblur: function (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
@@ -217,6 +218,7 @@ Page({
         console.log('otherInfo-----', this.data.otherInfo)
     },
 
+    // content input blur
     hangdleValueBindblur: function (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({

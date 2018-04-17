@@ -46,7 +46,7 @@
 .otherInfoCard {
     /* background: orange; */
 }
-.deleteWorkCard {
+.deleteWorkCard { /* must have width and height, it's used to delete card */
     background: darkturquoise;
     width: 50px;
     height: 50px;
