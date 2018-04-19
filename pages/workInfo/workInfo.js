@@ -10,12 +10,19 @@ Page({
             }
         ],
         hideWorkDialog: true,
+        shareResumeId: ''
     },
-    onLoad: function () {
+    onLoad: function (option) {
+        if (option.shareResumeId) {
+            this.setData({
+                'shareResumeId': option.shareResumeId
+            })
+        }
         this.findworkInfo()
     },
     findworkInfo: function(e) {
-        sdkApi.findworkInfo({}, res => {
+        let params = this.data.shareResumeId ? {'shareResumeId': this.data.shareResumeId} : {}
+        sdkApi.findworkInfo(params, res => {
             if ( res.objects.length > 0) {
                 res.objects.forEach(val => {
                     if (val.datesEmployed) {

@@ -7,13 +7,20 @@ Page({
                 title0: 'title',
                 content0: ''
             }
-        ]
+        ],
+        shareResumeId: ''
     },
-    onLoad: function () {
+    onLoad: function (option) {
+        if (option.shareResumeId) {
+            this.setData({
+                'shareResumeId': option.shareResumeId
+            })
+        }
         this.findOtherkInfo()
     },
     findOtherkInfo: function (e) {
-        sdkApi.findOtherkInfo({}, res=> {
+        let params = this.data.shareResumeId ? {'shareResumeId': this.data.shareResumeId} : {}
+        sdkApi.findOtherkInfo(params, res=> {
             console.log('findOtherkInfo------------init---res', res)
             if (res.objects.length > 0) {
                 if (res.objects[0].id) {

@@ -23,7 +23,7 @@ Component({
       onlyRead: Boolean
     },
     data: { // 私有数据，可用于模版渲染
-
+        canWorkSubmit: true
     }, 
   
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -52,34 +52,50 @@ Component({
           
           console.log('work--------------work------', params)
           
-          if (!this.data.singleWorkInfo.id) { // add new user information operation
-              sdkApi.addworkInfo(params, res => {
-                  console.log('请求成功了吗----add---6666-----res', res)
-                  wx.showToast({
+          if (this.data.canWorkSubmit) {
+            this.setData({
+                'canWorkSubmit': false
+             })
+            if (!this.data.singleWorkInfo.id) { // add new user information operation
+                sdkApi.addworkInfo(params, res => {
+                    console.log('请求成功了吗----add---6666-----res', res)
+                    wx.showToast({
+                          title: '成功',
+                          icon: 'success',
+                          duration: 1500
+                      })
+                      setTimeout(() => {
+                          this.setData({
+                             'canWorkSubmit': true
+                          })
+                      }, 1000)
+                      this.triggerEvent('findworkInfoDialog', 'addNullCard')
+                    
+                })
+  
+            } else { // modify information operation 
+                Object.assign(params, {recordID: this.data.singleWorkInfo.id})
+                sdkApi.updateWorkInfo(params, res => {
+                     console.log('请求成功了吗----update---6666-----res', res)
+                     wx.showToast({
                         title: '成功',
                         icon: 'success',
                         duration: 1500
-                    })
-                    this.triggerEvent('findworkInfoDialog', 'addNullCard')
-                  
-              })
-
-          } else { // modify information operation 
-              Object.assign(params, {recordID: this.data.singleWorkInfo.id})
-              sdkApi.updateWorkInfo(params, res => {
-                   console.log('请求成功了吗----update---6666-----res', res)
-                   wx.showToast({
-                      title: '成功',
-                      icon: 'success',
-                      duration: 1500
-                    })
-                    this.setData({
-                        'workInfo': []
-                    })
-                    this.triggerEvent('findworkInfoDialog', 'addNullCard') // 触发的事件名 findworkInfoDialog 不能与外部定义的事件名一样，否则会触发两次请求
-              })
-
+                      })
+                      this.setData({
+                          'workInfo': []
+                      })
+                      setTimeout(() => {
+                        this.setData({
+                            'canWorkSubmit': true
+                            })
+                      }, 1000)
+                      this.triggerEvent('findworkInfoDialog', 'addNullCard') // 触发的事件名 findworkInfoDialog 不能与外部定义的事件名一样，否则会触发两次请求
+                })
+  
+            }
           }
+          
       },
     }
   

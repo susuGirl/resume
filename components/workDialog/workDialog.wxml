@@ -13,7 +13,7 @@
             </picker>
         </view>
         <button bind:tap="_closeDialog"> {{ onlyRead ? 'confirm' : 'cancel' }}</button>
-        <button form-type="submit" wx:if="{{ !onlyRead }}">save</button>
+        <button form-type="submit" wx:if="{{ !onlyRead }}" disabled="{{ !canWorkSubmit }}">save</button>
     </form>
 
 </view>

@@ -30,7 +30,9 @@ Page({
         singleWorkInfo: {
             companyName: '',
             datesEmployed: '',
-        }
+        },
+        canBaseSubmit: true,
+        canOtherSubmit: true
     },
 
     onLoad: function () {
@@ -148,30 +150,46 @@ Page({
             ...e.detail.value,
             userGender: Number(e.detail.value.userGender)
         }
-        if (!this.data.baseInfo.id) { // add new user information operation
-            sdkApi.addBaseInfo(params, res => {
-                 console.log('请求成功了吗----add---6666-----res', res)
-                 wx.showToast({
-                    title: '成功',
-                    icon: 'success',
-                    duration: 1500
-                  })
-                 
-            })
-
-        } else { // modify information operation 
-            Object.assign(params, {recordID: this.data.baseInfo.id})
-            sdkApi.updateBaseInfo(params, res => {
-                 console.log('请求成功了吗----update---6666-----res', res)
-                 wx.showToast({
-                    title: '成功',
-                    icon: 'success',
-                    duration: 1500
-                  })
-                 
-            })
-
+        if (this.data.canBaseSubmit) {
+            this.setData({
+                'canBaseSubmit': false
+             })
+             if (!this.data.baseInfo.id) { // add new user information operation
+                sdkApi.addBaseInfo(params, res => {
+                    console.log('请求成功了吗----add---6666-----res', res)
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 1500
+                        })
+                        setTimeout(() => {
+                            this.setData({
+                            'canBaseSubmit': true
+                            })
+                        }, 1000)
+                    
+                })
+    
+            } else { // modify information operation
+                Object.assign(params, {recordID: this.data.baseInfo.id})
+                sdkApi.updateBaseInfo(params, res => {
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 1500
+                    })
+                    setTimeout(() => {
+                        console.log('请求成功了吗----update---6666-----res', res)
+                        this.setData({
+                            'canBaseSubmit': true
+                        })
+                    }, 1000)
+                    
+                })
+    
+            }
         }
+        
     },
 
     // work info
@@ -279,15 +297,40 @@ Page({
         let params = {
             ...e.detail.value
         }
-        if (!this.data.recordId) {
-            sdkApi.addOtherkInfo(params, res => {
-                console.log('other-info------add---res--@_@', res)
-            })
-        } else {
-            Object.assign(params, {recordID: this.data.recordId})
-            sdkApi.updateOtherkInfo(params, res => {
-                console.log('other-info------update---res', res)
-            })
+        if (this.data.canOtherSubmit) {
+            this.setData({
+                'canOtherSubmit': false
+             })
+             if (!this.data.recordId) {
+                sdkApi.addOtherkInfo(params, res => {
+                    console.log('other-info------add---res--@_@', res)
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 1500
+                    })
+                    setTimeout(() => {
+                        this.setData({
+                            'canOtherSubmit': true
+                        })
+                    }, 1000)
+                })
+            } else {
+                Object.assign(params, {recordID: this.data.recordId})
+                sdkApi.updateOtherkInfo(params, res => {
+                    console.log('other-info------update---res', res)
+                    wx.showToast({
+                        title: '成功',
+                        icon: 'success',
+                        duration: 1500
+                    })
+                    setTimeout(() => {
+                        this.setData({
+                            'canOtherSubmit': true
+                        })
+                    }, 1000)
+                })
+            }
         }
     }
 })

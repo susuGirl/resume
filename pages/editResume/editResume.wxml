@@ -31,7 +31,7 @@
                         <text>eMail:</text>
                         <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
                     </view>
-                    <button form-type="submit">submit</button>
+                    <button form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
                 </form>
             </view>
         </swiper-item>
@@ -74,7 +74,7 @@
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
                     </block>
-                    <button form-type="submit">submit</button>
+                    <button form-type="submit" disabled="{{ !canOtherSubmit }}">submit</button>
                 </form>
             </view>
         </swiper-item>

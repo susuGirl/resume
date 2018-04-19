@@ -34,9 +34,6 @@ const findBaseInfo = (ctx, cb) => {
       let tableId = allTableId.baseInfo.createBaseInfo
       let resume = new wx.BaaS.TableObject(tableId)
       let query = new wx.BaaS.Query()
-      // if (ctx.shareResumeId) {
-
-      // }
       console.log('3333333333333333333------ctx.shareResumeId', ctx)
       query.compare('openId', '=', ctx.shareResumeId ? ctx.shareResumeId : app.globalData.loginInfo.openid)
 
@@ -87,7 +84,7 @@ const findworkInfo = (ctx, cb) => {
     let tableId = allTableId.workInfo.creatWorkInfo
     let resume = new wx.BaaS.TableObject(tableId)
     let query = new wx.BaaS.Query()
-    query.compare('openId', '=', app.globalData.loginInfo.openid)
+    query.compare('openId', '=', ctx.shareResumeId ? ctx.shareResumeId : app.globalData.loginInfo.openid)
     let resData = null
 
     resume.setQuery(query)
@@ -127,7 +124,7 @@ const findOtherkInfo = (ctx, cb) => {
   let tableId = allTableId.otherInfo.creatOtherInfo
   let resume = new wx.BaaS.TableObject(tableId)
   let query = new wx.BaaS.Query()
-  query.compare('openId', '=', app.globalData.loginInfo.openid)
+  query.compare('openId', '=', ctx.shareResumeId ? ctx.shareResumeId : app.globalData.loginInfo.openid)
   let resData = null
 
   resume.setQuery(query)
