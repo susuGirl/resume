@@ -1,13 +1,13 @@
 <view>
-    <view wx:if="{{ resumeId === 'own' }}">
+    <view wx:if="{{ shareResumeId }}">
+        <!-- 用canvas画五角星 -->
+        <icon type="success" size="20" color="green"></icon>
+        <text>collect -- {{ shareResumeId }}</text>
+    </view>
+    <view wx:else>
         <!-- 用样式画开关 -->
         <view>public</view> 
         <view>private</view>
-    </view>
-    <view wx:else>
-        <!-- 用canvas画五角星 -->
-        <icon type="success" size="20" color="green"></icon>
-        <text>collect</text>
     </view>
     <homepagebtn
         catch:baseInfoTap="baseInfoTap"

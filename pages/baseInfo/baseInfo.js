@@ -6,21 +6,31 @@ Page({
         userName: '',
         userGender: 2,
         birthData: '',
-        eMail: ''
+        eMail: '',
+        shareResumeId: ''
     },
     onLoad: function(option){
         console.log('6666----路由参数', option)
+        if (option.shareResumeId) {
+            this.setData({
+                'shareResumeId': option.shareResumeId
+            })
+        }
         this.findBaseInfo()
     },
     findBaseInfo: function() {
         wx.showLoading({
           title: '获取数据中...'
         })
-        sdkApi.findBaseInfo({}, res => {
+        let params = this.data.shareResumeId ? {'shareResumeId': this.data.shareResumeId} : {}
+        sdkApi.findBaseInfo(params, res => {
             console.log('222222222222222222-------------res', res)
             wx.hideLoading()
             if ( res.objects.length > 0) {
-                res.objects[0].birthData = res.objects[0].birthData.substring(0, 10)
+                if (res.objects[0].birthData) {
+                    res.objects[0].birthData = res.objects[0].birthData.substring(0, 10)
+                }
+                
                 this.setData({
                    'baseInfo': res.objects[0]
                 })

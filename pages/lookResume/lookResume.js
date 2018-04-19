@@ -3,13 +3,13 @@ const app = getApp()
 Page({
 
     data: {
-        resumeId: 'own'
+        shareResumeId: ''
     },
     onLoad: function (queryParams) {
         console.log('88888888888888888888888888------queryParams', queryParams)
-        if (queryParams.resumeId) {
+        if (queryParams.shareResumeId) {
             this.setData({
-                'resumeId': queryParams.resumeId // oIcL54mQBUD7RIHU5kYzdgM5wEmw
+                'shareResumeId': queryParams.shareResumeId // oIcL54mQBUD7RIHU5kYzdgM5wEmw
             })
         }
         
@@ -29,7 +29,7 @@ Page({
         }
         return {
           title: '自定义转发标题',
-          path: '/pages/lookResume/lookResume?resumeId=' + app.globalData.loginInfo.openid,
+          path: '/pages/lookResume/lookResume?shareResumeId=' + app.globalData.loginInfo.openid,
           success: function(res) {
             // 转发成功
           },
@@ -42,25 +42,25 @@ Page({
     baseInfoTap () {
         console.log('6666666666666---baseInfoTap')
         wx.navigateTo({
-            url: '/pages/baseInfo/baseInfo?id=1'
+            url: '/pages/baseInfo/baseInfo?shareResumeId=' + this.data.shareResumeId
         })
     },
     workInfoTap () {
         console.log('55555555555555---workInfoTap')
         wx.navigateTo({
-            url: '/pages/workInfo/workInfo?id=1'
+            url: '/pages/workInfo/workInfo?shareResumeId=' + this.data.shareResumeId
         })
     },
     otherInfoTap () {
         console.log('4444444444444444---otherInfoTap')
         wx.navigateTo({
-            url: '/pages/otherInfo/otherInfo?id=1'
+            url: '/pages/otherInfo/otherInfo?shareResumeId=' + this.data.shareResumeId
         })
     },
     selfIntroductionTap () {
         console.log('33333333333333---selfIntroductionTap')
         wx.navigateTo({
-            url: '/pages/selfIntroduction/selfIntroduction?id=1'
+            url: '/pages/selfIntroduction/selfIntroduction?shareResumeId=' + this.data.shareResumeId
         })
     }
     

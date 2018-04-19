@@ -18,7 +18,9 @@ Page({
         sdkApi.findworkInfo({}, res => {
             if ( res.objects.length > 0) {
                 res.objects.forEach(val => {
-                    val.datesEmployed = val.datesEmployed.substring(0, 10)
+                    if (val.datesEmployed) {
+                        val.datesEmployed = val.datesEmployed.substring(0, 10)
+                    }
                 })
                 this.setData({
                     'workInfo': res.objects
@@ -38,7 +40,7 @@ Page({
     handleWorkInfoCardTap: function (e) {
         this.setData({
             'hideWorkDialog': false,
-            'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
+            'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo]
         })
     },
     // close dialog

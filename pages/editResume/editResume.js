@@ -51,7 +51,10 @@ Page({
         sdkApi.findBaseInfo({}, res => {
             wx.hideLoading()
             if ( res.objects.length > 0) {
-               res.objects[0].birthData = res.objects[0].birthData.substring(0, 10)
+                if (res.objects[0].birthData) {
+                    res.objects[0].birthData = res.objects[0].birthData.substring(0, 10)
+                }
+               
                this.setData({
                 'baseInfo': res.objects[0]
                })
@@ -64,7 +67,9 @@ Page({
         sdkApi.findworkInfo({}, res => {
             if ( res.objects.length > 0) {
                 res.objects.forEach(val => {
-                    val.datesEmployed = val.datesEmployed.substring(0, 10)
+                    if (val.datesEmployed) {
+                        val.datesEmployed = val.datesEmployed.substring(0, 10)
+                    }
                 })
                 res.objects.push({
                     companyName: '',
