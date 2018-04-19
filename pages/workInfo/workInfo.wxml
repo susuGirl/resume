@@ -4,11 +4,11 @@
         <view class="workCard" wx:if="{{ item.id }}" data-single-work-info="{{ index }}" bind:tap="handleWorkInfoCardTap">
             <view>
                 <text>companyName:</text>
-                <text name="companyName">{{ item.companyName }}</text>
+                <text name="companyName">{{ item.companyName || '' }}</text>
             </view>
             <view>
                 <text>datesEmployed:</text>
-                <text name="datesEmployed">{{ item.datesEmployed }}</text>
+                <text name="datesEmployed">{{ item.datesEmployed || '' }}</text>
             </view>
         </view>
 

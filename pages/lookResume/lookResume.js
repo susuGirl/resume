@@ -3,7 +3,7 @@ const app = getApp()
 Page({
 
     data: {
-        shareResumeId: ''
+        shareResumeId: '' // oIcL54sdBytp58JYbwM3HNM60LEI
     },
     onLoad: function (queryParams) {
         console.log('88888888888888888888888888------queryParams', queryParams)

@@ -8,7 +8,7 @@
         <view>
             <picker name="datesEmployed" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
                 <text>
-                        datesEmployed: {{ singleWorkInfo.datesEmployed }}
+                        datesEmployed: {{ singleWorkInfo.datesEmployed || '' }}
                 </text>
             </picker>
         </view>
