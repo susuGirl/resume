@@ -118,9 +118,9 @@ Page({
             } else {
                 this.setData({
                     'otherInfo': [{
-                            title0: 'title',
-                            content0: ''
-                        }]
+                        title0: 'title',
+                        content0: ''
+                    }]
                 })
             }
             

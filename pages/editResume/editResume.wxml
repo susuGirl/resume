@@ -68,7 +68,8 @@
                     <block wx:for="{{ otherInfo }}" wx:key="{{ index }}">
                         <view>
                             <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindblur="hangdleTitleBindblur" placeholder="please inpiut" />
-                            <input data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" />
+                            <!-- <input data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" /> -->
+                            <textarea data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" auto-height />
                             <button data-operational-data-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>

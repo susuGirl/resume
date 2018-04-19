@@ -25,11 +25,11 @@ App({
    
     wx.BaaS.login().then(res => {
       that.globalData.loginInfo = res
-      console.log('22222222222222------222', that.globalData)
+      // console.log('22222222222222------222', that.globalData)
 
       wx.getUserInfo({
         success: info => {
-          console.log('用户信息----666', info)
+          // console.log('用户信息----666', info)
           that.globalData.userInfo = info.userInfo
           // var encryptedData = encodeURIComponent(res2.encryptedData) // 加密过的字符串 一定要把加密串转成URI编码
           // var iv = res2.iv // 加密算法的初始向量
@@ -50,7 +50,7 @@ App({
     }),
     wx.getSystemInfo({
       success: function(res) {
-        console.log('getSystemInfo---------------@_#', res)
+        // console.log('getSystemInfo---------------@_#', res)
           that.globalData.systemInfo = res
       }
     })

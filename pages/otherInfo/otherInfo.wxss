@@ -1,0 +1,11 @@
+
+.otherInfoStyle view {
+    display: flex;
+    flex-direction: row;
+}
+.otherInfoStyle text {
+    width: 100px;
+}
+.otherInfoStyle textarea {
+    flex: 1;
+}

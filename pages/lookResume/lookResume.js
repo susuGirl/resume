@@ -1,3 +1,5 @@
+const app = getApp()
+
 Page({
 
     data: {
@@ -7,7 +9,7 @@ Page({
         console.log('88888888888888888888888888------queryParams', queryParams)
         if (queryParams.resumeId) {
             this.setData({
-                'resumeId': queryParams.resumeId
+                'resumeId': queryParams.resumeId // oIcL54mQBUD7RIHU5kYzdgM5wEmw
             })
         }
         
@@ -27,7 +29,7 @@ Page({
         }
         return {
           title: '自定义转发标题',
-          path: '/pages/lookResume/lookResume?resumeId=222',
+          path: '/pages/lookResume/lookResume?resumeId=' + app.globalData.loginInfo.openid,
           success: function(res) {
             // 转发成功
           },
