@@ -1,10 +1,41 @@
 Page({
+
+    data: {
+        resumeId: 'own'
+    },
+    onLoad: function (queryParams) {
+        console.log('88888888888888888888888888------queryParams', queryParams)
+        if (queryParams.resumeId) {
+            this.setData({
+                'resumeId': queryParams.resumeId
+            })
+        }
+        
+    },
     onShow: function () {
 
     },
     onReady: function () {
 
     },
+
+    // share your remuse
+    onShareAppMessage: function (res) {
+        if (res.from === 'button') {
+          // 来自页面内转发按钮
+          console.log('来自页面内转发按钮------res.target', res.target)
+        }
+        return {
+          title: '自定义转发标题',
+          path: '/pages/lookResume/lookResume?resumeId=222',
+          success: function(res) {
+            // 转发成功
+          },
+          fail: function(res) {
+            // 转发失败
+          }
+        }
+      },
 
     baseInfoTap () {
         console.log('6666666666666---baseInfoTap')

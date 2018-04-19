@@ -1,1 +1,20 @@
-<view>baseInfo</view>
+<view>
+    <view>
+        <text>userName:</text>
+        <text>{{ baseInfo.userName }}</text>
+    </view>
+    <view>
+        <text>userGender:</text>
+        <text>{{ baseInfo.userGender === 0 ? 'girl' : (baseInfo.userGender === 1 ? 'boy' : 'unknow') }}</text>
+    </view>
+
+    <view>
+        <text>birthData:</text>
+        <text>{{ baseInfo.birthData }}</text>
+    </view>
+
+    <view>
+        <text>eMail:</text>
+        <text>{{ baseInfo.eMail }}</text>
+    </view>
+</view>

@@ -1,1 +1,19 @@
-<view>workInfo</view>
+<view class="baseInfoStyle">
+    <showworkdialog wx:if="{{ !hideWorkDialog }}" onlyRead="{{ true }}" singleWorkInfo="{{ singleWorkInfo }}" bind:findworkInfoDialog="findworkInfo" bind:closeDialog="_closeDialog"></showworkdialog>
+    <block wx:for="{{ workInfo }}" wx:key="{{ index }}">
+        <view class="workCard" wx:if="{{ item.id }}" data-single-work-info="{{ index }}" bind:tap="handleWorkInfoCardTap">
+            <view>
+                <text>companyName:</text>
+                <text name="companyName">{{ item.companyName }}</text>
+            </view>
+            <view>
+                <text>datesEmployed:</text>
+                <text name="datesEmployed">{{ item.datesEmployed }}</text>
+            </view>
+        </view>
+
+        <view class="workCard" wx:if="{{ !item.id }}">
+            no job information
+        </view>
+    </block>
+</view>

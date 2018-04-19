@@ -41,7 +41,7 @@
             <view class="infoCardStyle workInfoCard">
                 <block wx:for="{{ workInfo }}" wx:key="{{ index }}">
 
-                    <view class="workExperience" wx:if="{{ item.id }}" data-single-work-info="{{ index }}" bind:tap="handleWorkInfoCardTap">
+                    <view class="workCard" wx:if="{{ item.id }}" data-single-work-info="{{ index }}" bind:tap="handleWorkInfoCardTap">
                         <view>
                             <text>companyName:</text>
                             <text name="companyName">{{ item.companyName }}</text>
@@ -55,7 +55,7 @@
                         </view>
                     </view>
 
-                    <view class="workExperience" wx:if="{{ !item.id }}" bind:tap="handleWorkInfoCardTap">
+                    <view class="workCard" wx:if="{{ !item.id }}" bind:tap="handleWorkInfoCardTap">
                         click add work info
                     </view>
                 </block>

@@ -55,17 +55,17 @@ Page({
                this.setData({
                 'baseInfo': res.objects[0]
                })
-            //    console.log('请求数据---get----6666-----res', this.data.baseInfo)
             }
        })
     },
 
     // init user work info data
     findworkInfo: function(e) {
-        // console.log('findworkInfo---------------params', e)
         sdkApi.findworkInfo({}, res => {
-            console.log('请求数据---呵呵哒-----findworkInfo----res', res)
             if ( res.objects.length > 0) {
+                res.objects.forEach(val => {
+                    val.datesEmployed = val.datesEmployed.substring(0, 10)
+                })
                 res.objects.push({
                     companyName: '',
                     datesEmployed: ''
@@ -75,7 +75,7 @@ Page({
                     'workInfo': res.objects,
                     'hideWorkDialog': true
                 })
-                console.log('请求数据---呵呵哒-----findworkInfo----res', this.data.workInfo)
+                console.log('请求数据---呵呵哒-----findworkInfo---- this.data.workInfo', this.data.workInfo)
             } else {
                 this.setData({
                     'workInfo': [{
@@ -90,38 +90,27 @@ Page({
     // init user other info data
     findOtherkInfo: function (e) {
         sdkApi.findOtherkInfo({}, res=> {
-            console.log('findOtherkInfo------------init---data', res)
+            console.log('findOtherkInfo------------init---res', res)
             if (res.objects.length > 0) {
                 if (res.objects[0].id) {
                     this.setData({
                         'recordId': res.objects[0].id
                     })
                 }
-                // let datas = [].slice.call(res.objects[0])
-                console.log('555555555555555555-------recordId', this.data.recordId)
-                // let temp = []
                 let titleArray = []
                 let contentArray = []
-                for (let i in res.objects[0]) {
-                    // temp.push({[i]: res.objects[0][i]})
+                for (let i in res.objects[0]) { // loop througth the object
                     if (i.substr(0, 5) === 'title') {
                         titleArray.push({[i]: res.objects[0][i]})
-                        // console.log('66666666666666666------titleArray', titleArray)
                     }
                     if (i.substr(0, 7) === 'content') {
                         contentArray.push({[i]: res.objects[0][i]})
-                        // console.log('5555555555555555------contentArray', contentArray)
                     }
                 }
 
-                titleArray.forEach((val, index) => {
-                    // val['content' + index] = contentArray[index]
+                titleArray.forEach((val, index) => { // There are problem with the data order.It't hasn't been solved yet. -- Waiting for optimization
                     Object.assign(val, contentArray[index])
-                    // console.log('7777777777777777-------@_@', val, contentArray[index])
                 })
-                // titleArray[titleArray.length] = {id: res.objects[0].id}
-                // console.log('33333333333333333333333333---titleArray', titleArray)
-
 
                 this.setData({
                     'otherInfo': titleArray
@@ -145,7 +134,7 @@ Page({
         this.setData({
             'baseInfo.birthData': e.detail.value
         })
-        },
+    },
     
     // base info submit
     handleBaseFormSubmit: function (e) {
@@ -194,7 +183,6 @@ Page({
         console.log('555555555555555555---------e', e.currentTarget.dataset.cardId)
         sdkApi.deleteWorkInfo(e.currentTarget.dataset.cardId, res => {
             that.findworkInfo()
-            console.log('success-------------delete', res)
             console.log('success-------------delete-----workInfo', this.data.workInfo)
         }, res => {
             console.log('fail--------------delete', res)

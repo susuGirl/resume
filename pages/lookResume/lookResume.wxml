@@ -1,10 +1,10 @@
 <view>
-    <view>
+    <view wx:if="{{ resumeId === '222' }}">
         <!-- 用canvas画五角星 -->
         <icon type="success" size="20" color="green"></icon>
         <text>collect</text>
     </view>
-    <view>
+    <view wx:if="{{ resumeId === 'own' }}">
         <!-- 用样式画开关 -->
         <view>public</view> 
         <view>private</view>

@@ -6,11 +6,14 @@
             <input name="companyName" value="{{ singleWorkInfo.companyName }}" placeholder="please inpiut"/>
         </view>
         <view>
-            <text>datesEmployed:</text>
-            <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}"  placeholder="please inpiut" />
+            <picker name="datesEmployed" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                <text>
+                        datesEmployed: {{ singleWorkInfo.datesEmployed }}
+                </text>
+            </picker>
         </view>
-        <button bind:tap="_closeDialog">cancel</button>
-        <button form-type="submit">save</button>
+        <button bind:tap="_closeDialog"> {{ onlyRead ? 'confirm' : 'cancel' }}</button>
+        <button form-type="submit" wx:if="{{ !onlyRead }}">save</button>
     </form>
 
 </view>

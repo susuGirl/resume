@@ -1,6 +1,8 @@
 .workDialogStyle {
     width: 100%;
     height: 100%;
-    background: deeppink;
-    position: relative;
+    background: rgb(238, 141, 193);
+    position: absolute;
+    top: 0;
+    left: 0;
 }

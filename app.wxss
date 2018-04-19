@@ -1,2 +1,6 @@
 /**app.wxss**/
-
+.workCard {
+    background: orange;
+    height: 200px;
+    margin: 10px;
+}

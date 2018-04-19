@@ -19,7 +19,8 @@ Component({
       //   observer: function(newVal, oldVal){}
       // },
       // myProperty2: String // 简化的定义方式
-      singleWorkInfo: Object
+      singleWorkInfo: Object,
+      onlyRead: Boolean
     },
     data: { // 私有数据，可用于模版渲染
 
@@ -33,6 +34,12 @@ Component({
     methods: {
         _closeDialog: function () {
           this.triggerEvent('closeDialog')
+        },
+
+        handleDateChange: function(e) {
+            this.setData({
+                'singleWorkInfo.datesEmployed': e.detail.value
+            })
         },
 
         // work info submit
