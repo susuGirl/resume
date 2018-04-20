@@ -219,7 +219,7 @@ Page({
     },
 
     
-    // other info
+    // other info 
     // titile input blur
     hangdleTitleBindblur: function (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
