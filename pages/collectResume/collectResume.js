@@ -1,3 +1,9 @@
 Page({
-    
+    data: {
+
+    },
+
+    onLoad: function () {
+        
+    }
 })
