@@ -46,7 +46,7 @@ const findBaseInfo = (ctx, cb) => {
 
 // work info
 const addworkInfo = (ctx, cb) => {
-  let tableId = allTableId.workInfo.creatWorkInfo
+  let tableId = allTableId.workInfo.createWorkInfo
   let resume = new wx.BaaS.TableObject(tableId)
   let createInfo = resume.create()
   Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
@@ -59,7 +59,7 @@ const addworkInfo = (ctx, cb) => {
 }
 
 const updateWorkInfo = (ctx, cb) => {
-    let tableId = allTableId.workInfo.creatWorkInfo
+    let tableId = allTableId.workInfo.createWorkInfo
     let resume = new wx.BaaS.TableObject(tableId)
     let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
     // Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
@@ -72,7 +72,7 @@ const updateWorkInfo = (ctx, cb) => {
 }
 
 const deleteWorkInfo = (ctx, cb) => {
-  let tableId = allTableId.workInfo.creatWorkInfo
+  let tableId = allTableId.workInfo.createWorkInfo
   let resume = new wx.BaaS.TableObject(tableId)
   console.log('5555555---update----传递的参数---ctx', ctx)
 
@@ -81,7 +81,7 @@ const deleteWorkInfo = (ctx, cb) => {
 }
 
 const findworkInfo = (ctx, cb) => {
-    let tableId = allTableId.workInfo.creatWorkInfo
+    let tableId = allTableId.workInfo.createWorkInfo
     let resume = new wx.BaaS.TableObject(tableId)
     let query = new wx.BaaS.Query()
     query.compare('openId', '=', ctx.shareResumeId ? ctx.shareResumeId : app.globalData.loginInfo.openid)
@@ -95,7 +95,7 @@ const findworkInfo = (ctx, cb) => {
 
 // other info
 const addOtherkInfo = (ctx, cb) => {
-  let tableId = allTableId.otherInfo.creatOtherInfo
+  let tableId = allTableId.otherInfo.createOtherInfo
   let resume = new wx.BaaS.TableObject(tableId)
   let createInfo = resume.create()
   Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
@@ -108,7 +108,7 @@ const addOtherkInfo = (ctx, cb) => {
 }
 
 const updateOtherkInfo = (ctx, cb) => {
-  let tableId = allTableId.otherInfo.creatOtherInfo
+  let tableId = allTableId.otherInfo.createOtherInfo
   let resume = new wx.BaaS.TableObject(tableId)
   let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
   // Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
@@ -121,7 +121,7 @@ const updateOtherkInfo = (ctx, cb) => {
 }
 
 const deleteOtherInfo = (ctx, cb) => {
-  let tableId = allTableId.otherInfo.creatOtherInfo
+  let tableId = allTableId.otherInfo.createOtherInfo
   let resume = new wx.BaaS.TableObject(tableId)
   console.log('5555555---update----传递的参数---ctx', ctx)
 
@@ -130,7 +130,7 @@ const deleteOtherInfo = (ctx, cb) => {
 }
 
 const findOtherkInfo = (ctx, cb) => {
-  let tableId = allTableId.otherInfo.creatOtherInfo
+  let tableId = allTableId.otherInfo.createOtherInfo
   let resume = new wx.BaaS.TableObject(tableId)
   let query = new wx.BaaS.Query()
   query.compare('openId', '=', ctx.shareResumeId ? ctx.shareResumeId : app.globalData.loginInfo.openid)
@@ -140,6 +140,56 @@ const findOtherkInfo = (ctx, cb) => {
     .find()
     .then(res => cb(res.data))
     .catch(err => console.dir(err))
+}
+
+const findCollectResume = (ctx, cb) => {
+  let tableId = allTableId.collectResume.createCollectResume
+  let resume = new wx.BaaS.TableObject(tableId)
+  let query = new wx.BaaS.Query()
+  query.compare('openId', '=', app.globalData.loginInfo.openid)
+  let resData = null
+
+  resume.setQuery(query)
+    .find()
+    .then(res => cb(res.data))
+    .catch(err => console.dir(err))
+}
+
+const addCollectResume = (ctx, cb) => {
+  let tableId = allTableId.collectResume.createCollectResume
+  let resume = new wx.BaaS.TableObject(tableId)
+  let createInfo = resume.create()
+  Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
+  console.log('66666666--save--传递的参数---ctx', ctx)
+
+  createInfo.set(ctx)
+  .save()
+  .then(res => cb(res))
+  .catch(err => console.dir(err))
+}
+
+const uAppendCollectResume = (ctx, cb) => {
+  let tableId = allTableId.collectResume.createCollectResume
+  let resume = new wx.BaaS.TableObject(tableId)
+  let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
+  console.log('5555555---update----传递的参数---ctx', ctx)
+
+  updateInfo.uAppend('collectInfo', ctx.collectInfo)
+  .update()
+  .then(res => cb(res))
+  .catch(err => console.dir(err))
+}
+
+const removeCollectResume = (ctx, cb) => {
+  let tableId = allTableId.collectResume.createCollectResume
+  let resume = new wx.BaaS.TableObject(tableId)
+  let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
+  console.log('5555555---remove----传递的参数---ctx', updateInfo)
+
+  updateInfo.remove('collectInfo', ctx.collectInfo)
+  .update()
+  .then(res => cb(res))
+  .catch(err => console.dir(err))
 }
   
   module.exports = {
@@ -153,5 +203,9 @@ const findOtherkInfo = (ctx, cb) => {
     addOtherkInfo,
     updateOtherkInfo,
     deleteOtherInfo,
-    findOtherkInfo
+    findOtherkInfo,
+    addCollectResume,
+    uAppendCollectResume,
+    findCollectResume,
+    removeCollectResume
   }

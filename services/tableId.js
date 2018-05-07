@@ -4,15 +4,20 @@ const baseInfo = {
 }
 
 const workInfo = {
-    creatWorkInfo: '31388'
+    createWorkInfo: '31388'
 }
 
 const otherInfo = {
-    creatOtherInfo: '31391'
+    createOtherInfo: '31391'
+}
+
+const collectResume = {
+    createCollectResume: '35563'
 }
 
 module.exports = {
     baseInfo,
     workInfo,
-    otherInfo
+    otherInfo,
+    collectResume
   }

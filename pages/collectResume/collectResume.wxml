@@ -1,1 +1,3 @@
-<view>collect resume</view>
+<view>
+    <text>collect resume</text>
+</view>
