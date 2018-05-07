@@ -220,8 +220,8 @@ Page({
 
     
     // other info
-    // titile input blur
-    hangdleTitleBindblur: function (e) {
+    // titile input input
+    hangdleTitleBindinput: function (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
             ['otherInfo[' + index + '].title' + index]: e.detail.value ? e.detail.value : ''
@@ -229,13 +229,13 @@ Page({
         console.log('otherInfo-----', this.data.otherInfo)
     },
 
-    // content input blur
-    hangdleValueBindblur: function (e) {
+    // content input input
+    hangdleValueBindinput: function (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
             ['otherInfo[' + index + '].content' + index]: e.detail.value ? e.detail.value : ''
         })
-        console.log('otherInfo-----index-------', index)
+        console.log('otherInfo-----index-------222', this.data.otherInfo)
     },
 
     // delete row
@@ -244,23 +244,46 @@ Page({
         let infoArray = []
         temp = this.data.otherInfo.slice(0)
         temp.splice(e.currentTarget.dataset.operationalDataIndex, 1)
-        this.handleOperationalData(temp, e.currentTarget.dataset.operationalDataIndex)
+        this.handleOperationalData(temp, e.currentTarget.dataset.operationalDataIndex, 'delete')
     },
 
     // add row
     handleAddInfo: function (e) {
         if (this.data.otherInfo.length < 10) { // limit 20 row
             let temp = []
-            let index = e.currentTarget.dataset.operationalDataIndex + 1
+            let indexAdd = e.currentTarget.dataset.operationalDataIndex + 1
             temp = this.data.otherInfo.slice(0)
-            this.handleOperationalData(temp, index, 'add')
+            this.handleOperationalData(temp, indexAdd, 'add')
+            // console.log('222222222222-----indexAdd', indexAdd)
+            // let infoArray = []
+            // temp.forEach((val, index) => {
+            //     console.log('111111111-----index', index)
+            //     if (index < (indexAdd * 1)) {
+            //         infoArray.push(val)
+            //     } else if (index === (indexAdd * 1)) {
+            //         console.log('33333333333333333333')
+            //         infoArray.push({
+            //             ['title' + index]: 'title', 
+            //             ['content' + index]: ''
+            //         })
+            //     } else {
+            //         infoArray.push({
+            //             ['title' + (index + 1)]: val['title' + index],
+            //             ['content' + (index + 1)]: val['content' + index],
+            //         })
+            //     }
+            // })
+            // this.setData({
+            //     'otherInfo': infoArray
+            // })
+            // console.log('222222222222222------@_@', this.data.otherInfo)
         }
     },
 
     // handle the data hen the row is deleted or added
-    handleOperationalData: function (array, operationalDataIndex, type) {
+    handleOperationalData: function (infoAry, operationalDataIndex, type) {
         let infoArray = []
-        array.forEach((val, index) => {
+        infoAry.forEach((val, index) => {
             if (index < operationalDataIndex) {
                 infoArray.push(val)
             } else {
@@ -269,7 +292,9 @@ Page({
                         ['title' + (index + 1)]: val['title' + index],
                         ['content' + (index + 1)]: val['content' + index],
                     })
-                } else {
+                    
+                } 
+                if (type === 'delete') {
                     infoArray.push({
                         ['title' + index]: val['title' + (index + 1)],
                         ['content' + index]: val['content' + (index + 1)],
@@ -278,17 +303,19 @@ Page({
                 
             }
         })
-        if (type === 'add') {
+        // setTimeout(() => {
+            if (infoArray.length === infoAry.length && type === 'add')
             infoArray.splice(operationalDataIndex, 0, {
                 ['title' + operationalDataIndex]: 'title', 
                 ['content' + operationalDataIndex]: ''
             })
-        }
-        
-        this.setData({
-            'otherInfo': infoArray
-        })
-        console.log('222222222222222------otherInfo---delete', this.data.otherInfo)
+            
+            this.setData({
+                'otherInfo': infoArray
+            })
+            console.log('222222222222222222----infoArray', infoArray)
+        // })
+        console.log('333333333333333333333------@_@', this.data.otherInfo)
     },
 
     handleOtherFormSubmit: function (e) {
@@ -302,35 +329,31 @@ Page({
                 'canOtherSubmit': false
              })
              if (!this.data.recordId) {
-                sdkApi.addOtherkInfo(params, res => {
-                    console.log('other-info------add---res--@_@', res)
-                    wx.showToast({
-                        title: '成功',
-                        icon: 'success',
-                        duration: 1500
-                    })
-                    setTimeout(() => {
-                        this.setData({
-                            'canOtherSubmit': true
-                        })
-                    }, 1000)
-                })
+                this.addOtherkInfo(params)
             } else {
-                Object.assign(params, {recordID: this.data.recordId})
-                sdkApi.updateOtherkInfo(params, res => {
-                    console.log('other-info------update---res', res)
-                    wx.showToast({
-                        title: '成功',
-                        icon: 'success',
-                        duration: 1500
-                    })
-                    setTimeout(() => {
-                        this.setData({
-                            'canOtherSubmit': true
-                        })
-                    }, 1000)
+                sdkApi.deleteOtherInfo(this.data.recordId, res => {
+                    this.addOtherkInfo(params, 'refresh')
                 })
             }
         }
+    },
+
+    addOtherkInfo: function (params, refresh) {
+        sdkApi.addOtherkInfo(params, res => {
+            console.log('other-info------add---res--@_@', res)
+            wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 1500
+            })
+            if (refresh === 'refresh') {
+              this.findOtherkInfo()
+            }
+            setTimeout(() => {
+                this.setData({
+                    'canOtherSubmit': true
+                })
+            }, 1000)
+        })
     }
 })

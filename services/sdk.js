@@ -120,6 +120,15 @@ const updateOtherkInfo = (ctx, cb) => {
   .catch(err => console.dir(err))
 }
 
+const deleteOtherInfo = (ctx, cb) => {
+  let tableId = allTableId.otherInfo.creatOtherInfo
+  let resume = new wx.BaaS.TableObject(tableId)
+  console.log('5555555---update----传递的参数---ctx', ctx)
+
+  resume.delete(ctx)
+  .then(res => cb(res))
+}
+
 const findOtherkInfo = (ctx, cb) => {
   let tableId = allTableId.otherInfo.creatOtherInfo
   let resume = new wx.BaaS.TableObject(tableId)
@@ -143,5 +152,6 @@ const findOtherkInfo = (ctx, cb) => {
     findworkInfo,
     addOtherkInfo,
     updateOtherkInfo,
+    deleteOtherInfo,
     findOtherkInfo
   }

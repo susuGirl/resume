@@ -10,21 +10,10 @@
 }
 
 .infoCardStyle {
-    /* background: pink; */
+    background: pink;
     height: 100%;
     width: 100%;
-    /* display: none; */
-    /* overflow: hidden; */
-    overflow-y: auto
-}
-.infoCardStyle view text {
-    padding-right: 5px;
-    /* background: yellow; */
-}
-.infoCardStyle view input {
-    flex: 1;
-    /* background: palevioletred; */
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .baseInfoCard {
@@ -33,31 +22,51 @@
 .baseInfoCard view {
     border: 1px solid gray;
     margin: 10px;
+}
+
+.textInputStyle {
     display: flex;
 }
+.textInputStyle text {
+    padding-right: 5px;
+    /* background: yellow; */
+}
+.textInputStyle input {
+    flex: 1;
+    /* background: palevioletred; */
+    overflow: hidden;
+}
+
 .otherInfoCard view {
     border: 1px solid gray;
     margin: 10px;
     display: flex;
 }
 .otherInfoCard input {
-    width: 50px;
-}
-.otherInfoCard textarea {
-    width: 150px;
-}
-.workInfoCard {
+    width: 100px;
+    padding-right: 5px;
     /* background: green; */
 }
-.otherInfoCard {
-    /* background: orange; */
-}
-.deleteWorkCard { /* must have width and height, it's used to delete card */
-    background: darkturquoise;
-    width: 50px;
-    height: 50px;
+.otherInfoCard textarea {
+    flex: 1;
 }
 
-.showCard {
-    display: block;
+.deleteWorkCard { /* must have width and height, it's used to delete card */
+    background: #fff;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
 }
+/* .showResumeStyle {
+    position: fixed;
+    bottom: 20px;
+    width: 350rpx;
+    height: 120rpx;
+    background: #83D944;
+    margin-left: 50%;
+    transform: translateX(-50%)
+} */
+/* .itemBox .el-form-item:nth-child(2){
+
+  } */

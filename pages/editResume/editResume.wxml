@@ -4,12 +4,13 @@
         <swiper-item>
             <view class="infoCardStyle baseInfoCard">
                 <form bindsubmit="handleBaseFormSubmit">
-                    <view>
+                    <view class="textInputStyle">
                         <text>userName:</text>
                         <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
                     </view>
 
                     <view>
+                        <text>userGender:</text>
                         <radio-group name="userGender" class="radio-group">
                             <label class="radio">
                                 <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}">girl</radio>
@@ -27,7 +28,7 @@
                         </picker>
                     </view>
 
-                    <view>
+                    <view class="textInputStyle">
                         <text>eMail:</text>
                         <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
                     </view>
@@ -51,7 +52,7 @@
                             <text name="datesEmployed">{{ item.datesEmployed }}</text>
                         </view>
                         <view class="deleteWorkCard" catch:tap="deleteCard" data-card-id="{{ item.id }}">
-                            <icon type="cancel" size="40"></icon>
+                            <icon type="cancel" size="30"></icon>
                         </view>
                     </view>
 
@@ -67,9 +68,8 @@
                 <form bindsubmit="handleOtherFormSubmit">
                     <block wx:for="{{ otherInfo }}" wx:key="{{ index }}">
                         <view>
-                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindblur="hangdleTitleBindblur" placeholder="please inpiut" />
-                            <!-- <input data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" /> -->
-                            <textarea data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindblur="hangdleValueBindblur" placeholder="please inpiut" auto-height />
+                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="5" placeholder="please inpiut" />
+                            <textarea data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindinput="hangdleValueBindinput" placeholder="please inpiut" auto-height />
                             <button data-operational-data-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
@@ -79,4 +79,5 @@
             </view>
         </swiper-item>
     </swiper>
+    <!-- <view class="showResumeStyle">show resume</view> -->
 </view>
