@@ -4,15 +4,15 @@ const app = getApp()
 Page({
 
     data: {
-        shareResumeId: 'oIcL54sdBytp58JYbwM3HNM60LEI', // oIcL54sdBytp58JYbwM3HNM60LEI
-        userName: 'susu',
+        shareResumeId: '', // oIcL54sdBytp58JYbwM3HNM60LEI
+        userName: '',
         tapAdd: true,
         collectResume: true,
         recordID: ''
     },
     onLoad: function (queryParams) {
         console.log('88888888888888888888888888------queryParams', queryParams)
-        this.findCollectResume() // ++++++++++++++++++++++++ remember delete
+        // this.findCollectResume() // ++++++++++++++++++++++++ remember delete
         if (queryParams.shareResumeId) {
             this.findCollectResume()
             this.setData({
@@ -55,26 +55,46 @@ Page({
 
     // share your remuse
     onShareAppMessage: function (res) {
-        if (this.data.shareResumeId) {
+        // if (res.from === 'button') {
+        //     // 来自页面内转发按钮
+        //     console.log('来自页面内转发按钮------res.target', res.target)
+        //   }
+        if (!this.data.shareResumeId) {
             sdkApi.findBaseInfo({shareResumeId: this.data.shareResumeId}, res => {
                 console.log('66666666666------res', res)
-                if (res.from === 'button') {
-                    // 来自页面内转发按钮
-                    console.log('来自页面内转发按钮------res.target', res.target)
-                  }
                   return {
-                    title: '自定义转发标题',
-                    path: '/pages/lookResume/lookResume?shareResumeId=' + app.globalData.loginInfo.openid + '/userName=' + res.userName,
+                    title: 'my resume',
+                    path: '/pages/lookResume/lookResume?shareResumeId=' + app.globalData.loginInfo.openid + '/userName=' + res.objects[0].userName,
                     success: function(res) {
                       // 转发成功
                     },
                     fail: function(res) {
                       // 转发失败
+                      wx.showModal({
+                        title: 'share failures',
+                        content: 'please improve your information first',
+                        success: function(res) {
+                          if (res.confirm) { // click confirm
+                            wx.navigateTo({
+                                url: '/pages/editResume/editResume'
+                              })
+                          }
+                        }
+                      })
                     }
                   }
             })
+        } else {
+              return {
+                title: 'other ruseme',
+                path: '/pages/lookResume/lookResume?shareResumeId=' + this.data.shareResumeId + '/userName=' + this.data.userName
+              }
         }
       },
+
+    shareResume () {
+        
+    },
 
     collectResumeTap () {
         console.log('6666666666666------this.data.collectResume', this.data.collectResume)
