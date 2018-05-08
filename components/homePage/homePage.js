@@ -15,6 +15,10 @@ Component({
       //   observer: function(newVal, oldVal){}
       // },
       // myProperty2: String // 简化的定义方式
+      userName: {
+        type: String,
+        value: ''
+      }
     },
     data: {}, // 私有数据，可用于模版渲染
   

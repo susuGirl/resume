@@ -1,0 +1,25 @@
+
+.homePage {
+    
+}
+.titleStyle {
+    width: 50%;
+    height: 300rpx;
+    background: skyblue;
+    overflow: hidden;
+    margin-left: 25%;
+    border-radius: 150rpx;
+    border: 1px solid gray;
+    margin-bottom: 20rpx;
+    text-align: center;
+    /* position: relative; */
+}
+
+.userNameStyle {
+    /* width: 100rpx;
+    height: 100rpx;
+    background: thistle;
+    overflow: hidden;
+    margin: 50rpx;
+    position: absolute; */
+}

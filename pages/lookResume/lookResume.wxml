@@ -16,6 +16,7 @@
         bind:workInfoTap="workInfoTap"
         bind:otherInfoTap="otherInfoTap"
         bind:selfIntroductionTap="selfIntroductionTap"
+        userName="{{ userName }}"
     >
 
     </homepagebtn>

@@ -24,7 +24,6 @@ Page({
     },
 
     lookResume (e) {
-        console.log('22222222222222----e.currentTarget.dataset', e.currentTarget.dataset)
         wx.navigateTo({
             url: '/pages/' + e.currentTarget.dataset.urlType + '/' + e.currentTarget.dataset.urlType + '?shareResumeId=' + e.currentTarget.dataset.shareresumeId
         })
@@ -32,9 +31,7 @@ Page({
 
     handleCancelCollection (e) {
         let params = e.currentTarget.dataset.shareresumeId + ',' + e.currentTarget.dataset.userName
-        console.log('11111111111----this.data.collectResume', this.data.collectResume)
         sdkApi.removeCollectResume({recordID: this.data.recordID, collectInfo: params}, res => {
-            console.log('66666666666666---remove---res', res)
             this.findCollectResume()
         })
     }
