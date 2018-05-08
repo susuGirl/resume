@@ -1,3 +1,6 @@
 <view>
-    <text>collect resume</text>
+    <text>collect resume {{ collectResume.length }}/piece</text>
+    <block wx:for="{{ collectResume }}" wx:key="{{ index }}">
+        <view>{{ item.userName }}</view>
+    </block>
 </view>

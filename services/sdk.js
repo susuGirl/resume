@@ -142,6 +142,7 @@ const findOtherkInfo = (ctx, cb) => {
     .catch(err => console.dir(err))
 }
 
+// lookResume page for your collected resume
 const findCollectResume = (ctx, cb) => {
   let tableId = allTableId.collectResume.createCollectResume
   let resume = new wx.BaaS.TableObject(tableId)

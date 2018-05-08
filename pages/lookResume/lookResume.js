@@ -4,15 +4,15 @@ const app = getApp()
 Page({
 
     data: {
-        shareResumeId: '', // oIcL54sdBytp58JYbwM3HNM60LEI
-        userName: '',
+        shareResumeId: 'oIcL54sdBytp58JYbwM3HNM60LEI', // oIcL54sdBytp58JYbwM3HNM60LEI
+        userName: 'susu',
         tapAdd: true,
         collectResume: true,
         recordID: ''
     },
     onLoad: function (queryParams) {
         console.log('88888888888888888888888888------queryParams', queryParams)
-        // this.findCollectResume() // ++++++++++++++++++++++++ remember delete
+        this.findCollectResume() // ++++++++++++++++++++++++ remember delete
         if (queryParams.shareResumeId) {
             this.findCollectResume()
             this.setData({
@@ -50,6 +50,7 @@ Page({
                 })
             }
         })
+        console.log('66666666666-----tapAdd', this.data.tapAdd)
     },
 
     // share your remuse

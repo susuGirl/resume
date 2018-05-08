@@ -2,7 +2,7 @@
     <block wx:if="{{ shareResumeId }}">
         <!-- 用canvas画五角星 -->
         <view bind:tap="collectResumeTap">
-            <icon type="success" size="20" color="green"></icon>
+            <icon type="success" size="20" color="{{ collectResume ? 'gray' : 'green' }}"></icon>
             <text>collect</text>
         </view>
     </block>
