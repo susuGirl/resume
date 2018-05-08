@@ -6,7 +6,7 @@
             <view data-url-type="baseInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">base info</view>
             <view data-url-type="workInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">work info</view>
             <view data-url-type="otherInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">other info</view>
-            <view data-shareResume-id="{{ item.shareResumeId }}" bind:tap="handleCancelCollection">cancel collection</view>
+            <view data-shareResume-id="{{ item.shareResumeId }}" data-user-name="{{ item.userName }}" bind:tap="handleCancelCollection">cancel collection</view>
         </view>
     </view>
 </view>

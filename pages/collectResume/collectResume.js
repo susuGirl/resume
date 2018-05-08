@@ -17,7 +17,8 @@ Page({
             })
             collectInfo = collectInfo.map(val => ({shareResumeId: val[0], userName: val[1]})) // turn into json
             this.setData({
-                collectResume: collectInfo
+                'collectResume': collectInfo,
+                'recordID': res.objects[0].id
             })
         })
     },
@@ -30,6 +31,11 @@ Page({
     },
 
     handleCancelCollection (e) {
-
+        let params = e.currentTarget.dataset.shareresumeId + ',' + e.currentTarget.dataset.userName
+        console.log('11111111111----this.data.collectResume', this.data.collectResume)
+        sdkApi.removeCollectResume({recordID: this.data.recordID, collectInfo: params}, res => {
+            console.log('66666666666666---remove---res', res)
+            this.findCollectResume()
+        })
     }
 })
