@@ -67,6 +67,10 @@ Page({
                     path: '/pages/lookResume/lookResume?shareResumeId=' + app.globalData.loginInfo.openid + '/userName=' + res.objects[0].userName,
                     success: function(res) {
                       // 转发成功
+                    //   wx.showShareMenu({
+                    //      // 要求小程序返回分享目标信息
+                    //      withShareTicket: true
+                    //   })
                     },
                     fail: function(res) {
                       // 转发失败
@@ -87,7 +91,7 @@ Page({
         } else {
               return {
                 title: 'other ruseme',
-                path: '/pages/lookResume/lookResume?shareResumeId=' + this.data.shareResumeId + '/userName=' + this.data.userName
+                path: '/pages/lookResume/lookResume?shareResumeId=' + this.data.shareResumeId + '&userName=' + this.data.userName
               }
         }
       },
