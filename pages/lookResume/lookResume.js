@@ -12,22 +12,21 @@ Page({
     },
     onLoad: function (queryParams) {
         console.log('88888888888888888888888888------queryParams', queryParams)
-        // this.findCollectResume() // ++++++++++++++++++++++++ remember delete
         if (queryParams.shareResumeId) {
             this.findCollectResume()
             this.setData({
                 'shareResumeId': queryParams.shareResumeId,
                 'userName': queryParams.userName
             })
-        }
-        if (!this.data.shareResumeId) {
-            sdkApi.findBaseInfo({shareResumeId: app.globalData.loginInfo.openid}, res => {
-                console.log('11111111111111111111----res', res)
-                this.setData({
-                    userName: res.objects[0].userName
-                })
-                console.log('22222222222222------', this.data.userName)
-            })
+        } else {
+            if (!app.globalData.loginInfo) {
+                wx.BaaS.login().then(res => {
+                    app.globalData.loginInfo = res
+                    this.findBaseInfo()
+                  })
+            } else {
+                this.findBaseInfo()
+            }
         }
         
     },
@@ -37,10 +36,21 @@ Page({
     onReady: function () {
 
     },
+
+    findBaseInfo () {
+        sdkApi.findBaseInfo({shareResumeId: app.globalData.loginInfo.openid}, res => {
+            if (!res.objects[0] || !res.objects[0].userName || !res.objects[0].openId) {
+                wx.hideShareMenu()
+                return
+            }
+            this.setData({
+                userName: res.objects[0].userName
+            })
+        })
+    },
     
     findCollectResume () {
         sdkApi.findCollectResume({}, res => {
-            // console.log('0000000000000-------res', res)
             if (res.objects[0].id) {
                 let currentResume = this.data.shareResumeId + ',' + this.data.userName
 
@@ -59,59 +69,32 @@ Page({
                 })
             }
         })
-        // console.log('66666666666-----tapAdd', this.data.tapAdd)
     },
 
     // share your remuse
     onShareAppMessage: function (res) {
-        if (!this.data.shareResumeId) {
-                // if (this.data.userName) {
-                    console.log('5555555555555------', this.data.userName)
-                    return {
-                        title: 'my resume',
-                        path: '/pages/lookResume/lookResume?shareResumeId=' + app.globalData.loginInfo.openid + '&userName=' + this.data.userName,
-                        success: function(res) {
-                          // 转发成功
-                        //   wx.showShareMenu({
-                        //      // 要求小程序返回分享目标信息
-                        //      withShareTicket: true
-                        //   })
-                        },
-                        fail: function(res) {
-                          // 转发失败
-                        }
-                      }
-                // } 
-                // else {
-                //     console.log('66666666666------')
-                //     wx.showModal({
-                //         title: 'share failures',
-                //         content: 'please improve your information first',
-                //         success: function(res) {
-                //           if (res.confirm) { // click confirm
-                //             wx.navigateTo({
-                //                 url: '/pages/editResume/editResume'
-                //               })
-                //           }
-                //         }
-                //       })
-                // }
-                  
-        } else {
-            console.log('333333333333333333333333')
-              return {
-                title: 'other ruseme',
-                path: '/pages/lookResume/lookResume?shareResumeId=' + this.data.shareResumeId + '&userName=' + this.data.userName
-              }
+        if (!this.data.shareResumeId) { // share own resume
+            if (this.data.userName) {
+                return {
+                    title: this.data.userName + ' resume',
+                    path: '/pages/lookResume/lookResume?shareResumeId=' + app.globalData.loginInfo.openid + '&userName=' + this.data.userName,
+                    success: function(res) {
+                        // 转发成功
+                     },
+                    fail: function(res) {
+                        // 转发失败
+                     }
+                }
+            }    
+        } else { // share other resume
+            return {
+                title: this.data.userName + ' resume',
+                path: '/pages/lookResume/lookResume?shareResumeId=' + this.data.shareResumeId + '&userName=' + this.data.userName,
+            }
         }
       },
 
-    shareResume () {
-        
-    },
-
     collectResumeTap () {
-        // console.log('6666666666666------this.data.collectResume', this.data.collectResume)
         let params = this.data.shareResumeId + ',' + this.data.userName
         if (this.data.collectResume) {
             if (this.data.tapAdd) {

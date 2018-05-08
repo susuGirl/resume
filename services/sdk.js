@@ -34,7 +34,7 @@ const findBaseInfo = (ctx, cb) => {
       let tableId = allTableId.baseInfo.createBaseInfo
       let resume = new wx.BaaS.TableObject(tableId)
       let query = new wx.BaaS.Query()
-      console.log('3333333333333333333------ctx.shareResumeId', ctx)
+      // console.log('3333333333333333333------ctx.shareResumeId', ctx)
       query.compare('openId', '=', ctx.shareResumeId ? ctx.shareResumeId : app.globalData.loginInfo.openid)
 
       resume.setQuery(query)
