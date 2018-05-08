@@ -1,0 +1,4 @@
+.collectCard {
+    background: skyblue;
+    margin: 50rpx;
+}

@@ -1,6 +1,12 @@
 <view>
     <text>collect resume {{ collectResume.length }}/piece</text>
-    <block wx:for="{{ collectResume }}" wx:key="{{ index }}">
+    <view wx:for="{{ collectResume }}" wx:key="{{ index }}" class="collectCard">
         <view>{{ item.userName }}</view>
-    </block>
+        <view>
+            <view data-url-type="baseInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">base info</view>
+            <view data-url-type="workInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">work info</view>
+            <view data-url-type="otherInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">other info</view>
+            <view data-shareResume-id="{{ item.shareResumeId }}" bind:tap="handleCancelCollection">cancel collection</view>
+        </view>
+    </view>
 </view>

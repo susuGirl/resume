@@ -16,10 +16,20 @@ Page({
                 collectInfo[index] = val.split(',') // two-dimensional array
             })
             collectInfo = collectInfo.map(val => ({shareResumeId: val[0], userName: val[1]})) // turn into json
-            console.log('0000000000000-------collectInfo', collectInfo)
             this.setData({
                 collectResume: collectInfo
             })
         })
     },
+
+    lookResume (e) {
+        console.log('22222222222222----e.currentTarget.dataset', e.currentTarget.dataset)
+        wx.navigateTo({
+            url: '/pages/' + e.currentTarget.dataset.urlType + '/' + e.currentTarget.dataset.urlType + '?shareResumeId=' + e.currentTarget.dataset.shareresumeId
+        })
+    },
+
+    handleCancelCollection (e) {
+
+    }
 })

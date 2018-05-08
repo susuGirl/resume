@@ -19,7 +19,7 @@ Page({
                 'userName': queryParams.userName
             })
         } else {
-            if (!app.globalData.loginInfo) {
+            if (!app.globalData.loginInfo || !app.globalData.loginInfo.openid) {
                 wx.BaaS.login().then(res => {
                     app.globalData.loginInfo = res
                     this.findBaseInfo()
