@@ -6,11 +6,9 @@
 .swiperStyle {
     width: 100%;  
     height: 100%;
-    background: pink;
 }
 
 .infoCardStyle {
-    background: pink;
     height: 100%;
     width: 100%;
     overflow-y: auto;
@@ -20,21 +18,26 @@
     /* background: orchid; */
 }
 .baseInfoCard view {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     border: 1px solid gray;
     margin: 10px;
 }
 
 .textInputStyle {
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-flow: nowrap;
 }
 .textInputStyle text {
-    padding-right: 5px;
-    /* background: yellow; */
+    /* padding-right: 5px; */
 }
 .textInputStyle input {
-    flex: 1;
+    /* flex: 1; */
     /* background: palevioletred; */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .otherInfoCard view {
@@ -58,15 +61,3 @@
     height: 30px;
     font-size: 12px;
 }
-/* .showResumeStyle {
-    position: fixed;
-    bottom: 20px;
-    width: 350rpx;
-    height: 120rpx;
-    background: #83D944;
-    margin-left: 50%;
-    transform: translateX(-50%)
-} */
-/* .itemBox .el-form-item:nth-child(2){
-
-  } */

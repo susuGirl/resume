@@ -6,7 +6,6 @@
     width: 50%;
     height: 300rpx;
     line-height: 300rpx;
-    background: skyblue;
     overflow: hidden;
     border-radius: 50%;
     box-shadow: 0 0 50rpx #5A5A5A;

@@ -5,7 +5,7 @@
             <view class="infoCardStyle baseInfoCard">
                 <form bindsubmit="handleBaseFormSubmit">
                     <view class="textInputStyle">
-                        <text>userName:</text>
+                        <text><text style="color: red;">*</text>userName:</text>
                         <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
                     </view>
 
@@ -31,6 +31,11 @@
                     <view class="textInputStyle">
                         <text>eMail:</text>
                         <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
+                    </view>
+
+                    <view class="textInputStyle">
+                        <text><text style="color: red;">*</text>phoneNumber:</text>
+                        <input name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
                     </view>
                     <button form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
                 </form>

@@ -9,7 +9,8 @@ Page({
             userName: '',
             userGender: 2,
             birthData: '',
-            eMail: ''
+            eMail: '',
+            phoneNumber: ''
         },
         workInfo: [
             {
@@ -32,7 +33,8 @@ Page({
             datesEmployed: '',
         },
         canBaseSubmit: true,
-        canOtherSubmit: true
+        canOtherSubmit: true,
+        rejectEdit: true
     },
 
     onLoad: function () {
@@ -58,8 +60,10 @@ Page({
                 }
                
                this.setData({
-                'baseInfo': res.objects[0]
+                'baseInfo': res.objects[0],
+                'rejectEdit': false
                })
+            //    wx.setStorageSync('userInfo', {phoneNumber: res.objects[0].phoneNumber, userName: res.objects[0].userName})
             }
        })
     },
@@ -146,6 +150,14 @@ Page({
     // base info submit
     handleBaseFormSubmit: function (e) {
         console.log('form submit data ----- @_@', e.detail.value)
+        if (!e.detail.value.phoneNumber || !e.detail.value.userName) {
+            wx.showToast({
+                title: '* is mandatory',
+                icon: 'none',
+                duration: 2000
+              })
+            return
+        }
         let params = {
             ...e.detail.value,
             userGender: Number(e.detail.value.userGender)
@@ -164,7 +176,8 @@ Page({
                         })
                         setTimeout(() => {
                             this.setData({
-                            'canBaseSubmit': true
+                            'canBaseSubmit': true,
+                            'rejectEdit': false
                             })
                         }, 1000)
                     
@@ -181,7 +194,8 @@ Page({
                     setTimeout(() => {
                         console.log('请求成功了吗----update---6666-----res', res)
                         this.setData({
-                            'canBaseSubmit': true
+                            'canBaseSubmit': true,
+                            'rejectEdit': false
                         })
                     }, 1000)
                     
@@ -195,6 +209,14 @@ Page({
     // work info
     // click card : tap event
     handleWorkInfoCardTap: function (e) {
+        if (this.data.rejectEdit) {
+            wx.showToast({
+                title: 'Please complete your basic information first.',
+                icon: 'none',
+                duration: 2000
+              })
+            return
+        }
         this.setData({
             'hideWorkDialog': false,
             'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
@@ -303,23 +325,28 @@ Page({
                 
             }
         })
-        // setTimeout(() => {
-            if (infoArray.length === infoAry.length && type === 'add')
-            infoArray.splice(operationalDataIndex, 0, {
-                ['title' + operationalDataIndex]: 'title', 
-                ['content' + operationalDataIndex]: ''
-            })
-            
-            this.setData({
-                'otherInfo': infoArray
-            })
-            console.log('222222222222222222----infoArray', infoArray)
-        // })
-        console.log('333333333333333333333------@_@', this.data.otherInfo)
+        
+        if (infoArray.length === infoAry.length && type === 'add')
+        infoArray.splice(operationalDataIndex, 0, {
+            ['title' + operationalDataIndex]: 'title', 
+            ['content' + operationalDataIndex]: ''
+        })
+        
+        this.setData({
+            'otherInfo': infoArray
+        })
     },
 
     handleOtherFormSubmit: function (e) {
         console.log('handleOtherFormSubmit-----------submit', e)
+        if (this.data.rejectEdit) {
+            wx.showToast({
+                title: 'Please complete your basic information first.',
+                icon: 'none',
+                duration: 2000
+              })
+            return
+        }
         let detailValue = e.detail.value
         let params = {
             ...e.detail.value
