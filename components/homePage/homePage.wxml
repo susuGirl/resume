@@ -1,7 +1,7 @@
 <view class="homePage">
     <view class="titleStyle">
         <view class="imageStyle">
-            <image mode="aspectFill" src="../../images/rose.jpg"></image>
+            <image mode="aspectFill" src="../../images/roses.png"></image>
         </view>
         <view class="userNameStyle">{{ userName }}</view>
     </view>

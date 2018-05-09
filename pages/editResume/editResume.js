@@ -328,7 +328,9 @@ Page({
         }
         let detailValue = e.detail.value
         let params = {
-            ...e.detail.value
+            ...e.detail.value,
+            userName: this.data.baseInfo.userName,
+            phoneNumber: this.data.baseInfo.phoneNumber
         }
         if (this.data.canOtherSubmit) {
             this.setData({
