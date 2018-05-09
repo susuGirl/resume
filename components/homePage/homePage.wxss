@@ -5,21 +5,26 @@
 .titleStyle {
     width: 50%;
     height: 300rpx;
+    line-height: 300rpx;
     background: skyblue;
     overflow: hidden;
     margin-left: 25%;
-    border-radius: 150rpx;
-    border: 1px solid gray;
+    border-radius: 50%;
+    box-shadow: 0 0 50rpx #80D640;
     margin-bottom: 20rpx;
     text-align: center;
-    /* position: relative; */
+    position: relative;
 }
 
+.imageStyle {
+    width: 100%;
+    height: 300rpx;
+}
 .userNameStyle {
-    /* width: 100rpx;
-    height: 100rpx;
-    background: thistle;
+    width: 100%;
+    height: 300rpx;
     overflow: hidden;
-    margin: 50rpx;
-    position: absolute; */
+    text-align: center;
+    position: absolute;
+    top: 0;
 }

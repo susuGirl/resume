@@ -1,6 +1,8 @@
 <view class="homePage">
     <view class="titleStyle">
-        <image mode="scaleToFill" src="../../images/fen.png"></image>
+        <view class="imageStyle">
+            <image src="../../images/green.png"></image>
+        </view>
         <view class="userNameStyle">{{ userName }}</view>
     </view>
     <button catch:tap="_baseInfoTap">baseInfo</button>
