@@ -10,7 +10,7 @@
     border-radius: 50%;
     box-shadow: 0 0 50rpx #5A5A5A;
     color: #fff;
-    font-size: 70rpx;
+    font-size: 60rpx;
     margin-left: 25%;
     margin-bottom: 80rpx;
     margin-top: 80rpx;
@@ -29,6 +29,7 @@
     text-align: center;
     position: absolute;
     top: 0;
+    white-space: nowrap;
 }
 
 .homePage button {
