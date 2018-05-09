@@ -16,7 +16,7 @@ Page({
             {
                 companyName: '',
                 datesEmployed: '',
-                id: null
+                id: null,
             }
         ],
         otherInfo: [
@@ -31,6 +31,8 @@ Page({
         singleWorkInfo: {
             companyName: '',
             datesEmployed: '',
+            userName: '',
+            phoneNumber: ''
         },
         canBaseSubmit: true,
         canOtherSubmit: true,
@@ -40,7 +42,7 @@ Page({
     onLoad: function () {
         let that = this
         that.findBaseInfo()
-        that.findworkInfo()
+        // that.findworkInfo()
         that.findOtherkInfo()
         that.setData({
             windowHeight: app.globalData.systemInfo.windowHeight
@@ -65,6 +67,7 @@ Page({
                })
             //    wx.setStorageSync('userInfo', {phoneNumber: res.objects[0].phoneNumber, userName: res.objects[0].userName})
             }
+            this.findworkInfo()
        })
     },
 
@@ -79,7 +82,9 @@ Page({
                 })
                 res.objects.push({
                     companyName: '',
-                    datesEmployed: ''
+                    datesEmployed: '',
+                    userName: this.data.baseInfo.userName,
+                    phoneNumber: this.data.baseInfo.phoneNumber
                 })
                 
                 this.setData({
@@ -91,7 +96,9 @@ Page({
                 this.setData({
                     'workInfo': [{
                         companyName: '',
-                        datesEmployed: ''
+                        datesEmployed: '',
+                        userName: this.data.baseInfo.userName,
+                        phoneNumber: this.data.baseInfo.phoneNumber
                     }]
                 })
             }
@@ -225,12 +232,8 @@ Page({
     // delete card
     deleteCard: function (e) {
         let that = this
-        console.log('555555555555555555---------e', e.currentTarget.dataset.cardId)
         sdkApi.deleteWorkInfo(e.currentTarget.dataset.cardId, res => {
             that.findworkInfo()
-            console.log('success-------------delete-----workInfo', this.data.workInfo)
-        }, res => {
-            console.log('fail--------------delete', res)
         })
     },
     // close dialog
@@ -242,13 +245,13 @@ Page({
 
     
     // other info
+
     // titile input input
     hangdleTitleBindinput: function (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
             ['otherInfo[' + index + '].title' + index]: e.detail.value ? e.detail.value : ''
         })
-        console.log('otherInfo-----', this.data.otherInfo)
     },
 
     // content input input
@@ -257,7 +260,6 @@ Page({
         this.setData({
             ['otherInfo[' + index + '].content' + index]: e.detail.value ? e.detail.value : ''
         })
-        console.log('otherInfo-----index-------222', this.data.otherInfo)
     },
 
     // delete row
@@ -276,29 +278,6 @@ Page({
             let indexAdd = e.currentTarget.dataset.operationalDataIndex + 1
             temp = this.data.otherInfo.slice(0)
             this.handleOperationalData(temp, indexAdd, 'add')
-            // console.log('222222222222-----indexAdd', indexAdd)
-            // let infoArray = []
-            // temp.forEach((val, index) => {
-            //     console.log('111111111-----index', index)
-            //     if (index < (indexAdd * 1)) {
-            //         infoArray.push(val)
-            //     } else if (index === (indexAdd * 1)) {
-            //         console.log('33333333333333333333')
-            //         infoArray.push({
-            //             ['title' + index]: 'title', 
-            //             ['content' + index]: ''
-            //         })
-            //     } else {
-            //         infoArray.push({
-            //             ['title' + (index + 1)]: val['title' + index],
-            //             ['content' + (index + 1)]: val['content' + index],
-            //         })
-            //     }
-            // })
-            // this.setData({
-            //     'otherInfo': infoArray
-            // })
-            // console.log('222222222222222------@_@', this.data.otherInfo)
         }
     },
 
@@ -325,7 +304,7 @@ Page({
                 
             }
         })
-        
+
         if (infoArray.length === infoAry.length && type === 'add')
         infoArray.splice(operationalDataIndex, 0, {
             ['title' + operationalDataIndex]: 'title', 

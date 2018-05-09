@@ -46,8 +46,8 @@ Component({
         handleWorkFormSubmit: function (e) {
           console.log('form submit data ----- @_@', e.detail.value)
           let params = {
+              ...this.data.singleWorkInfo,
               ...e.detail.value
-              // workCardId: `${Math.random()}`.replace(/0\./, app.globalData.loginInfo.openid)
           }
           
           console.log('work--------------work------', params)
