@@ -165,6 +165,10 @@ Page({
               })
             return
         }
+        this.setData({
+            baseInfo: e.detail.value
+        })
+        // console.log('7777777777777777-----baseInfo', this.data.baseInfo)
         let params = {
             ...e.detail.value,
             userGender: Number(e.detail.value.userGender)
@@ -183,8 +187,8 @@ Page({
                         })
                         setTimeout(() => {
                             this.setData({
-                            'canBaseSubmit': true,
-                            'rejectEdit': false
+                                 'canBaseSubmit': true,
+                                 'rejectEdit': false
                             })
                         }, 1000)
                     
