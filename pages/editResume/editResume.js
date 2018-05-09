@@ -185,10 +185,17 @@ Page({
                         icon: 'success',
                         duration: 1500
                         })
+                        let index = this.data.workInfo.length - 1
                         setTimeout(() => {
                             this.setData({
                                  'canBaseSubmit': true,
-                                 'rejectEdit': false
+                                 'rejectEdit': false,
+                                 ['workInfo[' + index + ']']: {
+                                    companyName: '',
+                                    datesEmployed: '',
+                                    userName: this.data.baseInfo.userName,
+                                    phoneNumber: this.data.baseInfo.phoneNumber
+                                }
                             })
                         }, 1000)
                     
@@ -202,11 +209,18 @@ Page({
                         icon: 'success',
                         duration: 1500
                     })
+                    let index = this.data.workInfo.length - 1
                     setTimeout(() => {
                         console.log('请求成功了吗----update---6666-----res', res)
                         this.setData({
                             'canBaseSubmit': true,
-                            'rejectEdit': false
+                            'rejectEdit': false,
+                            ['workInfo[' + index + ']']: {
+                               companyName: '',
+                               datesEmployed: '',
+                               userName: this.data.baseInfo.userName,
+                               phoneNumber: this.data.baseInfo.phoneNumber
+                           }
                         })
                     }, 1000)
                     
@@ -232,6 +246,7 @@ Page({
             'hideWorkDialog': false,
             'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
         })
+        console.log('66666666666666-----singleWorkInfo', this.data.singleWorkInfo)
     },
     // delete card
     deleteCard: function (e) {
