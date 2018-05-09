@@ -8,10 +8,13 @@
     line-height: 300rpx;
     background: skyblue;
     overflow: hidden;
-    margin-left: 25%;
     border-radius: 50%;
-    box-shadow: 0 0 50rpx #80D640;
-    margin-bottom: 20rpx;
+    box-shadow: 0 0 50rpx #5A5A5A;
+    color: #fff;
+    font-size: 70rpx;
+    margin-left: 25%;
+    margin-bottom: 80rpx;
+    margin-top: 80rpx;
     text-align: center;
     position: relative;
 }
@@ -27,4 +30,22 @@
     text-align: center;
     position: absolute;
     top: 0;
+}
+
+.homePage button {
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    box-shadow: 10rpx 10rpx 10rpx #989898;
+    text-shadow: 0 0 10rpx #989898;
+    color: #2F2F2F;
+    margin-top: 30rpx;
+    border: 1px solid #ABABAB;
+    background: #fff;
+    /* border-radius: 0; */
+}
+.homePage button::after{
+    border: none;
+    /* border-radius: 0; */
 }

@@ -1,16 +1,14 @@
 <view>
-    <block wx:if="{{ shareResumeId }}">
-        <!-- 用canvas画五角星 -->
-        <view bind:tap="collectResumeTap">
-            <icon type="success" size="20" color="{{ collectResume ? 'gray' : 'green' }}"></icon>
-            <text>collect</text>
-        </view>
-    </block>
-    <view wx:else>
-        <!-- 用样式画开关 -->
-        <view>public</view> 
+    <view wx:if="{{ shareResumeId }}" bind:tap="collectResumeTap" class="buttonStyle collectStyle">
+        <icon type="success" size="20" color="{{ collectResume ? 'gray' : 'green' }}"></icon>
+        <text>collect</text>
+    </view>
+
+    <view wx:else class="buttonStyle publicStyle">
+        <view>public/</view> 
         <view>private</view>
     </view>
+
     <homepagebtn
         bind:baseInfoTap="baseInfoTap"
         bind:workInfoTap="workInfoTap"

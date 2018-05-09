@@ -1,0 +1,22 @@
+
+.buttonStyle {
+    font-size: 35rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10rpx;
+    margin: 20rpx;
+    text-shadow: 0 0 10rpx #989898;
+}
+.collectStyle {
+    width: 25%;
+    height: 50rpx;
+}
+.collectStyle text{
+    margin-left: 10rpx;
+}
+
+.publicStyle {
+    width: 32%;
+    height: 50rpx;
+}

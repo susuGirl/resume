@@ -14,19 +14,19 @@
   ],
   "window": {
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#83D944",
+    "navigationBarBackgroundColor": "#A2A2A2",
     "navigationBarTitleText": "demo",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"light"
   },
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000
   },
   "tabBar": {
-     "color": "green",
-     "selectedColor": "red",
-     "backgroundColor": "#83D944",
-     "borderStyle": "white",
+     "color": "#000",
+     "selectedColor": "#fff",
+     "backgroundColor": "#A2A2A2",
+     "borderStyle": "dark",
      "list": [
        {
          "pagePath": "pages/lookResume/lookResume",
