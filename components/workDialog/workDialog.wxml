@@ -9,7 +9,7 @@
             <view>
                 <picker name="datesEmployed" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
                     <text>datesEmployed</text>
-                    <input name="companyName" value="{{ singleWorkInfo.datesEmployed }}" placeholder="no information"/>
+                    <input value="{{ singleWorkInfo.datesEmployed }}" placeholder="no information"/>
                 </picker>
             </view>
             <view class="bottonStyle">

@@ -45,6 +45,18 @@ Component({
         // work info submit
         handleWorkFormSubmit: function (e) {
           console.log('form submit data ----- @_@', e.detail.value)
+          let obj = e.detail.value
+          for (let i in obj) {
+              if (obj[i] === '') {
+                wx.showToast({
+                    title: 'please complete your information first',
+                    icon: 'none',
+                    duration: 2000
+                  })
+                  return
+              }
+          }
+
           let params = {
               ...this.data.singleWorkInfo,
               ...e.detail.value
