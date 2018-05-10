@@ -1,4 +1,8 @@
-.collectCard {
-    background: skyblue;
-    margin: 50rpx;
+@import "../../components/lookResume/lookResume.wxss";
+
+.headerStyle {
+    /* background: greenyellow; */
+    margin: 30rpx;
+    color: #979797;
+    /* padding-top: 30rpx; */
 }

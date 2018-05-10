@@ -1,4 +1,6 @@
 const sdkApi = require('../../services/sdk.js')
+const { recentlyViewResume } = require('../../commit/commit.js')
+const app = getApp()
 
 Page({
     data: {
@@ -46,6 +48,9 @@ Page({
                 this.setData({
                     'otherInfo': titleArray
                 })
+                if (this.data.shareResumeId && app.globalData.loginInfo && this.data.shareResumeId !== app.globalData.loginInfo.openid) {
+                    recentlyViewResume(this.data.shareResumeId, res.objects[0].userName)
+                }
             } else {
                 this.setData({
                     'otherInfo': [{

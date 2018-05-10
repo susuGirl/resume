@@ -1,0 +1,12 @@
+
+<view wx:for="{{ resumeInfo }}" wx:key="{{ index }}" class="cardStyle">
+    <view class="parentView titleStyle">
+        <view class="userNameStyle">{{ item.userName }}</view>
+        <view data-shareResume-id="{{ item.shareResumeId }}" data-user-name="{{ item.userName }}" bind:tap="_handleDelete" class="deleteStyle">X</view>
+    </view>
+    <view class="parentView">
+        <view class="infoStyle infoBorderStyle" data-url-type="baseInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">base info</view>
+        <view class="infoStyle infoBorderStyle" data-url-type="workInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">work info</view>
+        <view class="infoStyle" data-url-type="otherInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">other info</view>
+    </view>
+</view>

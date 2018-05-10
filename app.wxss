@@ -1,6 +1,20 @@
 /**app.wxss**/
-.workCard {
-    background: orange;
-    height: 200px;
-    margin: 10px;
+
+page {
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    background: #F2F2F2;
 }
+
+.workCard {
+    height: 200rpx;
+    padding-left: 10rpx;
+    font-size: 35rpx;
+    box-shadow: 5rpx 5rpx 10rpx gray;
+    border-radius: 10rpx;
+    margin: 30rpx;
+    background: #fff;
+}
+

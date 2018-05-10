@@ -192,6 +192,58 @@ const removeCollectResume = (ctx, cb) => {
   .then(res => cb(res))
   .catch(err => console.dir(err))
 }
+
+// recently viewed resume
+const findRecentlyViewResume = (ctx, cb) => {
+  let tableId = allTableId.recentlyViewed.createRecentlyViewed
+  let resume = new wx.BaaS.TableObject(tableId)
+  let query = new wx.BaaS.Query()
+  query.compare('openId', '=', app.globalData.loginInfo.openid)
+  let resData = null
+
+  resume.setQuery(query)
+    .find()
+    .then(res => cb(res.data))
+    .catch(err => console.dir(err))
+}
+
+const addRecentlyViewResume = (ctx, cb) => {
+  let tableId = allTableId.recentlyViewed.createRecentlyViewed
+  let resume = new wx.BaaS.TableObject(tableId)
+  let createInfo = resume.create()
+  Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
+  console.log('66666666--save--传递的参数---ctx', ctx)
+
+  createInfo.set(ctx)
+  .save()
+  .then(res => cb(res))
+  .catch(err => console.dir(err))
+}
+
+const uAppendRecentlyViewResume = (ctx, cb) => {
+  let tableId = allTableId.recentlyViewed.createRecentlyViewed
+  let resume = new wx.BaaS.TableObject(tableId)
+  let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
+  console.log('5555555---update----传递的参数---ctx', ctx)
+
+  updateInfo.uAppend('recentlyViewed', ctx.recentlyViewed)
+  .update()
+  .then(res => cb(res))
+  .catch(err => console.dir(err))
+}
+
+const removeRecentlyViewResume = (ctx, cb) => {
+  let tableId = allTableId.recentlyViewed.createRecentlyViewed
+  let resume = new wx.BaaS.TableObject(tableId)
+  let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
+  console.log('5555555---remove----传递的参数---ctx', updateInfo)
+
+  updateInfo.remove('recentlyViewed', ctx.recentlyViewed)
+  .update()
+  .then(res => cb(res))
+  .catch(err => console.dir(err))
+}
+
   
   module.exports = {
     addBaseInfo,
@@ -208,5 +260,9 @@ const removeCollectResume = (ctx, cb) => {
     addCollectResume,
     uAppendCollectResume,
     findCollectResume,
-    removeCollectResume
+    removeCollectResume,
+    findRecentlyViewResume,
+    addRecentlyViewResume,
+    uAppendRecentlyViewResume,
+    removeRecentlyViewResume,
   }

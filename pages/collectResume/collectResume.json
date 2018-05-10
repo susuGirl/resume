@@ -1,3 +1,5 @@
 {
-    
+    "usingComponents": {
+        "lookresume": "../../components/lookResume/lookResume"
+    }
 }

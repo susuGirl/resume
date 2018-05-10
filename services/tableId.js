@@ -15,9 +15,14 @@ const collectResume = {
     createCollectResume: '35563'
 }
 
+const recentlyViewed = {
+    createRecentlyViewed: '35760'
+}
+
 module.exports = {
     baseInfo,
     workInfo,
     otherInfo,
-    collectResume
+    collectResume,
+    recentlyViewed
   }

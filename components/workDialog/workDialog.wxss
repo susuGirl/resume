@@ -1,8 +1,25 @@
 .workDialogStyle {
     width: 100%;
     height: 100%;
-    background: rgb(238, 141, 193);
+    background: rgba(153, 150, 150, 0.5);
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.formAreaStyle {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 20rpx;
+    background: rgba(242, 242, 242, 1);
+}
+.formAreaStyle view {
+    display: flex;
+
+}
+.formAreaStyle .bottonStyle {
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
 }

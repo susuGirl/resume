@@ -14,9 +14,10 @@
   ],
   "window": {
     "backgroundTextStyle":"light",
+    "backgroundColor": "#A2A2A2",
     "navigationBarBackgroundColor": "#A2A2A2",
     "navigationBarTitleText": "demo",
-    "navigationBarTextStyle":"light"
+    "navigationBarTextStyle": "light"
   },
   "networkTimeout": {
     "request": 10000,

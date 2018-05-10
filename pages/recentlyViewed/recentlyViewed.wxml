@@ -1,1 +1,18 @@
-<view>recently viewed</view>
+<view>
+    <text>recently viewed resume {{ recentlyViewed.length }}/piece</text>
+    <!-- <view wx:for="{{ recentlyViewed }}" wx:key="{{ index }}" class="collectCard">
+        <view>{{ item.userName }}</view>
+        <view>
+            <view data-url-type="baseInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">base info</view>
+            <view data-url-type="workInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">work info</view>
+            <view data-url-type="otherInfo" data-shareResume-id="{{ item.shareResumeId }}" bind:tap="lookResume">other info</view>
+            <view data-shareResume-id="{{ item.shareResumeId }}" data-user-name="{{ item.userName }}" bind:tap="handleDeleteResume">delete resume</view>
+        </view>
+    </view> -->
+    <lookresume
+    resumeInfo="{{ recentlyViewed }}"
+    bind:handleDelete="handleDeleteResume"
+    >
+
+    </lookresume>
+</view>

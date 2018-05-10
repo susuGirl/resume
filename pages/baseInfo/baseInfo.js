@@ -1,16 +1,20 @@
 const sdkApi = require('../../services/sdk.js')
+const { recentlyViewResume } = require('../../commit/commit.js')
+const app = getApp()
 
 Page({
-    baseInfo: {
-        id: '',
-        userName: '',
-        userGender: 2,
-        birthData: '',
-        eMail: '',
+    data: {
+        baseInfo: {
+            id: '',
+            userName: '',
+            userGender: 2,
+            birthData: '',
+            eMail: '',
+        },
         shareResumeId: ''
     },
     onLoad: function(option){
-        console.log('6666----路由参数', option)
+        console.log('5555----路由参数', option)
         if (option.shareResumeId) {
             this.setData({
                 'shareResumeId': option.shareResumeId
@@ -34,6 +38,9 @@ Page({
                 this.setData({
                    'baseInfo': res.objects[0]
                 })
+                if (this.data.shareResumeId && app.globalData.loginInfo && this.data.shareResumeId !== app.globalData.loginInfo.openid) {
+                    recentlyViewResume(this.data.shareResumeId, res.objects[0].userName)
+                }
             }
         })
     },

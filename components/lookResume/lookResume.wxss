@@ -1,0 +1,45 @@
+.cardStyle {
+    position: flex;
+    flex-direction: column;
+    align-content: center;
+    box-shadow: 5rpx 5rpx 10rpx gray;
+    border-radius: 10rpx;
+    margin: 30rpx;
+    background: #fff;
+}
+.parentView {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 10rpx;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+    text-align: center;
+    background: #fff;
+    border-bottom: 1px solid #CECECE;
+}
+.titleStyle {
+    padding-left: 50rpx;
+    padding-right: 50rpx;
+}
+.userNameStyle {
+    font-size: 40rpx;
+    text-shadow: 5rpx 5rpx 10rpx #B2B2B2;
+}
+.infoStyle {
+    font-size: 30rpx;
+    width: 30%;
+}
+.infoBorderStyle {
+    border-right: 1px solid #CECECE;
+}
+.deleteStyle {
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 35rpx;
+    color: #fff;
+    background: #B2B2B2;
+}

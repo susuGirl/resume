@@ -17,4 +17,9 @@
         <text>eMail:</text>
         <text>{{ baseInfo.eMail }}</text>
     </view>
+
+    <view>
+        <text>phoneNumber:</text>
+        <text>{{ baseInfo.phoneNumber }}</text>
+    </view>
 </view>
