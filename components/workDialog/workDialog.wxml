@@ -3,14 +3,13 @@
     <view class="formAreaStyle">
         <form bindsubmit="handleWorkFormSubmit">
             <view>
-                <text>companyName:</text>
-                <input name="companyName" value="{{ singleWorkInfo.companyName }}" placeholder="please inpiut"/>
+                <text>companyName</text>
+                <input name="companyName" value="{{ singleWorkInfo.companyName }}" placeholder="no information"/>
             </view>
             <view>
                 <picker name="datesEmployed" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
-                    <text>
-                            datesEmployed: {{ singleWorkInfo.datesEmployed || '' }}
-                    </text>
+                    <text>datesEmployed</text>
+                    <input name="companyName" value="{{ singleWorkInfo.datesEmployed }}" placeholder="no information"/>
                 </picker>
             </view>
             <view class="bottonStyle">

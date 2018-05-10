@@ -12,14 +12,41 @@
     margin-left: 10%;
     margin-top: 20rpx;
     background: rgba(242, 242, 242, 1);
+    border-radius: 20rpx;
+    padding: 10rpx;
+    font-size: 30rpx;
+    box-shadow: 0 0 10rpx #989898;
 }
 .formAreaStyle view {
-    display: flex;
-
+    /* background: orange; */
+}
+.formAreaStyle view text {
+    /* background: palegreen; */
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    font-weight: 700;
+}
+.formAreaStyle view input {
+    /* background: hotpink; */
+    text-align: center;
 }
 .formAreaStyle .bottonStyle {
     margin-top: 20rpx;
     margin-bottom: 20rpx;
     padding-top: 20rpx;
     padding-bottom: 20rpx;
+    display: flex;
+}
+
+.formAreaStyle .bottonStyle button {
+    width: 30%;
+    height: 70rpx;
+    line-height: 70rpx;
+    text-align: center;
+    font-size: 35rpx;
+    padding: 0;
+    box-shadow: 10rpx 10rpx 10rpx #989898;
+    text-shadow: 0 0 10rpx #989898;
+    border: 1px solid #ABABAB;
 }

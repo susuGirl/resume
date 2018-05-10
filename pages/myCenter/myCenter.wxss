@@ -1,0 +1,39 @@
+
+.buttonStyle {
+    margin-top: 100rpx;
+}
+.buttonStyle button {
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    box-shadow: 10rpx 10rpx 10rpx #989898;
+    text-shadow: 0 0 10rpx #989898;
+    color: #2F2F2F;
+    margin-top: 30rpx;
+    border: 1px solid #ABABAB;
+    background: #fff;
+}
+
+.buttonStyle button:nth-child(2) {
+    width: 55%;
+}
+
+.buttonStyle button:nth-child(3) {
+    width: 60%;
+    margin-top: 45rpx;
+}
+
+.buttonStyle button:nth-child(4) {
+    width: 70%;
+    margin-top: 70rpx;
+}
+
+.buttonStyle button:nth-child(5) {
+    width: 85%;
+    margin-top: 85rpx;
+}
+
+.buttonStyle button::after {
+    border: none;
+}
