@@ -1,6 +1,16 @@
 
+.headPortrait {
+    width: 40%;
+    height: 300rpx;
+    line-height: 300rpx;
+    overflow: hidden;
+    margin-left: 30%;
+    border-radius: 50%;
+    box-shadow: 0 0 50rpx #5A5A5A;
+    margin-top: 50rpx;
+}
 .buttonStyle {
-    margin-top: 100rpx;
+    margin-top: 10rpx;
 }
 .buttonStyle button {
     width: 50%;
@@ -10,13 +20,13 @@
     box-shadow: 10rpx 10rpx 10rpx #989898;
     text-shadow: 0 0 10rpx #989898;
     color: #2F2F2F;
-    margin-top: 30rpx;
     border: 1px solid #ABABAB;
     background: #fff;
 }
 
 .buttonStyle button:nth-child(2) {
     width: 55%;
+    margin-top: 35rpx;
 }
 
 .buttonStyle button:nth-child(3) {
@@ -30,9 +40,15 @@
 }
 
 .buttonStyle button:nth-child(5) {
-    width: 85%;
+    width: 80%;
     margin-top: 85rpx;
 }
+
+/* .buttonStyle button:nth-child(6) {
+    width: 95%;
+    margin-top: 90rpx;
+    margin-bottom: 20rpx;
+} */
 
 .buttonStyle button::after {
     border: none;

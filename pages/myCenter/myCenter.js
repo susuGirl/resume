@@ -4,6 +4,9 @@ Page({
             url: '/pages/editResume/editResume'
         })
     },
+    getUserInfo (e) {
+        console.log('555555555555555-----e', e)
+    },
     collectResumeTap: function () {
         wx.navigateTo({
             url: '/pages/collectResume/collectResume'

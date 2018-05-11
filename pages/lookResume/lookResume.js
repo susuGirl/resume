@@ -19,12 +19,14 @@ Page({
                 'userName': queryParams.userName
             })
         } else {
+            // console.log('55555555555555555555------app.globalData', app.globalData)
             if (!app.globalData.loginInfo || !app.globalData.loginInfo.openid) {
                 wx.BaaS.login().then(res => {
                     app.globalData.loginInfo = res
                     this.findBaseInfo()
                   }, res => {
                     app.globalData.loginInfo = res
+                    this.findBaseInfo()
                   })
             } else {
                 this.findBaseInfo()
@@ -41,6 +43,7 @@ Page({
 
     findBaseInfo () {
         sdkApi.findBaseInfo({shareResumeId: app.globalData.loginInfo.openid}, res => {
+            console.log('6666666666666666666666-----res', res)
             if (!res.objects[0] || !res.objects[0].userName || !res.objects[0].openId) {
                 wx.hideShareMenu()
                 return
