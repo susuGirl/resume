@@ -46,6 +46,7 @@ App({
         }
       } else {
         console.log('用户拒绝授权,用户基本信息', res)
+        that.globalData.loginInfo = res
       }
     }),
     wx.getSystemInfo({

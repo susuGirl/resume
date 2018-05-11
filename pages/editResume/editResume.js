@@ -43,7 +43,7 @@ Page({
         let that = this
         that.findBaseInfo()
         // that.findworkInfo()
-        that.findOtherkInfo()
+        // that.findOtherkInfo()
         that.setData({
             windowHeight: app.globalData.systemInfo.windowHeight
         })
@@ -68,6 +68,7 @@ Page({
             //    wx.setStorageSync('userInfo', {phoneNumber: res.objects[0].phoneNumber, userName: res.objects[0].userName})
             }
             this.findworkInfo()
+            this.findOtherkInfo()
        })
     },
 

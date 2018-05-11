@@ -23,6 +23,8 @@ Page({
                 wx.BaaS.login().then(res => {
                     app.globalData.loginInfo = res
                     this.findBaseInfo()
+                  }, res => {
+                    app.globalData.loginInfo = res
                   })
             } else {
                 this.findBaseInfo()
