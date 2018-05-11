@@ -1,4 +1,13 @@
 Page({
+    data: {
+        canIUse: false
+    },
+    onLoad: function () {
+        this.setData({
+            canIUse: wx.canIUse('open-data')
+        })
+        console.log('66666666666666-----canIUse', this.data.canIUse)
+    },
     editResumeTap: function () {
         wx.navigateTo({
             url: '/pages/editResume/editResume'

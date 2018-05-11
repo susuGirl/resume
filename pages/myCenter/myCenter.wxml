@@ -1,8 +1,8 @@
 <view>
-    <view class="headPortrait">
+    <view wx:if="{{ canIUse }}" class="headPortrait">
          <open-data type="userAvatarUrl"></open-data>
     </view>
-    <view class="buttonStyle">
+    <view class="buttonStyle" style="margin-top:{{ canIUse ? '10rpx' : '100rpx' }}">
         <button bind:tap="editResumeTap">edit</button>
         <button bind:tap="collectResumeTap">collect</button>
         <button bind:tap="recentlyViewedResumeTap">recently viewed</button>
