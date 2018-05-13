@@ -12,25 +12,16 @@ Page({
     },
     onLoad: function (queryParams) {
         console.log('88888888888888888888888888------queryParams', queryParams)
-        if (queryParams.shareResumeId) {
-            this.findCollectResume()
-            this.setData({
-                'shareResumeId': queryParams.shareResumeId,
-                'userName': queryParams.userName
-            })
+        if (!app.globalData.loginInfo || !app.globalData.loginInfo.openid) {
+            wx.BaaS.login().then(res => {
+                app.globalData.loginInfo = res
+                this.handleOnload(queryParams)
+              }, res => {
+                app.globalData.loginInfo = res
+                this.handleOnload(queryParams)
+              })
         } else {
-            // console.log('55555555555555555555------app.globalData', app.globalData)
-            if (!app.globalData.loginInfo || !app.globalData.loginInfo.openid) {
-                wx.BaaS.login().then(res => {
-                    app.globalData.loginInfo = res
-                    this.findBaseInfo()
-                  }, res => {
-                    app.globalData.loginInfo = res
-                    this.findBaseInfo()
-                  })
-            } else {
-                this.findBaseInfo()
-            }
+            this.handleOnload(queryParams)
         }
         
     },
@@ -38,6 +29,19 @@ Page({
 
     },
     onReady: function () {
+
+    },
+
+    handleOnload (queryParams) {
+        if (queryParams.shareResumeId) {
+            this.findCollectResume()
+            this.setData({
+                'shareResumeId': queryParams.shareResumeId,
+                'userName': queryParams.userName
+            })
+        } else {
+            this.findBaseInfo()
+        }
 
     },
 
