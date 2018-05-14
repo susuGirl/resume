@@ -5,37 +5,36 @@
             <view class="infoCardStyle baseInfoCard">
                 <form bindsubmit="handleBaseFormSubmit">
                     <view class="textInputStyle">
-                        <text><text style="color: red;">*</text>userName:</text>
+                        <text><text style="color: red;">*</text>userName</text>
                         <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
                     </view>
 
                     <view>
-                        <text>userGender:</text>
-                        <radio-group name="userGender" class="radio-group">
-                            <label class="radio">
-                                <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}">girl</radio>
-                                <radio name="boy" value="1" checked="{{ baseInfo.userGender === 1 }}">boy</radio>
-                                <radio name="unknow" value="2" checked="{{ baseInfo.userGender === 2 }}">unknow</radio>
+                        <text>userGender</text>
+                        <radio-group name="userGender" class="radioGroupStyle">
+                            <label>
+                                <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}" />girl
+                                <radio name="boy" value="1" checked="{{ baseInfo.userGender === 1 }}" />boy
+                                <radio name="unknow" value="2" checked="{{ baseInfo.userGender === 2 }}" />unknow
                             </label>
                         </radio-group>
                     </view>
 
                     <view>
+                        <text>birthData</text>
                         <picker name="birthData" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
-                            <text>
-                                birthData: {{ baseInfo.birthData }}
-                            </text>
+                            <input disabled value="{{ baseInfo.birthData }}"  placeholder="please inpiut your birthData"></input>
                         </picker>
                     </view>
 
                     <view class="textInputStyle">
-                        <text>eMail:</text>
+                        <text>eMail</text>
                         <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
                     </view>
 
                     <view class="textInputStyle">
-                        <text><text style="color: red;">*</text>phoneNumber:</text>
-                        <input name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
+                        <text><text style="color: red;">*</text>phoneNumber</text>
+                        <input bindinput="handlePhoneNumber" type="number" maxlength="11" name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
                     </view>
                     <button form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
                 </form>
@@ -73,7 +72,7 @@
                 <form bindsubmit="handleOtherFormSubmit">
                     <block wx:for="{{ otherInfo }}" wx:key="{{ index }}">
                         <view>
-                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="5" placeholder="please inpiut" />
+                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="please inpiut" />
                             <textarea data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindinput="hangdleValueBindinput" placeholder="please inpiut" auto-height />
                             <button data-operational-data-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>

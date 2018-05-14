@@ -15,15 +15,43 @@
 }
 
 .baseInfoCard {
-    /* background: orchid; */
+    font-size: 30rpx;
+    text-align: center;
 }
 .baseInfoCard view {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     border: 1px solid gray;
+    border-radius: 10rpx;
     margin: 10px;
+    padding: 10rpx;
 }
+.baseInfoCard view text:nth-child(1){
+    /* background: blueviolet; */
+    border-bottom: 1px solid gray;
+    padding-bottom: 10rpx;
+    font-weight: 700;
+}
+.baseInfoCard view input:nth-child(2), .baseInfoCard view picker:nth-child(2) {
+    width: 100%;
+}
+.baseInfoCard view .radioGroupStyle radio .wx-radio-input{
+    border-radius: 50%;
+    width: 30rpx;
+    height: 30rpx;
+ }
+ /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+ .baseInfoCard view .radioGroupStyle radio .wx-radio-input.wx-radio-input-checked::before{
+    border-radius: 50%;
+    width: 25rpx;
+    height: 25rpx;
+    line-height: 25rpx;
+    text-align: center;
+    font-size:20rpx;
+    color:#fff;
+ }
 
 .textInputStyle {
     display: flex;
@@ -32,25 +60,24 @@
     flex-flow: nowrap;
 }
 .textInputStyle text {
-    /* padding-right: 5px; */
 }
 .textInputStyle input {
-    /* flex: 1; */
-    /* background: palevioletred; */
-    /* overflow: hidden; */
 }
 
 .otherInfoCard view {
     border: 1px solid gray;
     margin: 10px;
     display: flex;
+    border-radius: 10rpx;
 }
 .otherInfoCard input {
     width: 100px;
+    height: 100%;
     padding-right: 5px;
-    /* background: green; */
+    border-right: 1px solid gray;
 }
 .otherInfoCard textarea {
+    padding-left: 5rpx;
     flex: 1;
 }
 

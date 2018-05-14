@@ -154,6 +154,14 @@ Page({
             'baseInfo.birthData': e.detail.value
         })
     },
+
+    handlePhoneNumber: function (e) {
+        console.log('55555555555555555-----e', e)
+        this.setData({
+            'baseInfo.phoneNumber': e.detail.value.replace(/\D/g, '')
+        })
+        // this.patPhone = e.target.value.replace(/\D/g, '')
+    },
     
     // base info submit
     handleBaseFormSubmit: function (e) {
