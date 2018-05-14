@@ -48,11 +48,11 @@ Page({
             windowHeight: app.globalData.systemInfo.windowHeight
         })
     },
-    onShow: function () {
-        this.findworkInfo()
-        this.findOtherkInfo()
+    // onShow: function () {
+    //     this.findworkInfo()
+    //     this.findOtherkInfo()
 
-    },
+    // },
     
     // init user base info  data
     findBaseInfo: function() {
@@ -73,8 +73,8 @@ Page({
                })
             //    wx.setStorageSync('userInfo', {phoneNumber: res.objects[0].phoneNumber, userName: res.objects[0].userName})
             }
-            // this.findworkInfo()
-            // this.findOtherkInfo()
+            this.findworkInfo()
+            this.findOtherkInfo()
        })
     },
 
