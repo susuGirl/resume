@@ -292,11 +292,21 @@ Page({
 
     // delete row
     handleDeleteInfo: function(e) {
-        let temp = []
-        let infoArray = []
-        temp = this.data.otherInfo.slice(0)
-        temp.splice(e.currentTarget.dataset.operationalDataIndex, 1)
-        this.handleOperationalData(temp, e.currentTarget.dataset.operationalDataIndex, 'delete')
+        if (this.data.otherInfo.length > 1) {
+            console.log('666666666666666666-----this.data.otherInfo', this.data.otherInfo)
+            let temp = []
+            let infoArray = []
+            temp = this.data.otherInfo.slice(0)
+            temp.splice(e.currentTarget.dataset.operationalDataIndex, 1)
+            this.handleOperationalData(temp, e.currentTarget.dataset.operationalDataIndex, 'delete')
+        } else {
+            wx.showToast({
+                title: 'Please keep at least one content',
+                icon: 'none',
+                duration: 2000
+              })
+            return
+        }
     },
 
     // add row
