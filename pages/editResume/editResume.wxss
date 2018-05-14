@@ -14,6 +14,20 @@
     overflow-y: auto;
 }
 
+.infoCardStyle .buttonStyle {
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    box-shadow: 10rpx 10rpx 10rpx #989898;
+    text-shadow: 0 0 10rpx #989898;
+    color: #2F2F2F;
+    margin-top: 30rpx;
+    margin-bottom: 100rpx;
+    border: 1px solid #ABABAB;
+    background: #fff;
+}
+
 .baseInfoCard {
     font-size: 30rpx;
     text-align: center;

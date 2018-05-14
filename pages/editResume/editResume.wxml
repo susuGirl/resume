@@ -36,7 +36,7 @@
                         <text><text style="color: red;">*</text>phoneNumber</text>
                         <input bindinput="handlePhoneNumber" type="number" maxlength="11" name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
                     </view>
-                    <button form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
+                    <button class="buttonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
                 </form>
             </view>
         </swiper-item>
@@ -78,7 +78,7 @@
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
                     </block>
-                    <button form-type="submit" disabled="{{ !canOtherSubmit }}">submit</button>
+                    <button class="buttonStyle" form-type="submit" disabled="{{ !canOtherSubmit }}">submit</button>
                 </form>
             </view>
         </swiper-item>

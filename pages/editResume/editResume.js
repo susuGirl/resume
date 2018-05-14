@@ -48,6 +48,11 @@ Page({
             windowHeight: app.globalData.systemInfo.windowHeight
         })
     },
+    onShow: function () {
+        this.findworkInfo()
+        this.findOtherkInfo()
+
+    },
     
     // init user base info  data
     findBaseInfo: function() {
@@ -55,6 +60,7 @@ Page({
             title: '获取数据中...'
           })
         sdkApi.findBaseInfo({}, res => {
+            console.log('44444444444----baseInfo', this.data.baseInfo)
             wx.hideLoading()
             if ( res.objects.length > 0) {
                 if (res.objects[0].birthData) {
@@ -67,8 +73,8 @@ Page({
                })
             //    wx.setStorageSync('userInfo', {phoneNumber: res.objects[0].phoneNumber, userName: res.objects[0].userName})
             }
-            this.findworkInfo()
-            this.findOtherkInfo()
+            // this.findworkInfo()
+            // this.findOtherkInfo()
        })
     },
 
