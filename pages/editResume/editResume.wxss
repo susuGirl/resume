@@ -102,6 +102,7 @@
     justify-content: space-between;
     border: none;
     border-radius: 10rpx;
+    padding-top: 10rpx;
 }
 .otherInfoCard .otherInfoTitleStyle input {
     flex: 1;
