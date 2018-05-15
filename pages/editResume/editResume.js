@@ -22,7 +22,7 @@ Page({
         otherInfo: [
             {
                 title0: 'title',
-                content0: ''
+                content0: '请输入'
             }
         ],
         recordId: null,
@@ -378,7 +378,7 @@ Page({
         if (infoArray.length === infoAry.length && type === 'add')
         infoArray.splice(operationalDataIndex, 0, {
             ['title' + operationalDataIndex]: 'title', 
-            ['content' + operationalDataIndex]: ''
+            ['content' + operationalDataIndex]: '请输入'
         })
         
         this.setData({

@@ -79,30 +79,71 @@
 .textInputStyle input {
 }
 
-.otherInfoCard view {
-    border: 1px solid gray;
-    margin: 10px;
+.otherInfoCard {
+    width: 100%;
+    margin-top: 20rpx;
+}
+
+.otherInfoCard .otherInfoCardStyle {
+    min-height: 80rpx;
+    border: 1px solid #ABABAB;
+    width: 94%;
+    margin: 3%;
+    box-shadow: 0rpx 0rpx 10rpx #989898;
+}
+.otherInfoCard .otherInfoTitleStyle {
+    width: 80%;
+    height: 60rpx;
+    margin-left: 10%;
+    /* background: pink; */
+    flex: 1;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
     border-radius: 10rpx;
 }
-.otherInfoCard input:nth-child(1) {
-    width: 100px;
-    height: 100%;
-    padding-right: 5px;
-    border-right: 1px solid gray;
+.otherInfoCard .otherInfoTitleStyle input {
+    flex: 1;
+    word-break: break-all;
+    border-bottom: 1px solid #ABABAB;
+    text-align: center;
+    font-weight: 700;
 }
 .otherInfoCard .viewContentStyle {
-    background: aquamarine;
+    /* background: #fff; */
     height: 100%;
-    min-height: 20rpx;
+    min-height: 80rpx;
     padding-left: 5rpx;
     flex: 1;
-    word-break:break-all
+    word-break: break-all;
+    text-align: center;
+    padding: 10rpx;
+    font-size: 30rpx;
+}
+.otherInfoCard .otherInfoTitleStyle button {
+    width: 50rpx;
+    height: 50rpx;
+    line-height: 48rpx;
+    color: gray;
+    font-size: 50rpx;
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+    box-shadow: 0rpx 0rpx 10rpx #989898;
+    /* background: #C4C4C4; */
+    border: 1px solid gray;
+}
+.otherInfoCard .otherInfoTitleStyle button::after {
+    border: none;
+    border-radius: none;
 }
 .formAreaStyle textarea {
     min-height: 200rpx;
     width: 90%;
-    font-size: 35rpx;
+    font-size: 30rpx;
     padding: 10rpx;
     margin: 3%;
     /* margin: 5%; */

@@ -70,15 +70,15 @@
         <swiper-item>
             <view class="infoCardStyle otherInfoCard">
                 <form bindsubmit="handleOtherFormSubmit">
-                    <block wx:for="{{ otherInfo }}" wx:key="{{ index }}">
-                        <view>
-                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="please inpiut" />
-                            <input data-operational-data-index="{{ index }}" style="display: none;" name="content{{index}}" value="{{ item['content' + index] }}" />
-                            <view  data-operational-data-index="{{ index }}" class="viewContentStyle" catch:tap="showDialog">{{ item['content' + index] }}</view>
+                    <view wx:for="{{ otherInfo }}" wx:key="{{ index }}" class="otherInfoCardStyle">
+                        <view class="otherInfoTitleStyle">
                             <button data-operational-data-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
+                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="please inpiut" />
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
-                    </block>
+                        <input data-operational-data-index="{{ index }}" style="display: none;" name="content{{index}}" value="{{ item['content' + index] }}" />
+                        <view  data-operational-data-index="{{ index }}" class="viewContentStyle" catch:tap="showDialog">{{ item['content' + index] }}</view>
+                    </view>
                     <button class="buttonStyle" form-type="submit" disabled="{{ !canOtherSubmit }}">submit</button>
                 </form>
             </view>
