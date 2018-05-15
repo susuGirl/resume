@@ -9,6 +9,12 @@ const recentlyViewResume = (shareResumeId, userName) => {
         if (res.objects.length > 0 && res.objects[0].id) {
             sdkApi.uAppendRecentlyViewResume({recentlyViewed: [recentlyViewed], recordID: res.objects[0].id}, updateRes => {
                 console.log('9999999999999999-----updateRes', updateRes)
+                if (updateRes.data.recentlyViewed.length > 20) {
+                    console.log('4444444444444444444444--------')
+                    sdkApi.removeRecentlyViewResume({recentlyViewed: [updateRes.data.recentlyViewed[0]], recordID: updateRes.data.id}, deleteRes => {
+                        console.log('55555555555555--------deleteRes', deleteRes)
+                    }) 
+                }
             })
         } else {
             sdkApi.addRecentlyViewResume({recentlyViewed: [recentlyViewed]}, addRes => {
@@ -17,6 +23,15 @@ const recentlyViewResume = (shareResumeId, userName) => {
         }
     })
 }
+
+// handleDeleteLastResume = (res) => {
+//     console.log('6666666666666-----e', res)
+//     let params = e.detail.shareresumeId + ',' + e.detail.userName
+//     sdkApi.removeRecentlyViewResume({recordID: this.data.recordID, recentlyViewed: params}, res => {
+//         this.findRecentlyViewResume()
+//     })
+
+// }
 
 module.exports = {
     recentlyViewResume

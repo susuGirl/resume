@@ -2,9 +2,9 @@
     <view class='wx-mask'></view>
     <view class='wx-dialog'>
         <view class='wx-dialog-title'>{{ title }}</view>
-        <view class='wx-dialog-content'>
+        <textarea class='wx-dialog-content'>
             <slot></slot>
-        </view>
+        </textarea>
         <view class='wx-dialog-footer'>
           <view class='wx-dialog-btn' catchtap='_cancelEvent'>{{ cancelText }}</view>
           <view class='wx-dialog-btn' catchtap='_confirmEvent'>{{ confirmText }}</view>

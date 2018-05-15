@@ -10,7 +10,9 @@
 .formAreaStyle {
     width: 80%;
     margin-left: 10%;
-    margin-top: 20rpx;
+    /* margin-top: 20rpx; */
+    margin-top: 50%;
+    transform: translateY(-50%);
     background: rgba(242, 242, 242, 1);
     border-radius: 20rpx;
     padding: 10rpx;

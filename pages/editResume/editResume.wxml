@@ -73,7 +73,8 @@
                     <block wx:for="{{ otherInfo }}" wx:key="{{ index }}">
                         <view>
                             <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="please inpiut" />
-                            <textarea data-operational-data-index="{{ index }}" name="content{{index}}" value="{{ item['content' + index] }}"  bindinput="hangdleValueBindinput" placeholder="please inpiut" auto-height />
+                            <input data-operational-data-index="{{ index }}" style="display: none;" name="content{{index}}" value="{{ item['content' + index] }}" />
+                            <view  data-operational-data-index="{{ index }}" class="viewContentStyle" catch:tap="showDialog">{{ item['content' + index] }}</view>
                             <button data-operational-data-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
@@ -82,6 +83,24 @@
                 </form>
             </view>
         </swiper-item>
+        <!-- <swiper-item>
+            <text style="width: 200rpx;height: 200rpx;background:red;"></text>
+        </swiper-item> -->
     </swiper>
-    <!-- <view class="showResumeStyle">show resume</view> -->
+    <view class="workDialogStyle" wx:if="{{ showDialog }}">
+
+        <view class="formAreaStyle">
+            <form bindsubmit="handleTextareaSubmit">
+                <textarea name="editContent" value="{{ textareaContent }}" placeholder="please inpiut" auto-height>
+                    
+                </textarea>
+                <view class="bottonStyle">
+                    <button catch:tap="closeDialog">cancel</button>
+                    <button catch:tap="resetContent">reset</button>
+                    <button form-type="submit">save</button>
+                </view>
+            </form>
+        </view>
+    
+    </view>
 </view>

@@ -1,5 +1,6 @@
 <view>
     <text>recently viewed resume {{ recentlyViewed.length }}/piece</text>
+    <text>Up to 20 pieces of data</text>
     <!-- <view wx:for="{{ recentlyViewed }}" wx:key="{{ index }}" class="collectCard">
         <view>{{ item.userName }}</view>
         <view>

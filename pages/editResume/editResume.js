@@ -36,7 +36,10 @@ Page({
         },
         canBaseSubmit: true,
         canOtherSubmit: true,
-        rejectEdit: true
+        rejectEdit: true,
+        showDialog: false,
+        operationalDataIndex: 0,
+        textareaContent: ''
     },
 
     onLoad: function () {
@@ -48,11 +51,9 @@ Page({
             windowHeight: app.globalData.systemInfo.windowHeight
         })
     },
-    // onShow: function () {
-    //     this.findworkInfo()
-    //     this.findOtherkInfo()
+    onReady: function () {
 
-    // },
+    },
     
     // init user base info  data
     findBaseInfo: function() {
@@ -280,6 +281,31 @@ Page({
     
     // other info
 
+    showDialog: function (e) {
+        this.setData({
+            'textareaContent': this.data.otherInfo[e.currentTarget.dataset.operationalDataIndex]['content' + e.currentTarget.dataset.operationalDataIndex] || '',
+            'operationalDataIndex': e.currentTarget.dataset.operationalDataIndex,
+            'showDialog': true,
+        })
+    },
+    closeDialog () {
+        this.setData({
+            'showDialog': false
+        })
+    },
+    resetContent () {
+        this.setData({
+            'textareaContent': ''
+        })
+    },
+    handleTextareaSubmit (e) {
+        console.log('1111111111111111---- e.detail.value',  e.detail.value)
+        this.setData({
+            'showDialog': false,
+            ['otherInfo[' + this.data.operationalDataIndex + '].content' + this.data.operationalDataIndex]: e.detail.value.editContent
+        })
+
+    },
     // titile input input
     hangdleTitleBindinput: function (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
@@ -317,7 +343,7 @@ Page({
 
     // add row
     handleAddInfo: function (e) {
-        if (this.data.otherInfo.length < 10) { // limit 20 row
+        if (this.data.otherInfo.length < 20) { // limit 20 row
             let temp = []
             let indexAdd = e.currentTarget.dataset.operationalDataIndex + 1
             temp = this.data.otherInfo.slice(0)
