@@ -54,3 +54,21 @@ page {
     background: #fff;
 }
 
+.showInformationStyle {
+    margin: 10rpx;
+    border: 1px solid #BCBCBC;
+    border-radius: 10rpx;
+    background: #fff;
+}
+.showInformationStyle view {
+    /* background: skyblue; */
+    margin: 10rpx;
+    display: flex;
+    flex-direction: row;
+    font-size: 30rpx;
+    /* box-shadow: 0rpx 0rpx 10rpx #989898; */
+}
+.showInformationStyle view text {
+    font-weight: 700;
+}
+

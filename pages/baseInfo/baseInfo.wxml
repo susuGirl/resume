@@ -1,25 +1,25 @@
-<view>
+<view class="showInformationStyle">
     <view>
         <text>userName:</text>
-        <text>{{ baseInfo.userName }}</text>
+        <textarea value="{{ baseInfo.userName }}hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh" auto-height></textarea>
     </view>
     <view>
         <text>userGender:</text>
-        <text>{{ baseInfo.userGender === 0 ? 'girl' : (baseInfo.userGender === 1 ? 'boy' : 'unknow') }}</text>
+        <textarea value="{{ baseInfo.userGender === 0 ? 'girl' : (baseInfo.userGender === 1 ? 'boy' : 'unknow') }}555555" auto-height></textarea>
     </view>
 
     <view>
         <text>birthData:</text>
-        <text>{{ baseInfo.birthData }}</text>
+        <textarea value="{{ baseInfo.birthData }}555555" auto-height></textarea>
     </view>
 
     <view>
         <text>eMail:</text>
-        <text>{{ baseInfo.eMail }}</text>
+        <textarea value="{{ baseInfo.eMail }}555555555" auto-height></textarea>
     </view>
 
     <view>
         <text>phoneNumber:</text>
-        <text>{{ baseInfo.phoneNumber }}</text>
+        <textarea value="{{ baseInfo.phoneNumber }}" auto-height></textarea>
     </view>
 </view>

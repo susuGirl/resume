@@ -3,9 +3,9 @@
     display: flex;
     flex-direction: row;
 }
-.otherInfoStyle text {
+.otherInfoStyle text:nth-child(1) {
     width: 100px;
 }
-.otherInfoStyle textarea {
+.otherInfoStyle text:nth-child(2) {
     flex: 1;
 }

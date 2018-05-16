@@ -2,7 +2,7 @@
     <block wx:for="{{ otherInfo }}" wx:key="{{ index }}">
         <view wx:if="{{ !nullData }}">
             <text>{{ item['title' + index] }}</text>
-            <textarea value="{{ item['content' + index] }}" auto-height />
+            <textarea value="{{ item['content' + index] }}" auto-height></textarea>
         </view>
         <view wx:if="{{ nullData }}">nullData</view>
     </block>
