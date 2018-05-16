@@ -78,6 +78,7 @@
     width: 94%;
     margin: 3%;
     box-shadow: 0rpx 0rpx 10rpx #989898;
+    border-radius: 10rpx;
 }
 .otherInfoCard .otherInfoTitleStyle {
     width: 80%;

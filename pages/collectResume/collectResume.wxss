@@ -4,5 +4,11 @@
     /* background: greenyellow; */
     margin: 30rpx;
     color: #979797;
-    /* padding-top: 30rpx; */
+    font-size: 30rpx;
+}
+.textStyle {
+    color: gray;
+    font-weight: 700;
+    margin-left: 10rpx;
+    margin-right: 5rpx;
 }

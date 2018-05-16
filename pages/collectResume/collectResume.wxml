@@ -1,5 +1,5 @@
 <view>
-    <view class="headerStyle">collect resume {{ collectResume.length }}/piece</view>
+    <view class="headerStyle">collect resume <text class="textStyle">{{ collectResume.length }}</text>/piece</view>
 
     <lookresume
          resumeInfo="{{ collectResume }}"

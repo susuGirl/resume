@@ -1,6 +1,8 @@
 <view>
-    <text>recently viewed resume {{ recentlyViewed.length }}/piece</text>
-    <text>Up to 20 pieces of data</text>
+    <view class="recentlyResumeTitleStyle">
+        <text>recently viewed resume <text class="textStyle">{{ recentlyViewed.length }}</text>/piece</text>
+        <text>Up to 20 pieces of data</text>
+    </view>
     <!-- <view wx:for="{{ recentlyViewed }}" wx:key="{{ index }}" class="collectCard">
         <view>{{ item.userName }}</view>
         <view>

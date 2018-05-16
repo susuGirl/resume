@@ -6,6 +6,7 @@
     border-radius: 10rpx;
     margin: 30rpx;
     background: #fff;
+    overflow: hidden;
 }
 .parentView {
     display: flex;

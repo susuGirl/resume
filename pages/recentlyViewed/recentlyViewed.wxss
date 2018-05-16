@@ -1,2 +1,18 @@
 @import "../../components/lookResume/lookResume.wxss";
 
+.recentlyResumeTitleStyle {
+    width: 100%;
+    margin: 30rpx;
+    margin-left: 30rpx;
+    color: #979797;
+    font-size: 30rpx;
+    width: 500rpx;
+    display: flex;
+    flex-direction: column;
+}
+.textStyle {
+    color: gray;
+    font-weight: 700;
+    margin-left: 10rpx;
+    margin-right: 5rpx;
+}
