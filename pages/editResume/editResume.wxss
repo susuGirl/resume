@@ -15,19 +15,7 @@
     overflow-y: auto;
 }
 
-.infoCardStyle .buttonStyle {
-    width: 50%;
-    height: 80rpx;
-    line-height: 80rpx;
-    text-align: center;
-    box-shadow: 10rpx 10rpx 10rpx #989898;
-    text-shadow: 0 0 10rpx #989898;
-    color: #2F2F2F;
-    margin-top: 30rpx;
-    margin-bottom: 100rpx;
-    border: 1px solid #ABABAB;
-    background: #fff;
-}
+
 
 .baseInfoCard {
     font-size: 30rpx;
@@ -141,6 +129,18 @@
     border: none;
     border-radius: none;
 }
+.workCard {
+    position: relative;
+}
+.deleteWorkCard { /* must have width and height, it's used to delete card */
+    width: 55rpx!important;
+    height: 55rpx!important;
+    background: #A2A2A2;
+    border-radius: 50%;
+    position: absolute;
+    right: -15rpx;
+    bottom: -15rpx;
+}
 .formAreaStyle textarea {
     min-height: 200rpx;
     width: 90%;
@@ -154,12 +154,4 @@
 }
 .formAreaStyle .bottonStyle button {
     box-shadow: 0rpx 0rpx 10rpx #989898;
-}
-
-.deleteWorkCard { /* must have width and height, it's used to delete card */
-    background: #fff;
-    border-radius: 30px;
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
 }

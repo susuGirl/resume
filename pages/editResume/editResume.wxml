@@ -36,7 +36,7 @@
                         <text><text style="color: red;">*</text>phoneNumber</text>
                         <input bindinput="handlePhoneNumber" type="number" maxlength="11" name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
                     </view>
-                    <button class="buttonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
+                    <button class="comButtonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
                 </form>
             </view>
         </swiper-item>
@@ -56,7 +56,7 @@
                             <text name="datesEmployed">{{ item.datesEmployed }}</text>
                         </view>
                         <view class="deleteWorkCard" catch:tap="deleteCard" data-card-id="{{ item.id }}">
-                            <icon type="cancel" size="30"></icon>
+                            <icon  color="white" type="cancel" size="30"></icon>
                         </view>
                     </view>
 
@@ -79,7 +79,7 @@
                         <input data-operational-data-index="{{ index }}" style="display: none;" name="content{{index}}" value="{{ item['content' + index] }}" />
                         <view  data-operational-data-index="{{ index }}" class="viewContentStyle" catch:tap="showDialog">{{ item['content' + index] }}</view>
                     </view>
-                    <button class="buttonStyle" form-type="submit" disabled="{{ !canOtherSubmit }}">submit</button>
+                    <button class="comButtonStyle" form-type="submit" disabled="{{ !canOtherSubmit }}">submit</button>
                 </form>
             </view>
         </swiper-item>

@@ -11,10 +11,46 @@ page {
 .workCard {
     height: 200rpx;
     padding-left: 10rpx;
-    font-size: 35rpx;
+    font-size: 30rpx;
     box-shadow: 5rpx 5rpx 10rpx gray;
     border-radius: 10rpx;
     margin: 30rpx;
+    background: #fff;
+}
+
+.workCard view {
+    width: 100%;
+    height: 50rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+.workCard view text:nth-child(1) {
+    font-weight: 700;
+    /* background: gray; */
+    padding: 5rpx;
+}
+.workCard view text:nth-child(2) {
+    padding-right: 10rpx;
+}
+
+.ellipsisText {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.comButtonStyle {
+    width: 50%;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    box-shadow: 10rpx 10rpx 10rpx #989898;
+    text-shadow: 0 0 10rpx #989898;
+    color: #2F2F2F;
+    margin-top: 30rpx;
+    margin-bottom: 100rpx;
+    border: 1px solid #ABABAB;
     background: #fff;
 }
 
