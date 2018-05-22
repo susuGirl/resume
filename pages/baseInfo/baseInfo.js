@@ -10,6 +10,9 @@ Page({
             userGender: 2,
             birthData: '',
             eMail: '',
+            job: '',
+            salary: '',
+            address: '',
         },
         shareResumeId: ''
     },

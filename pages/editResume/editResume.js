@@ -10,7 +10,10 @@ Page({
             userGender: 2,
             birthData: '',
             eMail: '',
-            phoneNumber: ''
+            phoneNumber: '',
+            job: '',
+            salary: '',
+            address: '',
         },
         workInfo: [
             {
@@ -61,7 +64,7 @@ Page({
             title: '获取数据中...'
           })
         sdkApi.findBaseInfo({}, res => {
-            console.log('44444444444----baseInfo', this.data.baseInfo)
+            console.log('44444444444----baseInfo---res', res)
             wx.hideLoading()
             if ( res.objects.length > 0) {
                 if (res.objects[0].birthData) {
@@ -72,6 +75,7 @@ Page({
                 'baseInfo': res.objects[0],
                 'rejectEdit': false
                })
+               console.log('AAAAAAAAAAAAAAAAA-------baseInfo', this.data.baseInfo)
             //    wx.setStorageSync('userInfo', {phoneNumber: res.objects[0].phoneNumber, userName: res.objects[0].userName})
             }
             this.findworkInfo()
@@ -181,8 +185,9 @@ Page({
               })
             return
         }
+        let baseInfo = Object.assign({}, this.data.baseInfo, e.detail.value)
         this.setData({
-            baseInfo: e.detail.value
+            baseInfo: baseInfo
         })
         // console.log('7777777777777777-----baseInfo', this.data.baseInfo)
         let params = {

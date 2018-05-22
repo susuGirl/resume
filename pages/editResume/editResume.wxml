@@ -5,38 +5,55 @@
             <view class="infoCardStyle baseInfoCard">
                 <form bindsubmit="handleBaseFormSubmit">
                     <view class="textInputStyle">
-                        <text><text style="color: red;">*</text>userName</text>
+                        <text><text style="color: red;">*</text>真实名字</text>
                         <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
                     </view>
 
                     <view>
-                        <text>userGender</text>
+                        <text>性别</text>
                         <radio-group name="userGender" class="radioGroupStyle">
                             <label>
-                                <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}" />girl
-                                <radio name="boy" value="1" checked="{{ baseInfo.userGender === 1 }}" />boy
-                                <radio name="unknow" value="2" checked="{{ baseInfo.userGender === 2 }}" />unknow
+                                <radio name="girl" value="0" checked="{{ baseInfo.userGender === 0 }}" />女
+                                <radio name="boy" value="1" checked="{{ baseInfo.userGender === 1 }}" />男
+                                <radio name="unknow" value="2" checked="{{ baseInfo.userGender === 2 }}" />未知
                             </label>
                         </radio-group>
                     </view>
 
+                    <view class="textInputStyle">
+                        <text>期望岗位</text>
+                        <input name="job" value="{{ baseInfo.job }}"  placeholder="please inpiut your job" />
+                    </view>
+
+                    <view class="textInputStyle">
+                        <text>期望薪资</text>
+                        <input name="salary" value="{{ baseInfo.salary }}"  placeholder="please inpiut your salary" />
+                    </view>
+
                     <view>
-                        <text>birthData</text>
+                        <text>出生日期</text>
                         <picker name="birthData" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
                             <input disabled value="{{ baseInfo.birthData }}"  placeholder="please inpiut your birthData"></input>
                         </picker>
                     </view>
 
+
                     <view class="textInputStyle">
-                        <text>eMail</text>
+                        <text>电子邮箱</text>
                         <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
                     </view>
 
                     <view class="textInputStyle">
-                        <text><text style="color: red;">*</text>phoneNumber</text>
+                        <text><text style="color: red;">*</text>手机号码</text>
                         <input bindinput="handlePhoneNumber" type="number" maxlength="11" name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
                     </view>
-                    <button class="comButtonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">submit</button>
+
+                    <view class="textInputStyle">
+                        <text>详细住址</text>
+                        <input name="address" value="{{ baseInfo.address }}"  placeholder="please inpiut your address" />
+                    </view>
+
+                    <button class="comButtonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">保存</button>
                 </form>
             </view>
         </swiper-item>
