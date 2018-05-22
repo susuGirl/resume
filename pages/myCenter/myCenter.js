@@ -32,7 +32,7 @@ Page({
         })
     },
     showOwnResume: function () {
-        wx.switchTab({
+        wx.reLaunch({
             url: '/pages/lookResume/lookResume'
           })
     }
