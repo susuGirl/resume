@@ -7,7 +7,7 @@
         <button bind:tap="collectResumeTap">collect</button>
         <button bind:tap="recentlyViewedResumeTap">recently viewed</button>
         <button bind:tap="searchReusmeTap">search resume</button>
-        <button>show my resume</button>
+        <button bind:tap="showOwnResume">show my resume</button>
         <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">getUserInfo</button> -->
         <!-- <open-data type="userNickName" lang="zh_CN"></open-data>  -->
     </view>

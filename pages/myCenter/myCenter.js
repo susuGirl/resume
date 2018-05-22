@@ -31,4 +31,9 @@ Page({
             url: '/pages/searchReusme/searchReusme'
         })
     },
+    showOwnResume: function () {
+        wx.switchTab({
+            url: '/pages/lookResume/lookResume'
+          })
+    }
 })
