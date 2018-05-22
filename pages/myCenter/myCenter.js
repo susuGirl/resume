@@ -34,6 +34,6 @@ Page({
     showOwnResume: function () {
         wx.reLaunch({
             url: '/pages/lookResume/lookResume'
-          })
+        })
     }
 })
