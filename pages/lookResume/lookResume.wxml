@@ -4,10 +4,10 @@
         <text>collect</text>
     </view>
 
-    <view wx:else class="buttonStyle publicStyle">
+    <!-- <view wx:else class="buttonStyle publicStyle">
         <view>public/</view> 
         <view>private</view>
-    </view>
+    </view> -->
 
     <homepagebtn
         bind:baseInfoTap="baseInfoTap"
