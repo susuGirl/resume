@@ -1,5 +1,5 @@
 
-.otherInfoStyle view {
+/* .otherInfoStyle view {
     display: flex;
     flex-direction: row;
 }
@@ -8,4 +8,4 @@
 }
 .otherInfoStyle text:nth-child(2) {
     flex: 1;
-}
+} */

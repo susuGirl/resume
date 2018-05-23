@@ -72,3 +72,27 @@ page {
     font-weight: 700;
 }
 
+/* baseInfo otherInfo style */
+.showInformationCardStyle {
+    font-size: 30rpx;
+    text-align: center;
+}
+.showInformationCardStyle view {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 10rpx;
+    margin: 10px;
+    padding: 10rpx;
+}
+.showInformationCardStyle view text:nth-child(1){
+    border-bottom: 1px solid gray;
+    padding-bottom: 10rpx;
+    font-weight: 700;
+}
+.showInformationCardStyle view textarea:nth-child(1){
+    width: 100%;
+}
+
