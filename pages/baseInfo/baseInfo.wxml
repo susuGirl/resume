@@ -1,41 +1,41 @@
 <view class="showInformationCardStyle">
     <view>
         <text>真实名字</text>
-        <textarea value="{{ baseInfo.userName }}" auto-height></textarea>
+        <view>{{ baseInfo.userName }}</view>
     </view>
     <view>
         <text>性别</text>
-        <textarea value="{{ baseInfo.userGender === 0 ? 'girl' : (baseInfo.userGender === 1 ? 'boy' : 'unknow') }}" auto-height></textarea>
+        <view>{{ baseInfo.userGender === 0 ? '女' : (baseInfo.userGender === 1 ? '男' : '未知') }}</view>
     </view>
 
     <view>
         <text>期望岗位</text>
-        <textarea value="{{ baseInfo.job }}" auto-height></textarea>
+        <view>{{ baseInfo.job }}</view>
     </view>
 
     <view>
         <text>期望薪资</text>
-        <textarea value="{{ baseInfo.salary }}" auto-height></textarea>
+        <view>{{ baseInfo.salary }}</view>
     </view>
 
     <view>
         <text>出生日期:</text>
-        <textarea value="{{ baseInfo.birthData }}" auto-height></textarea>
+        <view>{{ baseInfo.birthData }}</view>
     </view>
 
     <view>
         <text>邮箱</text>
-        <textarea value="{{ baseInfo.eMail }}" auto-height></textarea>
+        <view>{{ baseInfo.eMail }}</view>
     </view>
 
     <view>
         <text>手机号码</text>
-        <textarea value="{{ baseInfo.phoneNumber }}" auto-height></textarea>
+        <view>{{ baseInfo.phoneNumber }}</view>
     </view>
 
     <view>
         <text>详细住址</text>
-        <textarea value="{{ baseInfo.address }}" auto-height></textarea>
+        <view>{{ baseInfo.address }}</view>
     </view>
 
 </view>

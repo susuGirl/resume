@@ -76,23 +76,33 @@ page {
 .showInformationCardStyle {
     font-size: 30rpx;
     text-align: center;
+    width: 100%;
 }
-.showInformationCardStyle view {
+.showInformationCardStyle > view {
+    width: 94%;
+    /* height: 300rpx; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 1px solid gray;
     border-radius: 10rpx;
-    margin: 10px;
-    padding: 10rpx;
+    margin: 3%;
 }
-.showInformationCardStyle view text:nth-child(1){
+.showInformationCardStyle > view text{
     border-bottom: 1px solid gray;
     padding-bottom: 10rpx;
     font-weight: 700;
 }
-.showInformationCardStyle view textarea:nth-child(1){
-    width: 100%;
+.showInformationCardStyle>view view{
+    /* width: 96%; */
+    /* background: pink; */
+    height: 100%;
+    min-height: 60rpx;
+    padding-left: 5rpx;
+    flex: 1;
+    word-break: break-all;
+    /* text-align: center; */
+    padding: 10rpx;
 }
 

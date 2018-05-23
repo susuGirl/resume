@@ -103,7 +103,7 @@
 .otherInfoCard .viewContentStyle {
     /* background: #fff; */
     height: 100%;
-    min-height: 80rpx;
+    min-height: 60rpx;
     padding-left: 5rpx;
     flex: 1;
     word-break: break-all;
