@@ -16,7 +16,7 @@
     "backgroundTextStyle":"light",
     "backgroundColor": "#A2A2A2",
     "navigationBarBackgroundColor": "#A2A2A2",
-    "navigationBarTitleText": "demo",
+    "navigationBarTitleText": "你的专属简历",
     "navigationBarTextStyle": "light"
   },
   "networkTimeout": {
