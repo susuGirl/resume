@@ -98,7 +98,7 @@
                     <view wx:for="{{ otherInfo }}" wx:key="{{ index }}" class="otherInfoCardStyle">
                         <view class="otherInfoTitleStyle">
                             <button data-operational-data-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
-                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="请编辑信息" />
+                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="请输入标题" />
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
                         <input data-operational-data-index="{{ index }}" style="display: none;" name="content{{index}}" value="{{ item['content' + index] }}" />

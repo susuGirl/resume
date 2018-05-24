@@ -26,8 +26,8 @@ Page({
         ],
         otherInfo: [
             {
-                title0: 'title',
-                content0: '请输入'
+                title0: '',
+                content0: '点击输入内容'
             }
         ],
         recordId: null,
@@ -370,8 +370,8 @@ Page({
 
         if (infoArray.length === infoAry.length && type === 'add')
         infoArray.splice(operationalDataIndex, 0, {
-            ['title' + operationalDataIndex]: 'title', 
-            ['content' + operationalDataIndex]: '请输入'
+            ['title' + operationalDataIndex]: '', 
+            ['content' + operationalDataIndex]: '点击输入内容'
         })
         
         this.setData({
@@ -388,7 +388,17 @@ Page({
               })
             return
         }
-        let detailValue = e.detail.value
+        let obj = e.detail.value
+        for (let i in obj) {
+            if (obj[i] === '') {
+              wx.showToast({
+                  title: '请先填写完整信息方可保存 @_@',
+                  icon: 'none',
+                  duration: 2000
+                })
+                return
+            }
+        }
         let params = {
             ...e.detail.value,
             userName: this.data.baseInfo.userName,
