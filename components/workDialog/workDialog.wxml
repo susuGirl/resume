@@ -4,21 +4,21 @@
         <form bindsubmit="handleWorkFormSubmit">
             <view>
                 <text>公司名称</text>
-                <input name="companyName" value="{{ singleWorkInfo.companyName }}" placeholder="no information"/>
+                <input name="companyName" value="{{ singleWorkInfo.companyName }}" disabled="{{onlyRead}}" placeholder="no information"/>
             </view>
             <view>
                 <text>公司地点</text>
-                <input name="companyAddress" value="{{ singleWorkInfo.companyAddress }}" placeholder="no information"/>
+                <input name="companyAddress" value="{{ singleWorkInfo.companyAddress }}" disabled="{{onlyRead}}" placeholder="no information"/>
             </view>
             <view>
-                <picker mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                <picker disabled="{{onlyRead}}" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
                     <text>入职日期</text>
-                    <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}" placeholder="no information"/>
+                    <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}" disabled="{{onlyRead}}" placeholder="no information"/>
                 </picker>
             </view>
             <view>
                 <text>在职岗位</text>
-                <input name="employedProfession" value="{{ singleWorkInfo.employedProfession }}" placeholder="no information"/>
+                <input name="employedProfession" value="{{ singleWorkInfo.employedProfession }}" disabled="{{onlyRead}}" placeholder="no information"/>
             </view>
             <view class="bottonStyle">
                 <button bind:tap="_closeDialog"> {{ onlyRead ? 'confirm' : 'cancel' }}</button>
