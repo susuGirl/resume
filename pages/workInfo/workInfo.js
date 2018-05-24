@@ -22,7 +22,7 @@ Page({
         }
         this.findworkInfo()
     },
-    findworkInfo: function(e) {
+    findworkInfo (e) {
         let params = this.data.shareResumeId ? {'shareResumeId': this.data.shareResumeId} : {}
         sdkApi.findworkInfo(params, res => {
             if ( res.objects.length > 0) {
@@ -49,14 +49,14 @@ Page({
        })
     },
     // click card : tap event
-    handleWorkInfoCardTap: function (e) {
+    handleWorkInfoCardTap (e) {
         this.setData({
             'hideWorkDialog': false,
             'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo]
         })
     },
     // close dialog
-    _closeDialog: function (e) {
+    _closeDialog (e) {
         this.setData({
             'hideWorkDialog': true
         })

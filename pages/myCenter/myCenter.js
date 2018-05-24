@@ -8,7 +8,7 @@ Page({
         })
         console.log('66666666666666-----canIUse', this.data.canIUse)
     },
-    editResumeTap: function () {
+    editResumeTap () {
         wx.navigateTo({
             url: '/pages/editResume/editResume'
         })
@@ -16,22 +16,22 @@ Page({
     getUserInfo (e) {
         console.log('555555555555555-----e', e)
     },
-    collectResumeTap: function () {
+    collectResumeTap () {
         wx.navigateTo({
             url: '/pages/collectResume/collectResume'
         })
     },
-    recentlyViewedResumeTap: function () {
+    recentlyViewedResumeTap () {
         wx.navigateTo({
             url: '/pages/recentlyViewed/recentlyViewed'
         })
     },
-    searchReusmeTap: function () {
+    searchReusmeTap () {
         wx.navigateTo({
             url: '/pages/searchReusme/searchReusme'
         })
     },
-    showOwnResume: function () {
+    showOwnResume () {
         wx.reLaunch({
             url: '/pages/lookResume/lookResume'
         })

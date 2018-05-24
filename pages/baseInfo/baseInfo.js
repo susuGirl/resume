@@ -25,7 +25,7 @@ Page({
         }
         this.findBaseInfo()
     },
-    findBaseInfo: function() {
+    findBaseInfo () {
         wx.showLoading({
           title: '获取数据中...'
         })

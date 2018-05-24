@@ -59,7 +59,7 @@ Page({
     },
     
     // init user base info  data
-    findBaseInfo: function() {
+    findBaseInfo () {
         wx.showLoading({
             title: '获取数据中...'
           })
@@ -84,7 +84,7 @@ Page({
     },
 
     // init user work info data
-    findworkInfo: function(e) {
+    findworkInfo (e) {
         sdkApi.findworkInfo({}, res => {
             if ( res.objects.length > 0) {
                 res.objects.forEach(val => {
@@ -118,7 +118,7 @@ Page({
     },
 
     // init user other info data
-    findOtherkInfo: function (e) {
+    findOtherkInfo (e) {
         sdkApi.findOtherkInfo({}, res=> {
             console.log('findOtherkInfo------------init---res', res)
             if (res.objects.length > 0) {
@@ -160,13 +160,13 @@ Page({
 
 
     // base info date picker change event
-    handleDateChange: function(e) {
+    handleDateChange (e) {
         this.setData({
             'baseInfo.birthData': e.detail.value
         })
     },
 
-    handlePhoneNumber: function (e) {
+    handlePhoneNumber (e) {
         console.log('55555555555555555-----e', e)
         this.setData({
             'baseInfo.phoneNumber': e.detail.value.replace(/\D/g, '')
@@ -175,7 +175,7 @@ Page({
     },
     
     // base info submit
-    handleBaseFormSubmit: function (e) {
+    handleBaseFormSubmit (e) {
         console.log('form submit data ----- @_@', e.detail.value)
         if (!e.detail.value.phoneNumber || !e.detail.value.userName) {
             wx.showToast({
@@ -254,7 +254,7 @@ Page({
 
     // work info
     // click card : tap event
-    handleWorkInfoCardTap: function (e) {
+    handleWorkInfoCardTap (e) {
         if (this.data.rejectEdit) {
             wx.showToast({
                 title: 'Please complete your basic information first.',
@@ -270,14 +270,14 @@ Page({
         console.log('66666666666666-----singleWorkInfo', this.data.singleWorkInfo)
     },
     // delete card
-    deleteCard: function (e) {
+    deleteCard (e) {
         let that = this
         sdkApi.deleteWorkInfo(e.currentTarget.dataset.cardId, res => {
             that.findworkInfo()
         })
     },
     // close dialog
-    _closeDialog: function (e) {
+    _closeDialog (e) {
         this.setData({
             'hideWorkDialog': true
         })
@@ -286,7 +286,7 @@ Page({
     
     // other info
 
-    showDialog: function (e) {
+    showDialog (e) {
         this.setData({
             'textareaContent': this.data.otherInfo[e.currentTarget.dataset.operationalDataIndex]['content' + e.currentTarget.dataset.operationalDataIndex] || '',
             'operationalDataIndex': e.currentTarget.dataset.operationalDataIndex,
@@ -312,7 +312,7 @@ Page({
 
     },
     // titile input input
-    hangdleTitleBindinput: function (e) {
+    hangdleTitleBindinput (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
             ['otherInfo[' + index + '].title' + index]: e.detail.value ? e.detail.value : ''
@@ -320,7 +320,7 @@ Page({
     },
 
     // content input input
-    hangdleValueBindinput: function (e) {
+    hangdleValueBindinput (e) {
         let index = e.currentTarget.dataset.operationalDataIndex
         this.setData({
             ['otherInfo[' + index + '].content' + index]: e.detail.value ? e.detail.value : ''
@@ -328,7 +328,7 @@ Page({
     },
 
     // delete row
-    handleDeleteInfo: function(e) {
+    handleDeleteInfo (e) {
         if (this.data.otherInfo.length > 1) {
             console.log('666666666666666666-----this.data.otherInfo', this.data.otherInfo)
             let temp = []
@@ -347,7 +347,7 @@ Page({
     },
 
     // add row
-    handleAddInfo: function (e) {
+    handleAddInfo (e) {
         if (this.data.otherInfo.length < 20) { // limit 20 row
             let temp = []
             let indexAdd = e.currentTarget.dataset.operationalDataIndex + 1
@@ -357,7 +357,7 @@ Page({
     },
 
     // handle the data hen the row is deleted or added
-    handleOperationalData: function (infoAry, operationalDataIndex, type) {
+    handleOperationalData (infoAry, operationalDataIndex, type) {
         let infoArray = []
         infoAry.forEach((val, index) => {
             if (index < operationalDataIndex) {
@@ -391,7 +391,7 @@ Page({
         })
     },
 
-    handleOtherFormSubmit: function (e) {
+    handleOtherFormSubmit (e) {
         console.log('handleOtherFormSubmit-----------submit', e)
         if (this.data.rejectEdit) {
             wx.showToast({
@@ -421,7 +421,7 @@ Page({
         }
     },
 
-    addOtherkInfo: function (params, refresh) {
+    addOtherkInfo (params, refresh) {
         sdkApi.addOtherkInfo(params, res => {
             console.log('other-info------add---res--@_@', res)
             wx.showToast({

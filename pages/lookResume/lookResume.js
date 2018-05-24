@@ -81,7 +81,7 @@ Page({
     },
 
     // share your remuse
-    onShareAppMessage: function (res) {
+    onShareAppMessage (res) {
         if (!this.data.shareResumeId) { // share own resume
             if (this.data.userName) {
                 return {

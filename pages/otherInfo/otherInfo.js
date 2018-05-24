@@ -20,7 +20,7 @@ Page({
         }
         this.findOtherkInfo()
     },
-    findOtherkInfo: function (e) {
+    findOtherkInfo (e) {
         let params = this.data.shareResumeId ? {'shareResumeId': this.data.shareResumeId} : {}
         sdkApi.findOtherkInfo(params, res=> {
             console.log('findOtherkInfo------------init---res', res)

@@ -266,3 +266,5 @@ const removeRecentlyViewResume = (ctx, cb) => {
     uAppendRecentlyViewResume,
     removeRecentlyViewResume,
   }
+
+  // 在这里可以把相同功能的接口请求合并成起来，然后通过参数来调不同的tableId，但是大项目开发中不建议使用，还是一个请求单独一个方法比较好，避免要处理某些特殊数据的时候复杂化

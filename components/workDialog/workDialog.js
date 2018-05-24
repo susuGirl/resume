@@ -32,18 +32,18 @@ Component({
     detached: function(){},
   
     methods: {
-        _closeDialog: function () {
+        _closeDialog () {
           this.triggerEvent('closeDialog')
         },
 
-        handleDateChange: function(e) {
+        handleDateChange (e) {
             this.setData({
                 'singleWorkInfo.datesEmployed': e.detail.value
             })
         },
 
         // work info submit
-        handleWorkFormSubmit: function (e) {
+        handleWorkFormSubmit (e) {
           console.log('form submit data ----- @_@', e.detail.value)
           let obj = e.detail.value
           for (let i in obj) {

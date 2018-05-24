@@ -3,7 +3,7 @@
     <view class="parentView titleStyle">
         <view class="userNameStyle">{{ item.userName }}</view>
         <view data-shareResume-id="{{ item.shareResumeId }}" data-user-name="{{ item.userName }}" bind:tap="_handleDelete" class="deleteStyle">
-            <icon  color="white" type="cancel" size="30"></icon>
+            <icon  color="white" type="cancel" size="25"></icon>
         </view>
     </view>
     <view class="parentView">

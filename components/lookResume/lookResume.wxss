@@ -35,12 +35,12 @@
     border-right: 1px solid #CECECE;
 }
 .deleteStyle {
-    width: 50rpx;
-    height: 50rpx;
-    line-height: 50rpx;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
     border-radius: 50%;
     text-align: center;
     font-size: 35rpx;
     color: #fff;
-    background: #B2B2B2;
+    background: #A2A2A2;
 }

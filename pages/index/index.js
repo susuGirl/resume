@@ -54,7 +54,7 @@ Page({
   },
 
 
-  requestTap: function() {
+  requestTap () {
     sdkApi.createBaseInfo({
       real_name: '苏苏222'
     }, res => {

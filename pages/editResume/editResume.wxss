@@ -134,8 +134,8 @@
     position: relative;
 }
 .deleteWorkCard { /* must have width and height, it's used to delete card */
-    width: 55rpx!important;
-    height: 55rpx!important;
+    width: 25px!important;
+    height: 25px!important;
     background: #A2A2A2;
     border-radius: 50%;
     position: absolute;

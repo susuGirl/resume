@@ -73,7 +73,7 @@
                             <text name="datesEmployed">{{ item.datesEmployed }}</text>
                         </view>
                         <view class="deleteWorkCard" catch:tap="deleteCard" data-card-id="{{ item.id }}">
-                            <icon  color="white" type="cancel" size="30"></icon>
+                            <icon  color="white" type="cancel" size="25"></icon>
                         </view>
                     </view>
 

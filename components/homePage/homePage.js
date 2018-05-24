@@ -28,16 +28,16 @@ Component({
     detached: function(){},
   
     methods: {
-      _baseInfoTap: function () {
+      _baseInfoTap () {
         this.triggerEvent('baseInfoTap')
       },
-      _workInfoTap: function () {
+      _workInfoTap () {
         this.triggerEvent('workInfoTap')
       },
-      _otherInfoTap: function () {
+      _otherInfoTap () {
         this.triggerEvent('otherInfoTap')
       },
-      _selfIntroductionTap: function () {
+      _selfIntroductionTap () {
         this.triggerEvent('selfIntroductionTap')
       }
     }
