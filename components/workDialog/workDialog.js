@@ -20,7 +20,7 @@ Component({
       // },
       // myProperty2: String // 简化的定义方式
       singleWorkInfo: Object,
-      onlyRead: Boolean
+      onlyRead: Boolean // Can you edit the page information
     },
     data: { // 私有数据，可用于模版渲染
         canWorkSubmit: true

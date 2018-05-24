@@ -4,25 +4,25 @@
         <form bindsubmit="handleWorkFormSubmit">
             <view>
                 <text>公司名称</text>
-                <input name="companyName" value="{{ singleWorkInfo.companyName }}" disabled="{{onlyRead}}" placeholder="no information"/>
+                <input name="companyName" value="{{ singleWorkInfo.companyName }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
             </view>
             <view>
                 <text>公司地点</text>
-                <input name="companyAddress" value="{{ singleWorkInfo.companyAddress }}" disabled="{{onlyRead}}" placeholder="no information"/>
+                <input name="companyAddress" value="{{ singleWorkInfo.companyAddress }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
             </view>
             <view>
                 <picker disabled="{{onlyRead}}" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
                     <text>入职日期</text>
-                    <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}" disabled="{{onlyRead}}" placeholder="no information"/>
+                    <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
                 </picker>
             </view>
             <view>
                 <text>在职岗位</text>
-                <input name="employedProfession" value="{{ singleWorkInfo.employedProfession }}" disabled="{{onlyRead}}" placeholder="no information"/>
+                <input name="employedProfession" value="{{ singleWorkInfo.employedProfession }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
             </view>
             <view class="bottonStyle">
-                <button bind:tap="_closeDialog"> {{ onlyRead ? 'confirm' : 'cancel' }}</button>
-                <button form-type="submit" wx:if="{{ !onlyRead }}" disabled="{{ !canWorkSubmit }}">save</button>
+                <button bind:tap="_closeDialog"> {{ onlyRead ? '确定' : '取消' }}</button>
+                <button form-type="submit" wx:if="{{ !onlyRead }}" disabled="{{ !canWorkSubmit }}">保存</button>
             </view>
         </form>
     </view>

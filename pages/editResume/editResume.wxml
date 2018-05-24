@@ -6,7 +6,7 @@
                 <form bindsubmit="handleBaseFormSubmit">
                     <view class="textInputStyle">
                         <text>真实名字</text>
-                        <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
+                        <input name="userName" value="{{ baseInfo.userName }}" placeholder="请编辑信息" />
                     </view>
 
                     <view>
@@ -22,35 +22,35 @@
 
                     <view class="textInputStyle">
                         <text>期望岗位</text>
-                        <input name="job" value="{{ baseInfo.job }}"  placeholder="please inpiut your job" />
+                        <input name="job" value="{{ baseInfo.job }}"  placeholder="请编辑信息" />
                     </view>
 
                     <view class="textInputStyle">
                         <text>期望薪资</text>
-                        <input name="salary" value="{{ baseInfo.salary }}"  placeholder="please inpiut your salary" />
+                        <input name="salary" value="{{ baseInfo.salary }}"  placeholder="请编辑信息" />
                     </view>
 
                     <view>
                         <text>出生日期</text>
                         <picker mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
-                            <input name="birthData" disabled value="{{ baseInfo.birthData }}"  placeholder="please inpiut your birthData"></input>
+                            <input name="birthData" disabled value="{{ baseInfo.birthData }}"  placeholder="请编辑信息"></input>
                         </picker>
                     </view>
 
 
                     <view class="textInputStyle">
                         <text>电子邮箱</text>
-                        <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="please inpiut your eMail" />
+                        <input name="eMail" value="{{ baseInfo.eMail }}"  placeholder="请编辑信息" />
                     </view>
 
                     <view class="textInputStyle">
                         <text>手机号码</text>
-                        <input bindinput="handlePhoneNumber" type="number" maxlength="11" name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
+                        <input bindinput="handlePhoneNumber" type="number" maxlength="11" name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="请编辑信息" />
                     </view>
 
                     <view class="textInputStyle">
                         <text>详细住址</text>
-                        <input name="address" value="{{ baseInfo.address }}"  placeholder="please inpiut your address" />
+                        <input name="address" value="{{ baseInfo.address }}"  placeholder="请编辑信息" />
                     </view>
 
                     <button class="comButtonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">保存</button>
@@ -98,7 +98,7 @@
                     <view wx:for="{{ otherInfo }}" wx:key="{{ index }}" class="otherInfoCardStyle">
                         <view class="otherInfoTitleStyle">
                             <button data-operational-data-index="{{ index }}" catch:tap="handleDeleteInfo">-</button>
-                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="please inpiut" />
+                            <input data-operational-data-index="{{ index }}" name="title{{index}}" value="{{ item['title' + index] }}" bindinput="hangdleTitleBindinput" maxlength="8" placeholder="请编辑信息" />
                             <button data-operational-data-index="{{ index }}" catch:tap="handleAddInfo">+</button>
                         </view>
                         <input data-operational-data-index="{{ index }}" style="display: none;" name="content{{index}}" value="{{ item['content' + index] }}" />
@@ -116,7 +116,7 @@
 
         <view class="formAreaStyle">
             <form bindsubmit="handleTextareaSubmit">
-                <textarea maxlength="200" name="editContent" value="{{ textareaContent }}" placeholder="please inpiut" auto-height>
+                <textarea maxlength="200" name="editContent" value="{{ textareaContent }}" placeholder="请编辑信息" auto-height>
                     
                 </textarea>
                 <view class="bottonStyle">
