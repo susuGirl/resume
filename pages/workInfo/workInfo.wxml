@@ -12,8 +12,6 @@
             </view>
         </view>
 
-        <view class="workCard" wx:if="{{ !item.id }}">
-            no job information
-        </view>
+        <view class="workCard noInformationStyle" wx:if="{{ !item.id }}"> 暂无工作信息</view>
     </block>
 </view>

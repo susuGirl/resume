@@ -14,7 +14,8 @@ Page({
             salary: '',
             address: '',
         },
-        shareResumeId: ''
+        shareResumeId: '',
+        nullData: false
     },
     onLoad: function(option){
         console.log('5555----路由参数', option)
@@ -39,11 +40,16 @@ Page({
                 }
                 
                 this.setData({
-                   'baseInfo': res.objects[0]
+                   'baseInfo': res.objects[0],
+                   'nullData': false
                 })
                 if (this.data.shareResumeId && app.globalData.loginInfo && this.data.shareResumeId !== app.globalData.loginInfo.openid) {
                     recentlyViewResume(this.data.shareResumeId, res.objects[0].userName)
                 }
+            } else {
+                this.setData({
+                    'nullData': true
+                 })
             }
         })
     },

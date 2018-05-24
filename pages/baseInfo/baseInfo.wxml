@@ -1,41 +1,47 @@
 <view class="showInformationCardStyle">
-    <view>
-        <text>真实名字</text>
-        <view>{{ baseInfo.userName }}</view>
-    </view>
-    <view>
-        <text>性别</text>
-        <view>{{ baseInfo.userGender === 0 ? '女' : (baseInfo.userGender === 1 ? '男' : '未知') }}</view>
-    </view>
+    <block wx:if="{{ !nullData }}">
+        <view>
+            <text>真实名字</text>
+            <view>{{ baseInfo.userName }}</view>
+        </view>
+        <view>
+            <text>性别</text>
+            <view>{{ baseInfo.userGender === 0 ? '女' : (baseInfo.userGender === 1 ? '男' : '未知') }}</view>
+        </view>
+    
+        <view>
+            <text>期望岗位</text>
+            <view>{{ baseInfo.job }}</view>
+        </view>
+    
+        <view>
+            <text>期望薪资</text>
+            <view>{{ baseInfo.salary }}</view>
+        </view>
+    
+        <view>
+            <text>出生日期:</text>
+            <view>{{ baseInfo.birthData }}</view>
+        </view>
+    
+        <view>
+            <text>邮箱</text>
+            <view>{{ baseInfo.eMail }}</view>
+        </view>
+    
+        <view>
+            <text>手机号码</text>
+            <view>{{ baseInfo.phoneNumber }}</view>
+        </view>
+    
+        <view>
+            <text>详细住址</text>
+            <view>{{ baseInfo.address }}</view>
+        </view>
+    </block>
 
-    <view>
-        <text>期望岗位</text>
-        <view>{{ baseInfo.job }}</view>
-    </view>
-
-    <view>
-        <text>期望薪资</text>
-        <view>{{ baseInfo.salary }}</view>
-    </view>
-
-    <view>
-        <text>出生日期:</text>
-        <view>{{ baseInfo.birthData }}</view>
-    </view>
-
-    <view>
-        <text>邮箱</text>
-        <view>{{ baseInfo.eMail }}</view>
-    </view>
-
-    <view>
-        <text>手机号码</text>
-        <view>{{ baseInfo.phoneNumber }}</view>
-    </view>
-
-    <view>
-        <text>详细住址</text>
-        <view>{{ baseInfo.address }}</view>
-    </view>
+    <block wx:if="{{ nullData }}">
+        <view class="nullDataStyle" wx:if="{{ nullData }}">暂无信息</view>
+    </block>
 
 </view>

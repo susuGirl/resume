@@ -39,8 +39,5 @@
     height: 25px;
     line-height: 25px;
     border-radius: 50%;
-    text-align: center;
-    font-size: 35rpx;
-    color: #fff;
     background: #A2A2A2;
 }
