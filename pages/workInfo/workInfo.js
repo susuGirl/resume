@@ -36,7 +36,6 @@ Page({
                 this.setData({
                     'workInfo': res.objects
                 })
-                console.log('请求数据---呵呵哒-----findworkInfo---- this.data.workInfo', this.data.workInfo)
                 if (this.data.shareResumeId && app.globalData.loginInfo && this.data.shareResumeId !== app.globalData.loginInfo.openid) {
                     recentlyViewResume(this.data.shareResumeId, res.objects[0].userName)
                 }

@@ -10,7 +10,6 @@ const addBaseInfo = (ctx, cb) => {
       let resume = new wx.BaaS.TableObject(tableId)
       let createInfo = resume.create()
       Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
-      console.log('66666666--save--传递的参数---ctx', ctx)
   
       createInfo.set(ctx)
       .save()
@@ -22,7 +21,6 @@ const updateBaseInfo = (ctx, cb) => {
       let tableId = allTableId.baseInfo.createBaseInfo
       let resume = new wx.BaaS.TableObject(tableId)
       let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
-      console.log('5555555---update----传递的参数---ctx', ctx)
 
       updateInfo.set(ctx)
       .update()
@@ -34,7 +32,6 @@ const findBaseInfo = (ctx, cb) => {
       let tableId = allTableId.baseInfo.createBaseInfo
       let resume = new wx.BaaS.TableObject(tableId)
       let query = new wx.BaaS.Query()
-      // console.log('3333333333333333333------ctx.shareResumeId', ctx)
       query.compare('openId', '=', ctx.shareResumeId ? ctx.shareResumeId : app.globalData.loginInfo.openid)
 
       resume.setQuery(query)
@@ -50,7 +47,6 @@ const addworkInfo = (ctx, cb) => {
   let resume = new wx.BaaS.TableObject(tableId)
   let createInfo = resume.create()
   Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
-  console.log('66666666--save--传递的参数---ctx', ctx)
 
   createInfo.set(ctx)
   .save()
@@ -63,7 +59,6 @@ const updateWorkInfo = (ctx, cb) => {
     let resume = new wx.BaaS.TableObject(tableId)
     let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
     // Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
-    console.log('5555555---update----传递的参数---ctx', ctx)
 
     updateInfo.set(ctx)
     .update()
@@ -74,7 +69,6 @@ const updateWorkInfo = (ctx, cb) => {
 const deleteWorkInfo = (ctx, cb) => {
   let tableId = allTableId.workInfo.createWorkInfo
   let resume = new wx.BaaS.TableObject(tableId)
-  console.log('5555555---update----传递的参数---ctx', ctx)
 
   resume.delete(ctx)
   .then(res => cb(res))
@@ -99,7 +93,6 @@ const addOtherkInfo = (ctx, cb) => {
   let resume = new wx.BaaS.TableObject(tableId)
   let createInfo = resume.create()
   Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
-  console.log('66666666--save--传递的参数---ctx', ctx)
 
   createInfo.set(ctx)
   .save()
@@ -112,7 +105,6 @@ const updateOtherkInfo = (ctx, cb) => {
   let resume = new wx.BaaS.TableObject(tableId)
   let updateInfo = resume.getWithoutData(ctx.recordID) // // the id of a piece data
   // Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
-  console.log('5555555---update----传递的参数---ctx', ctx)
 
   updateInfo.set(ctx)
   .update()
@@ -123,7 +115,6 @@ const updateOtherkInfo = (ctx, cb) => {
 const deleteOtherInfo = (ctx, cb) => {
   let tableId = allTableId.otherInfo.createOtherInfo
   let resume = new wx.BaaS.TableObject(tableId)
-  console.log('5555555---update----传递的参数---ctx', ctx)
 
   resume.delete(ctx)
   .then(res => cb(res))
@@ -161,7 +152,6 @@ const addCollectResume = (ctx, cb) => {
   let resume = new wx.BaaS.TableObject(tableId)
   let createInfo = resume.create()
   Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
-  console.log('66666666--save--传递的参数---ctx', ctx)
 
   createInfo.set(ctx)
   .save()
@@ -173,7 +163,6 @@ const uAppendCollectResume = (ctx, cb) => {
   let tableId = allTableId.collectResume.createCollectResume
   let resume = new wx.BaaS.TableObject(tableId)
   let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
-  console.log('5555555---update----传递的参数---ctx', ctx)
 
   updateInfo.uAppend('collectInfo', ctx.collectInfo)
   .update()
@@ -185,7 +174,6 @@ const removeCollectResume = (ctx, cb) => {
   let tableId = allTableId.collectResume.createCollectResume
   let resume = new wx.BaaS.TableObject(tableId)
   let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
-  console.log('5555555---remove----传递的参数---ctx', updateInfo)
 
   updateInfo.remove('collectInfo', ctx.collectInfo)
   .update()
@@ -212,7 +200,6 @@ const addRecentlyViewResume = (ctx, cb) => {
   let resume = new wx.BaaS.TableObject(tableId)
   let createInfo = resume.create()
   Object.assign(ctx, {openId: app.globalData.loginInfo.openid})
-  console.log('66666666--save--传递的参数---ctx', ctx)
 
   createInfo.set(ctx)
   .save()
@@ -224,7 +211,6 @@ const uAppendRecentlyViewResume = (ctx, cb) => {
   let tableId = allTableId.recentlyViewed.createRecentlyViewed
   let resume = new wx.BaaS.TableObject(tableId)
   let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
-  console.log('5555555---update----传递的参数---ctx', ctx)
 
   updateInfo.uAppend('recentlyViewed', ctx.recentlyViewed)
   .update()
@@ -236,7 +222,6 @@ const removeRecentlyViewResume = (ctx, cb) => {
   let tableId = allTableId.recentlyViewed.createRecentlyViewed
   let resume = new wx.BaaS.TableObject(tableId)
   let updateInfo = resume.getWithoutData(ctx.recordID) // the id of a piece data
-  console.log('5555555---remove----传递的参数---ctx', updateInfo)
 
   updateInfo.remove('recentlyViewed', ctx.recentlyViewed)
   .update()

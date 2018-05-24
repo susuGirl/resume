@@ -44,7 +44,6 @@ Component({
 
         // work info submit
         handleWorkFormSubmit (e) {
-          console.log('form submit data ----- @_@', e.detail.value)
           let obj = e.detail.value
           for (let i in obj) {
               if (obj[i] === '') {
@@ -62,15 +61,12 @@ Component({
               ...e.detail.value
           }
           
-          console.log('work--------------work------', params)
-          
           if (this.data.canWorkSubmit) {
             this.setData({
                 'canWorkSubmit': false
              })
             if (!this.data.singleWorkInfo.id) { // add new user information operation
                 sdkApi.addworkInfo(params, res => {
-                    console.log('请求成功了吗----add---6666-----res', res)
                     wx.showToast({
                           title: '成功',
                           icon: 'success',
@@ -88,7 +84,6 @@ Component({
             } else { // modify information operation 
                 Object.assign(params, {recordID: this.data.singleWorkInfo.id})
                 sdkApi.updateWorkInfo(params, res => {
-                     console.log('请求成功了吗----update---6666-----res', res)
                      wx.showToast({
                         title: '成功',
                         icon: 'success',

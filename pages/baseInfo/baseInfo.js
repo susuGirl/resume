@@ -18,7 +18,6 @@ Page({
         nullData: false
     },
     onLoad: function(option){
-        console.log('5555----路由参数', option)
         if (option.shareResumeId) {
             this.setData({
                 'shareResumeId': option.shareResumeId
@@ -32,7 +31,6 @@ Page({
         })
         let params = this.data.shareResumeId ? {'shareResumeId': this.data.shareResumeId} : {}
         sdkApi.findBaseInfo(params, res => {
-            console.log('222222222222222222-------------res', res)
             wx.hideLoading()
             if ( res.objects.length > 0) {
                 if (res.objects[0].birthData) {

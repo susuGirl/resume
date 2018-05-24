@@ -11,7 +11,6 @@ Page({
         recordID: ''
     },
     onLoad: function (queryParams) {
-        console.log('88888888888888888888888888------queryParams', queryParams)
         if (!app.globalData.loginInfo || !app.globalData.loginInfo.openid) {
             wx.BaaS.login().then(res => {
                 app.globalData.loginInfo = res
@@ -47,7 +46,6 @@ Page({
 
     findBaseInfo () {
         sdkApi.findBaseInfo({shareResumeId: app.globalData.loginInfo.openid}, res => {
-            console.log('6666666666666666666666-----res', res)
             if (!res.objects[0] || !res.objects[0].userName || !res.objects[0].openId) {
                 wx.hideShareMenu()
                 return
@@ -109,7 +107,6 @@ Page({
             if (this.data.tapAdd) {
                 sdkApi.addCollectResume({recordID: this.data.recordID, collectInfo: [params]}, res => {
                     this.findCollectResume()
-                    // console.log('66666666666666-----res', res)
                     this.setData({
                         'tapAdd': false,
                         'collectResume': !this.data.collectResume
@@ -118,7 +115,6 @@ Page({
                 })
             } else {
                 sdkApi.uAppendCollectResume({recordID: this.data.recordID, collectInfo: params }, res => {
-                    // console.log('66666666666666---update-----res', res)
                     this.setData({
                         'collectResume': !this.data.collectResume
                     })
@@ -129,7 +125,6 @@ Page({
             
         } else {
             sdkApi.removeCollectResume({recordID: this.data.recordID, collectInfo: params}, res => {
-                // console.log('66666666666666---remove---res', res)
                 this.setData({
                     'collectResume': !this.data.collectResume
                 })

@@ -7,7 +7,6 @@ const request = (url, obj = {}) => {
       obj.data = {};
     }
     return new Promise((resolve, reject) => {
-      // console.log('6666----缓存', wx.getStorageSync('tctoken'))
       wx.request({
         url: app.globalData.serverUrl + url,
         header: obj.header || {

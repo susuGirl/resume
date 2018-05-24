@@ -106,7 +106,6 @@ Page({
                     'workInfo': res.objects,
                     'hideWorkDialog': true
                 })
-                console.log('请求数据---呵呵哒-----findworkInfo---- this.data.workInfo', this.data.workInfo)
             } else {
                 this.setData({
                     'workInfo': [{
@@ -125,7 +124,6 @@ Page({
     // init user other info data
     findOtherkInfo (e) {
         sdkApi.findOtherkInfo({}, res=> {
-            console.log('findOtherkInfo------------init---res', res)
             if (res.objects.length > 0) {
                 if (res.objects[0].id) {
                     this.setData({
@@ -158,8 +156,6 @@ Page({
                     }]
                 })
             }
-            
-            console.log('otherInfo--------------666-----@_@', this.data.otherInfo)
         })
     },
 
@@ -179,7 +175,6 @@ Page({
     
     // base info submit
     handleBaseFormSubmit (e) {
-        console.log('form submit data ----- @_@', e.detail.value)
         let obj = e.detail.value
         for (let i in obj) {
             if (obj[i] === '') {

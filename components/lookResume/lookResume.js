@@ -36,7 +36,6 @@ Component({
             })
         },
         _handleDelete (e) {
-            console.log('333333333333333333----e', e.currentTarget.dataset)
             this.triggerEvent("handleDelete", e.currentTarget.dataset)
         }
     }
