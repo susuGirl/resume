@@ -87,20 +87,21 @@ Page({
     // init user work info data
     findworkInfo (e) {
         sdkApi.findworkInfo({}, res => {
+            let objInfo = {
+                companyName: '',
+                datesEmployed: '',
+                companyAddress: '',
+                employedProfession: '',
+                userName: this.data.baseInfo.userName,
+                phoneNumber: this.data.baseInfo.phoneNumber
+            }
             if ( res.objects.length > 0) {
                 res.objects.forEach(val => {
                     if (val.datesEmployed) {
                         val.datesEmployed = val.datesEmployed.substring(0, 10)
                     }
                 })
-                res.objects.push({
-                    companyName: '',
-                    datesEmployed: '',
-                    companyAddress: '',
-                    employedProfession: '',
-                    userName: this.data.baseInfo.userName,
-                    phoneNumber: this.data.baseInfo.phoneNumber
-                })
+                res.objects.push(objInfo)
                 
                 this.setData({
                     'workInfo': res.objects,
@@ -108,14 +109,7 @@ Page({
                 })
             } else {
                 this.setData({
-                    'workInfo': [{
-                        companyName: '',
-                        datesEmployed: '',
-                        companyAddress: '',
-                        employedProfession: '',
-                        userName: this.data.baseInfo.userName,
-                        phoneNumber: this.data.baseInfo.phoneNumber
-                    }]
+                    'workInfo': [objInfo]
                 })
             }
        })
@@ -151,15 +145,40 @@ Page({
             } else {
                 this.setData({
                     'otherInfo': [{
-                        title0: 'title',
-                        content0: ''
+                        title0: '',
+                        content0: '点击输入内容'
                     }]
                 })
             }
         })
     },
 
+    rejectEditFn () { // 验证基本信息是否已填写并提交
+        if (this.data.rejectEdit) {
+            wx.showToast({
+                title: '请先完善您的基本信息，再编辑工作信息 @_@',
+                icon: 'none',
+                duration: 2000
+              })
+            return false
+        }
+        return true
+    },
+    verificationForm (obj) { // 验证表单信息是否已全部填写
+        for (let i in obj) {
+            if (obj[i] === '') {
+              wx.showToast({
+                  title: '请先填写完整信息方可保存 @_@',
+                  icon: 'none',
+                  duration: 2000
+                })
+                return false
+            }
+        }
+        return true
+    },
 
+    // 基本信息
     // base info date picker change event
     handleDateChange (e) {
         this.setData({
@@ -175,17 +194,7 @@ Page({
     
     // base info submit
     handleBaseFormSubmit (e) {
-        let obj = e.detail.value
-        for (let i in obj) {
-            if (obj[i] === '') {
-            wx.showToast({
-                title: '请先填写完整信息方可保存 @_@',
-                icon: 'none',
-                duration: 2000
-                })
-                return
-            }
-        }
+        if (!this.verificationForm(e.detail.value)) return
         // add userGender object in order to handle the gender option is blank
         let baseInfo = Object.assign({}, this.data.baseInfo, e.detail.value, {userGender: Number(e.detail.value.userGender)})
         this.setData({
@@ -220,35 +229,28 @@ Page({
             title: '成功',
             icon: 'success',
             duration: 1500
+        })
+        let index = this.data.workInfo.length - 1
+        setTimeout(() => {
+            this.setData({
+                    'canBaseSubmit': true,
+                    'rejectEdit': false,
+                    ['workInfo[' + index + ']']: { // add a name and a phone information for each blank work information,put into the database later
+                    companyName: '',
+                    datesEmployed: '',
+                    companyAddress: '',
+                    employedProfession: '',
+                    userName: this.data.baseInfo.userName,
+                    phoneNumber: this.data.baseInfo.phoneNumber
+                }
             })
-            let index = this.data.workInfo.length - 1
-            setTimeout(() => {
-                this.setData({
-                     'canBaseSubmit': true,
-                     'rejectEdit': false,
-                     ['workInfo[' + index + ']']: { // add a name and a phone information for each blank work information,put into the database later
-                        companyName: '',
-                        datesEmployed: '',
-                        companyAddress: '',
-                        employedProfession: '',
-                        userName: this.data.baseInfo.userName,
-                        phoneNumber: this.data.baseInfo.phoneNumber
-                    }
-                })
-            }, 1000)
+        }, 1000)
     },
 
-    // work info
+    // 工作信息
     // click card : tap event
     handleWorkInfoCardTap (e) {
-        if (this.data.rejectEdit) {
-            wx.showToast({
-                title: '请先完善您的基本信息，再编辑工作信息 @_@',
-                icon: 'none',
-                duration: 2000
-              })
-            return
-        }
+        if (!this.rejectEditFn()) return
         this.setData({
             'hideWorkDialog': false,
             'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
@@ -269,8 +271,7 @@ Page({
     },
 
     
-    // other info
-
+    // 其他信息
     showDialog (e) {
         this.setData({
             'textareaContent': this.data.otherInfo[e.currentTarget.dataset.operationalDataIndex]['content' + e.currentTarget.dataset.operationalDataIndex] || '',
@@ -375,25 +376,8 @@ Page({
     },
 
     handleOtherFormSubmit (e) {
-        if (this.data.rejectEdit) {
-            wx.showToast({
-                title: '请先完善您的基本信息，再编辑工作信息 @_@',
-                icon: 'none',
-                duration: 2000
-              })
-            return
-        }
-        let obj = e.detail.value
-        for (let i in obj) {
-            if (obj[i] === '') {
-              wx.showToast({
-                  title: '请先填写完整信息方可保存 @_@',
-                  icon: 'none',
-                  duration: 2000
-                })
-                return
-            }
-        }
+        if (!this.rejectEditFn()) return
+        if (!this.verificationForm(e.detail.value)) return
         let params = {
             ...e.detail.value,
             userName: this.data.baseInfo.userName,
