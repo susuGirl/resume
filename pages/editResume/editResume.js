@@ -155,11 +155,7 @@ Page({
 
     rejectEditFn () { // 验证基本信息是否已填写并提交
         if (this.data.rejectEdit) {
-            wx.showToast({
-                title: '请先完善您的基本信息，再编辑工作信息 @_@',
-                icon: 'none',
-                duration: 2000
-              })
+            app.noneToast('请先完善您的基本信息，再编辑工作信息 @_@')
             return false
         }
         return true
@@ -167,11 +163,7 @@ Page({
     verificationForm (obj) { // 验证表单信息是否已全部填写
         for (let i in obj) {
             if (obj[i] === '') {
-              wx.showToast({
-                  title: '请先填写完整信息方可保存 @_@',
-                  icon: 'none',
-                  duration: 2000
-                })
+                app.noneToast('请先填写完整信息方可保存 @_@')
                 return false
             }
         }
@@ -225,11 +217,7 @@ Page({
     },
 
     successBasicInformation () {
-        wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 1500
-        })
+        app.successToast()
         let index = this.data.workInfo.length - 1
         setTimeout(() => {
             this.setData({
@@ -321,11 +309,7 @@ Page({
             temp.splice(e.currentTarget.dataset.operationalDataIndex, 1)
             this.handleOperationalData(temp, e.currentTarget.dataset.operationalDataIndex, 'delete')
         } else {
-            wx.showToast({
-                title: '请至少保留一条信息 @_@',
-                icon: 'none',
-                duration: 2000
-              })
+            app.noneToast('请至少保留一条信息 @_@')
             return
         }
     },
@@ -399,11 +383,7 @@ Page({
 
     addOtherkInfo (params, refresh) {
         sdkApi.addOtherkInfo(params, res => {
-            wx.showToast({
-                title: '成功',
-                icon: 'success',
-                duration: 1500
-            })
+            app.successToast()
             if (refresh === 'refresh') {
               this.findOtherkInfo()
             }

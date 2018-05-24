@@ -1,10 +1,10 @@
-//app.js
+
 App({
   globalData: {
     // serverUrl: 'https://api.it120.cc',
     loginInfo: null,
     userInfo: null,
-    clientId: '1dd3e890aaacdd76723a',// 从 BaaS 后台获取 ClientID
+    clientId: '1dd3e890aaacdd76723a', // 从 BaaS 后台获取 ClientID
     systemInfo: null
   },
   
@@ -13,8 +13,6 @@ App({
     require('./utils/sdk-v1.2.1.js') 
     let clientId = this.globalData.clientId
     wx.BaaS.init(clientId)
-
-
    
     wx.BaaS.login().then(res => {
       that.globalData.loginInfo = res
@@ -36,6 +34,21 @@ App({
           that.globalData.systemInfo = res
       }
     })
+  },
+  // 该项目的表单编辑页面都调用了app.js，所以把toast写这个位置，省的再引进一个东西
+  successToast () {
+    wx.showToast({
+        title: '成功',
+        icon: 'success',
+        duration: 1500
+    })
+  },
+  noneToast (text) {
+    wx.showToast({
+        title: text,
+        icon: 'none',
+        duration: 2000
+      })
   }
   
 })

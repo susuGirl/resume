@@ -47,11 +47,7 @@ Component({
           let obj = e.detail.value
           for (let i in obj) {
               if (obj[i] === '') {
-                wx.showToast({
-                    title: '请先填写完整信息方可保存 @_@',
-                    icon: 'none',
-                    duration: 2000
-                  })
+                  app.noneToast('请先填写完整信息方可保存 @_@')
                   return
               }
           }
@@ -67,11 +63,7 @@ Component({
              })
             if (!this.data.singleWorkInfo.id) { // add new user information operation
                 sdkApi.addworkInfo(params, res => {
-                    wx.showToast({
-                          title: '成功',
-                          icon: 'success',
-                          duration: 1500
-                      })
+                      app.successToast()
                       setTimeout(() => {
                           this.setData({
                              'canWorkSubmit': true
@@ -84,11 +76,7 @@ Component({
             } else { // modify information operation 
                 Object.assign(params, {recordID: this.data.singleWorkInfo.id})
                 sdkApi.updateWorkInfo(params, res => {
-                     wx.showToast({
-                        title: '成功',
-                        icon: 'success',
-                        duration: 1500
-                      })
+                      app.successToast()
                       this.setData({
                           'workInfo': []
                       })
