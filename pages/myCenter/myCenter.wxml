@@ -3,11 +3,11 @@
          <open-data type="userAvatarUrl"></open-data>
     </view>
     <view class="buttonStyle" style="margin-top:{{ canIUse ? '10rpx' : '100rpx' }}">
-        <button bind:tap="editResumeTap">edit</button>
-        <button bind:tap="collectResumeTap">collect</button>
-        <button bind:tap="recentlyViewedResumeTap">recently viewed</button>
+        <button bind:tap="editResumeTap">编辑简历</button>
+        <button bind:tap="collectResumeTap">收藏的简历</button>
+        <button bind:tap="showOwnResume">展示我的简历</button>
+        <button bind:tap="recentlyViewedResumeTap">最近浏览过的简历</button>
         <!-- <button bind:tap="searchReusmeTap">search resume</button> -->
-        <button bind:tap="showOwnResume">show my resume</button>
         <!-- <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">getUserInfo</button> -->
         <!-- <open-data type="userNickName" lang="zh_CN"></open-data>  -->
     </view>

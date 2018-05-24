@@ -5,8 +5,8 @@
         </view>
         <view class="userNameStyle">{{ userName || 'no information' }}</view>
     </view>
-    <button catch:tap="_baseInfoTap">baseInfo</button>
-    <button catch:tap="_workInfoTap">workInfoTap</button>
-    <button catch:tap="_otherInfoTap">otherInfoTap</button>
-    <button catch:tap="_selfIntroductionTap">selfIntroductionTap</button>
+    <button catch:tap="_baseInfoTap">基本信息</button>
+    <button catch:tap="_workInfoTap">工作信息</button>
+    <button catch:tap="_otherInfoTap">其他信息</button>
+    <!-- <button catch:tap="_selfIntroductionTap">selfIntroductionTap</button> -->
 </view>

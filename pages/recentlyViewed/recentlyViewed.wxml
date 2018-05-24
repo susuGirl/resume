@@ -1,7 +1,7 @@
 <view>
     <view class="recentlyResumeTitleStyle">
-        <text>recently viewed resume <text class="textStyle">{{ recentlyViewed.length }}</text>/piece</text>
-        <text>Up to 20 pieces of data</text>
+        <text>最近浏览过的简历 <text class="textStyle">{{ recentlyViewed.length }}</text>/份</text>
+        <text>最多展示20份最近浏览简历</text>
     </view>
     <!-- <view wx:for="{{ recentlyViewed }}" wx:key="{{ index }}" class="collectCard">
         <view>{{ item.userName }}</view>
