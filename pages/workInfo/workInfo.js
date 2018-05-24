@@ -8,6 +8,8 @@ Page({
             {
                 companyName: '',
                 datesEmployed: '',
+                companyAddress: '',
+                employedProfession: '',
                 id: null
             }
         ],

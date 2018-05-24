@@ -4,7 +4,7 @@ Page({
     },
     onLoad: function () {
         this.setData({
-            canIUse: wx.canIUse('open-data')
+            'canIUse': wx.canIUse('open-data')
         })
         console.log('66666666666666-----canIUse', this.data.canIUse)
     },

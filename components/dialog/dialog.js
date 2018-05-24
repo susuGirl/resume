@@ -49,13 +49,13 @@ Component({
       //隐藏弹框
       hideDialog(){
         this.setData({
-          isShow: !this.data.isShow
+          'isShow': !this.data.isShow
         })
       },
       //展示弹框
       showDialog(){
         this.setData({
-          isShow: !this.data.isShow
+          'isShow': !this.data.isShow
         })
       },
        /*

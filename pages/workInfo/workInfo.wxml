@@ -3,12 +3,20 @@
     <block wx:for="{{ workInfo }}" wx:key="{{ index }}">
         <view class="workCard" wx:if="{{ item.id }}" data-single-work-info="{{ index }}" bind:tap="handleWorkInfoCardTap">
             <view>
-                <text>companyName:</text>
+                <text>公司名称:</text>
                 <text name="companyName">{{ item.companyName || '' }}</text>
             </view>
             <view>
-                <text>datesEmployed:</text>
+                <text>公司地点:</text>
+                <text name="companyAddress">{{ item.companyAddress || '' }}</text>
+            </view>
+            <view>
+                <text>入职日期:</text>
                 <text name="datesEmployed">{{ item.datesEmployed || '' }}</text>
+            </view>
+            <view>
+                <text>在职岗位:</text>
+                <text name="employedProfession">{{ item.employedProfession || '' }}</text>
             </view>
         </view>
 

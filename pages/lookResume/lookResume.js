@@ -65,7 +65,7 @@ Page({
 
                 if (res.objects[0].collectInfo.indexOf(currentResume) > -1) {
                     this.setData({
-                        collectResume: false
+                        'collectResume': false
                     })
                 }
                 this.setData({

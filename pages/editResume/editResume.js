@@ -19,6 +19,8 @@ Page({
             {
                 companyName: '',
                 datesEmployed: '',
+                companyAddress: '',
+                employedProfession: '',
                 id: null,
             }
         ],
@@ -34,12 +36,14 @@ Page({
         singleWorkInfo: {
             companyName: '',
             datesEmployed: '',
+            companyAddress: '',
+            employedProfession: '',
             userName: '',
             phoneNumber: ''
         },
         canBaseSubmit: true,
         canOtherSubmit: true,
-        rejectEdit: true,
+        rejectEdit: true, // Other information cannot be saved unless you have edited and saved the basic information
         showDialog: false,
         operationalDataIndex: 0,
         textareaContent: ''
@@ -64,7 +68,6 @@ Page({
             title: '获取数据中...'
           })
         sdkApi.findBaseInfo({}, res => {
-            console.log('44444444444----baseInfo---res', res)
             wx.hideLoading()
             if ( res.objects.length > 0) {
                 if (res.objects[0].birthData) {
@@ -75,8 +78,6 @@ Page({
                 'baseInfo': res.objects[0],
                 'rejectEdit': false
                })
-               console.log('AAAAAAAAAAAAAAAAA-------baseInfo', this.data.baseInfo)
-            //    wx.setStorageSync('userInfo', {phoneNumber: res.objects[0].phoneNumber, userName: res.objects[0].userName})
             }
             this.findworkInfo()
             this.findOtherkInfo()
@@ -95,6 +96,8 @@ Page({
                 res.objects.push({
                     companyName: '',
                     datesEmployed: '',
+                    companyAddress: '',
+                    employedProfession: '',
                     userName: this.data.baseInfo.userName,
                     phoneNumber: this.data.baseInfo.phoneNumber
                 })
@@ -109,6 +112,8 @@ Page({
                     'workInfo': [{
                         companyName: '',
                         datesEmployed: '',
+                        companyAddress: '',
+                        employedProfession: '',
                         userName: this.data.baseInfo.userName,
                         phoneNumber: this.data.baseInfo.phoneNumber
                     }]
@@ -167,29 +172,30 @@ Page({
     },
 
     handlePhoneNumber (e) {
-        console.log('55555555555555555-----e', e)
         this.setData({
             'baseInfo.phoneNumber': e.detail.value.replace(/\D/g, '')
         })
-        // this.patPhone = e.target.value.replace(/\D/g, '')
     },
     
     // base info submit
     handleBaseFormSubmit (e) {
         console.log('form submit data ----- @_@', e.detail.value)
-        if (!e.detail.value.phoneNumber || !e.detail.value.userName) {
+        let obj = e.detail.value
+        for (let i in obj) {
+            if (obj[i] === '') {
             wx.showToast({
-                title: '* is mandatory',
+                title: '请先填写完整信息方可保存 @_@',
                 icon: 'none',
                 duration: 2000
-              })
-            return
+                })
+                return
+            }
         }
-        let baseInfo = Object.assign({}, this.data.baseInfo, e.detail.value)
+        // add userGender object in order to handle the gender option is blank
+        let baseInfo = Object.assign({}, this.data.baseInfo, e.detail.value, {userGender: Number(e.detail.value.userGender)})
         this.setData({
             baseInfo: baseInfo
         })
-        // console.log('7777777777777777-----baseInfo', this.data.baseInfo)
         let params = {
             ...e.detail.value,
             userGender: Number(e.detail.value.userGender)
@@ -200,51 +206,13 @@ Page({
              })
              if (!this.data.baseInfo.id) { // add new user information operation
                 sdkApi.addBaseInfo(params, res => {
-                    console.log('请求成功了吗----add---6666-----res', res)
-                    wx.showToast({
-                        title: '成功',
-                        icon: 'success',
-                        duration: 1500
-                        })
-                        let index = this.data.workInfo.length - 1
-                        setTimeout(() => {
-                            this.setData({
-                                 'canBaseSubmit': true,
-                                 'rejectEdit': false,
-                                 ['workInfo[' + index + ']']: {
-                                    companyName: '',
-                                    datesEmployed: '',
-                                    userName: this.data.baseInfo.userName,
-                                    phoneNumber: this.data.baseInfo.phoneNumber
-                                }
-                            })
-                        }, 1000)
-                    
+                    this.successBasicInformation()
                 })
     
             } else { // modify information operation
                 Object.assign(params, {recordID: this.data.baseInfo.id})
                 sdkApi.updateBaseInfo(params, res => {
-                    wx.showToast({
-                        title: '成功',
-                        icon: 'success',
-                        duration: 1500
-                    })
-                    let index = this.data.workInfo.length - 1
-                    setTimeout(() => {
-                        console.log('请求成功了吗----update---6666-----res', res)
-                        this.setData({
-                            'canBaseSubmit': true,
-                            'rejectEdit': false,
-                            ['workInfo[' + index + ']']: {
-                               companyName: '',
-                               datesEmployed: '',
-                               userName: this.data.baseInfo.userName,
-                               phoneNumber: this.data.baseInfo.phoneNumber
-                           }
-                        })
-                    }, 1000)
-                    
+                    this.successBasicInformation()
                 })
     
             }
@@ -252,12 +220,35 @@ Page({
         
     },
 
+    successBasicInformation () {
+        wx.showToast({
+            title: '成功',
+            icon: 'success',
+            duration: 1500
+            })
+            let index = this.data.workInfo.length - 1
+            setTimeout(() => {
+                this.setData({
+                     'canBaseSubmit': true,
+                     'rejectEdit': false,
+                     ['workInfo[' + index + ']']: { // add a name and a phone information for each blank work information,put into the database later
+                        companyName: '',
+                        datesEmployed: '',
+                        companyAddress: '',
+                        employedProfession: '',
+                        userName: this.data.baseInfo.userName,
+                        phoneNumber: this.data.baseInfo.phoneNumber
+                    }
+                })
+            }, 1000)
+    },
+
     // work info
     // click card : tap event
     handleWorkInfoCardTap (e) {
         if (this.data.rejectEdit) {
             wx.showToast({
-                title: 'Please complete your basic information first.',
+                title: '请先完善您的基本信息，再编辑工作信息 @_@',
                 icon: 'none',
                 duration: 2000
               })
@@ -267,7 +258,6 @@ Page({
             'hideWorkDialog': false,
             'singleWorkInfo': this.data.workInfo[e.currentTarget.dataset.singleWorkInfo] || this.data.workInfo[this.data.workInfo.length - 1]
         })
-        console.log('66666666666666-----singleWorkInfo', this.data.singleWorkInfo)
     },
     // delete card
     deleteCard (e) {
@@ -330,7 +320,6 @@ Page({
     // delete row
     handleDeleteInfo (e) {
         if (this.data.otherInfo.length > 1) {
-            console.log('666666666666666666-----this.data.otherInfo', this.data.otherInfo)
             let temp = []
             let infoArray = []
             temp = this.data.otherInfo.slice(0)
@@ -338,7 +327,7 @@ Page({
             this.handleOperationalData(temp, e.currentTarget.dataset.operationalDataIndex, 'delete')
         } else {
             wx.showToast({
-                title: 'Please keep at least one content',
+                title: '请至少保留一条信息 @_@',
                 icon: 'none',
                 duration: 2000
               })
@@ -392,10 +381,9 @@ Page({
     },
 
     handleOtherFormSubmit (e) {
-        console.log('handleOtherFormSubmit-----------submit', e)
         if (this.data.rejectEdit) {
             wx.showToast({
-                title: 'Please complete your basic information first.',
+                title: '请先完善您的基本信息，再编辑工作信息 @_@',
                 icon: 'none',
                 duration: 2000
               })
@@ -423,7 +411,6 @@ Page({
 
     addOtherkInfo (params, refresh) {
         sdkApi.addOtherkInfo(params, res => {
-            console.log('other-info------add---res--@_@', res)
             wx.showToast({
                 title: '成功',
                 icon: 'success',

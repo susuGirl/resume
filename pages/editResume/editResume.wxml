@@ -5,7 +5,7 @@
             <view class="infoCardStyle baseInfoCard">
                 <form bindsubmit="handleBaseFormSubmit">
                     <view class="textInputStyle">
-                        <text><text style="color: red;">*</text>真实名字</text>
+                        <text>真实名字</text>
                         <input name="userName" value="{{ baseInfo.userName }}" placeholder="please inpiut your name" />
                     </view>
 
@@ -32,8 +32,8 @@
 
                     <view>
                         <text>出生日期</text>
-                        <picker name="birthData" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
-                            <input disabled value="{{ baseInfo.birthData }}"  placeholder="please inpiut your birthData"></input>
+                        <picker mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                            <input name="birthData" disabled value="{{ baseInfo.birthData }}"  placeholder="please inpiut your birthData"></input>
                         </picker>
                     </view>
 
@@ -44,7 +44,7 @@
                     </view>
 
                     <view class="textInputStyle">
-                        <text><text style="color: red;">*</text>手机号码</text>
+                        <text>手机号码</text>
                         <input bindinput="handlePhoneNumber" type="number" maxlength="11" name="phoneNumber" value="{{ baseInfo.phoneNumber }}"  placeholder="please inpiut your phoneNumber" />
                     </view>
 
@@ -65,20 +65,28 @@
 
                     <view class="workCard" wx:if="{{ item.id }}" data-single-work-info="{{ index }}" bind:tap="handleWorkInfoCardTap">
                         <view>
-                            <text>companyName:</text>
-                            <text name="companyName">{{ item.companyName }}</text>
+                            <text>公司名称:</text>
+                            <text name="companyName">{{ item.companyName || '' }}</text>
                         </view>
                         <view>
-                            <text>datesEmployed:</text>
-                            <text name="datesEmployed">{{ item.datesEmployed }}</text>
+                            <text>公司地点:</text>
+                            <text name="companyAddress">{{ item.companyAddress || '' }}</text>
+                        </view>
+                        <view>
+                            <text>入职日期:</text>
+                            <text name="datesEmployed">{{ item.datesEmployed || '' }}</text>
+                        </view>
+                        <view>
+                            <text>在职岗位:</text>
+                            <text name="employedProfession">{{ item.employedProfession || '' }}</text>
                         </view>
                         <view class="deleteWorkCard" catch:tap="deleteCard" data-card-id="{{ item.id }}">
                             <icon  color="white" type="cancel" size="25"></icon>
                         </view>
                     </view>
 
-                    <view class="workCard" wx:if="{{ !item.id }}" bind:tap="handleWorkInfoCardTap">
-                        click add work info
+                    <view class="workCard noInformationStyle" wx:if="{{ !item.id }}" bind:tap="handleWorkInfoCardTap">
+                        请点击添加您的工作信息
                     </view>
                 </block>
             </view>

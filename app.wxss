@@ -28,7 +28,7 @@ page {
 }
 .workCard view text:nth-child(1) {
     font-weight: 700;
-    padding: 5rpx;
+    padding: 10rpx;
 }
 .workCard view text:nth-child(2) {
     padding-right: 10rpx;

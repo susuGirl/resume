@@ -26,7 +26,6 @@ Page({
     },
 
     handleCancelCollection (e) {
-        console.log('222222222222222222222222222222', e.detail)
         let params = e.detail.shareresumeId + ',' + e.detail.userName
         sdkApi.removeCollectResume({recordID: this.data.recordID, collectInfo: params}, res => {
             this.findCollectResume()

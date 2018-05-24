@@ -49,7 +49,7 @@ Component({
           for (let i in obj) {
               if (obj[i] === '') {
                 wx.showToast({
-                    title: 'please complete your information first',
+                    title: '请先填写完整信息方可保存 @_@',
                     icon: 'none',
                     duration: 2000
                   })
