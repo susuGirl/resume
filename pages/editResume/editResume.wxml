@@ -116,7 +116,7 @@
 
         <view class="formAreaStyle">
             <form bindsubmit="handleTextareaSubmit">
-                <textarea name="editContent" value="{{ textareaContent }}" placeholder="please inpiut" auto-height>
+                <textarea maxlength="200" name="editContent" value="{{ textareaContent }}" placeholder="please inpiut" auto-height>
                     
                 </textarea>
                 <view class="bottonStyle">

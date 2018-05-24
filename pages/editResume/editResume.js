@@ -294,7 +294,6 @@ Page({
         })
     },
     handleTextareaSubmit (e) {
-        console.log('1111111111111111---- e.detail.value',  e.detail.value)
         this.setData({
             'showDialog': false,
             ['otherInfo[' + this.data.operationalDataIndex + '].content' + this.data.operationalDataIndex]: e.detail.value.editContent

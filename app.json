@@ -31,13 +31,13 @@
      "list": [
        {
          "pagePath": "pages/lookResume/lookResume",
-         "text": "look",
+         "text": "查看预览",
          "iconPath": "images/img2.png",
          "selectedIconPath": "images/img1.png"
        },
        {
         "pagePath": "pages/myCenter/myCenter",
-        "text": "me",
+        "text": "我的中心",
         "iconPath": "images/img3.png",
         "selectedIconPath": "images/img1.png"
       }
