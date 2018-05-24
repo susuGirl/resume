@@ -3,7 +3,7 @@
         <view class="imageStyle">
             <image mode="aspectFill" src="../../images/roses.png"></image>
         </view>
-        <view class="userNameStyle">{{ userName || 'no information' }}</view>
+        <view class="userNameStyle">{{ userName || '无信息' }}</view>
     </view>
     <button catch:tap="_baseInfoTap">基本信息</button>
     <button catch:tap="_workInfoTap">工作信息</button>
