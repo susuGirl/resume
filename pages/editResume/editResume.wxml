@@ -3,7 +3,7 @@
     <swiper class="swiperStyle" indicator-dots>
         <swiper-item>
             <view class="infoCardStyle baseInfoCard">
-                <form bindsubmit="handleBaseFormSubmit">
+                <form bindsubmit="handleBaseFormSubmit" bindreset="handleBaseFormReset">
                     <view class="textInputStyle">
                         <text>真实名字</text>
                         <input name="userName" value="{{ baseInfo.userName }}" placeholder="请编辑信息" />
@@ -53,7 +53,10 @@
                         <input name="address" value="{{ baseInfo.address }}"  placeholder="请编辑信息" />
                     </view>
 
-                    <button class="comButtonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">保存</button>
+                    <view class="formButtomStyle">
+                        <button class="comButtonStyle" form-type="reset">重置</button>
+                        <button class="comButtonStyle" form-type="submit" disabled="{{ !canBaseSubmit }}">保存</button>
+                    </view>
                 </form>
             </view>
         </swiper-item>

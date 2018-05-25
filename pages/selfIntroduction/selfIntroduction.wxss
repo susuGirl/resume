@@ -1,0 +1,30 @@
+.showImagesStyle {
+    width: 100%;
+    /* height: 600rpx; */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background: #fff;
+}
+.showImagesStyle view {
+    width: 30%;
+    height: 200rpx;
+    overflow: hidden;
+}
+.showImagesStyle view images {
+    /* width: 200rpx;
+    height: 200rpx; */
+}
+.showImagesStyle .addImage {
+    line-height: 200rpx;
+    /* margin-left: 10px; */
+    text-align: center;
+    border: 1px dashed gray;
+    font-size: 80rpx;
+    font-weight: 700;
+    color: gray;
+}
+button {
+    width: 50%;
+    margin: 10rpx;
+}

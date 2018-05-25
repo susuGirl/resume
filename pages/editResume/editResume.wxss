@@ -37,13 +37,13 @@
 .baseInfoCard view input:nth-child(2), .baseInfoCard view picker:nth-child(2) {
     width: 100%;
 }
-.baseInfoCard view .radioGroupStyle radio .wx-radio-input{
+.baseInfoCard view .radioGroupStyle radio .wx-radio-input {
     border-radius: 50%;
     width: 30rpx;
     height: 30rpx;
  }
  /* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
- .baseInfoCard view .radioGroupStyle radio .wx-radio-input.wx-radio-input-checked::before{
+ .baseInfoCard view .radioGroupStyle radio .wx-radio-input.wx-radio-input-checked::before {
     border-radius: 50%;
     width: 25rpx;
     height: 25rpx;
@@ -51,6 +51,15 @@
     text-align: center;
     font-size: 20rpx;
     color:#fff;
+ }
+ /* button style */
+ .baseInfoCard .formButtomStyle {
+    border: none;
+    display: flex;
+    flex-direction: row;
+ }
+ .baseInfoCard .formButtomStyle button {
+    width: 30%;
  }
 
 .textInputStyle {

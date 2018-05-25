@@ -8,5 +8,5 @@
     <button catch:tap="_baseInfoTap">基本信息</button>
     <button catch:tap="_workInfoTap">工作信息</button>
     <button catch:tap="_otherInfoTap">其他信息</button>
-    <!-- <button catch:tap="_selfIntroductionTap">selfIntroductionTap</button> -->
+    <button catch:tap="_selfIntroductionTap">其他资料</button>
 </view>

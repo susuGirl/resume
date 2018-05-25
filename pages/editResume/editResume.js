@@ -215,6 +215,12 @@ Page({
         }
         
     },
+    // reset base information form
+    handleBaseFormReset (e) {
+        this.setData({
+            'baseInfo.userGender': 2,
+        })
+    },
 
     successBasicInformation () {
         app.successToast()

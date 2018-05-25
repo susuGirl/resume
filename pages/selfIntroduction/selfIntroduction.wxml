@@ -1,1 +1,12 @@
-<view>self-introduction</view>
+<view>
+    <!-- <button bind:tap="upLoadFiles">upload</button> -->
+    <form bindsubmit="formSubmit" id='2' bindreset="formReset">
+        <view class="showImagesStyle">
+            <view wx:for="{{ imgArr }}" wx:key="{{ index }}">
+                <image src='{{ item }}' mode="scaleToFill"></image>
+            </view>
+            <view wx:if="{{ imgArr.length < 9 }}" class="addImage" bind:tap="upLoadImage">+</view>
+        </view>    
+        <button formType="submit">提交</button>    
+    </form> 
+</view>

@@ -2,10 +2,10 @@
 const app = getApp()
 
 const request = (url, obj = {}) => {
-    let page = this; // 这个地方非常重要，重置data{}里数据时候setData方法的this应为以及函数的this, 如果在下方的sucess直接写this就变成了wx.request()的this了
     if (!obj.data) {
-      obj.data = {};
+      obj.data = {}
     }
+    let page = this; // 这个地方非常重要，重置data{}里数据时候setData方法的this应为以及函数的this, 如果在下方的sucess直接写this就变成了wx.request()的this了
     return new Promise((resolve, reject) => {
       wx.request({
         url: app.globalData.serverUrl + url,
@@ -27,10 +27,44 @@ const request = (url, obj = {}) => {
       })
     })
   }
+
+  const getCredentials = (url, obj = {}) => {
+    console.log('111111111111111111-----obj', obj)
+    let page = this
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: app.globalData.fileServer + url,
+        header: {
+          // 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+          'Content-Type': 'multipart/form-data'
+        }, 
+        data: obj || {},
+        method: 'POST',
+
+        success: function (res) {
+          console.log('111111111111111--------res', res)
+          resolve(res.data)
+        },
+
+        fail: function (res) {
+          reject(res)
+        }
+      })
+    })
+  }
+
+  function json2Form(json) {  
+    var str = [];  
+    for(let p in json){  
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(json[p]));  
+    }  
+    return str.join("&");  
+}
   // decodeURIComponent 编码  encodeURIComponent 解码
   // JSON.parse(decodeURIComponent(JSON.stringify(res.data)))
 
 
   module.exports = {
-    request: request
+    request,
+    getCredentials
   }

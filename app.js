@@ -2,6 +2,8 @@
 App({
   globalData: {
     // serverUrl: 'https://api.it120.cc',
+    uploadFileServer: 'https://v0.api.upyun.com',
+    fileServer: 'https://cloud.minapp.com',
     loginInfo: null,
     userInfo: null,
     clientId: '1dd3e890aaacdd76723a', // 从 BaaS 后台获取 ClientID
