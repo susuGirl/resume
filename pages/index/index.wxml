@@ -1,5 +1,0 @@
-<!--index.wxml-->
-<view>
-  <button catch:tap="requestTap">请求接口</button>
-  <button catch:tap="openDialog">打开弹框</button>
-</view>
