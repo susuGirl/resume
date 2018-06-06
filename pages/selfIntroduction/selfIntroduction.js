@@ -16,7 +16,6 @@ Page({
           sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
           success: (res) => {
             // 返回选定照片的本地文件路径列表，tempFilePath 可以作为 img 标签的 src 属性显示图片
-            console.log('1111111111111111111-------res', res)
             that.setData({
                 imgArr: that.data.imgArr.concat(res.tempFilePaths)
             })
@@ -30,12 +29,10 @@ Page({
         //     categories: '5b07c9ca1375842add126614'
         // }
         that.data.imgArr.forEach((val, index) => {
-            console.log('33333333333------imgArr', this.data.imgArr)
             requestApi.getCredentials({
                 filename: app.globalData.loginInfo.openid + 'images' + index + '.png',
                 categories: '5b07c9ca1375842add126614'
               }).then(res => {
-                  console.log('2222222222222222---@_@---res', res)
               })
             // wx.getImageInfo({
             //     src: val,

@@ -29,7 +29,6 @@ const request = (url, obj = {}) => {
   }
 
   const getCredentials = (url, obj = {}) => {
-    console.log('111111111111111111-----obj', obj)
     let page = this
     return new Promise((resolve, reject) => {
       wx.request({
@@ -42,7 +41,6 @@ const request = (url, obj = {}) => {
         method: 'POST',
 
         success: function (res) {
-          console.log('111111111111111--------res', res)
           resolve(res.data)
         },
 

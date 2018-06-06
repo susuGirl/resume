@@ -38,10 +38,6 @@ Component({
         },
 
         handleDateChange (e) {
-            console.log('666666666666--------e', e.currentTarget.dataset.timeType)
-            // if (e.currentTarget.dataset.timeType === "datesEmployed") {
-
-            // }
             this.setData({
                 ['singleWorkInfo.' + e.currentTarget.dataset.timeType]: e.detail.value
             })
