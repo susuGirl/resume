@@ -148,6 +148,10 @@
     line-height: 200rpx;
     text-shadow: 0 0 10rpx #989898;
 }
+.formAreaStyle {
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
 .formAreaStyle textarea {
     min-height: 200rpx;
     width: 90%;
@@ -161,3 +165,4 @@
 .formAreaStyle .bottonStyle button {
     box-shadow: 0rpx 0rpx 10rpx #989898;
 }
+

@@ -1,25 +1,51 @@
 <view class="workDialogStyle">
 
-    <view class="formAreaStyle">
+    <view class="formAreaStyle specialFormStyle" style="height:{{windowHeight}}px;">
         <form bindsubmit="handleWorkFormSubmit">
             <view>
                 <text>公司名称</text>
                 <input name="companyName" value="{{ singleWorkInfo.companyName }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
             </view>
             <view>
-                <text>公司地点</text>
-                <input name="companyAddress" value="{{ singleWorkInfo.companyAddress }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
-            </view>
-            <view>
-                <picker disabled="{{onlyRead}}" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                <picker disabled="{{onlyRead}}" data-time-type="datesEmployed" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
                     <text>入职日期</text>
                     <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
                 </picker>
             </view>
             <view>
+                <picker disabled="{{onlyRead}}" data-time-type="resignationTime" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                    <text>离职时间</text>
+                    <input name="resignationTime" value="{{ singleWorkInfo.resignationTime }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
+                </picker>
+                <!-- <input name="resignationTime" value="{{ singleWorkInfo.resignationTime }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/> -->
+            </view>
+            <view>
                 <text>在职岗位</text>
                 <input name="employedProfession" value="{{ singleWorkInfo.employedProfession }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
             </view>
+            <view>
+                <text>公司地点</text>
+                <input name="companyAddress" value="{{ singleWorkInfo.companyAddress }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
+            </view>
+
+
+            <view>
+                <text>你的项目</text>
+                <input name="yourProject" value="{{ singleWorkInfo.yourProject }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
+            </view>
+            <view>
+                <text>项目介绍</text>
+                <input name="projectIntroduction" value="{{ singleWorkInfo.projectIntroduction }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
+            </view>
+            <view>
+                <text>查看项目方式</text>
+                <textarea maxlength="200" name="lookYourProject" value="{{ singleWorkInfo.lookYourProject }}" placeholder="请编辑信息，最多200字"></textarea>
+            </view>
+            <view>
+                <text>责任描述</text>
+                <textarea maxlength="800" name="jobDuty" value="{{ singleWorkInfo.jobDuty }}" placeholder="请编辑信息,最多800字"></textarea>
+            </view>
+
             <view class="bottonStyle">
                 <button bind:tap="_closeDialog"> {{ onlyRead ? '确定' : '取消' }}</button>
                 <button form-type="submit" wx:if="{{ !onlyRead }}" disabled="{{ !canWorkSubmit }}">保存</button>

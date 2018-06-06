@@ -6,14 +6,24 @@
     top: 0;
     left: 0;
     z-index: 9999;
+    overflow-y: hidden;
+    position: fixed; 
 }
 
+.specialFormStyle {
+    margin-top: 15px;
+    /* overflow: hidden;
+    overflow-y: auto; */
+    /* 针对苹果手机滑动：这行代码启用了硬件加速特性，所以滑动很流畅。但这属性会相对耗费更多内存 */
+    /* -webkit-overflow-scrolling: touch;  */
+    /*加此定位，用以解决iphone低版本中滑动失灵问题*/
+    /* position: absolute; */
+}
 .formAreaStyle {
     width: 80%;
     margin-left: 10%;
-    /* margin-top: 20rpx; */
-    margin-top: 50%;
-    transform: translateY(-50%);
+    /* margin-top: 50%;
+    transform: translateY(-50%); */
     background: rgba(242, 242, 242, 1);
     border-radius: 20rpx;
     padding: 10rpx;
@@ -21,18 +31,22 @@
     box-shadow: 0 0 10rpx #989898;
 }
 .formAreaStyle view {
-    /* background: orange; */
+    text-align: center;
 }
 .formAreaStyle view text {
-    /* background: palegreen; */
     width: 100%;
     display: inline-block;
     text-align: center;
     font-weight: 700;
 }
 .formAreaStyle view input {
-    /* background: hotpink; */
     text-align: center;
+}
+.formAreaStyle view textarea {
+    max-height: 80rpx;
+    width: 98%;
+    padding: 5rpx;
+    /* text-indent: 60rpx; */
 }
 .formAreaStyle .bottonStyle {
     margin-top: 20rpx;

@@ -23,7 +23,8 @@ Component({
       onlyRead: Boolean // Can you edit the page information
     },
     data: { // 私有数据，可用于模版渲染
-        canWorkSubmit: true
+        canWorkSubmit: true,
+        windowHeight: app.globalData.systemInfo.windowHeight - 30, // swiper component's height
     }, 
   
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -37,8 +38,12 @@ Component({
         },
 
         handleDateChange (e) {
+            console.log('666666666666--------e', e.currentTarget.dataset.timeType)
+            // if (e.currentTarget.dataset.timeType === "datesEmployed") {
+
+            // }
             this.setData({
-                'singleWorkInfo.datesEmployed': e.detail.value
+                ['singleWorkInfo.' + e.currentTarget.dataset.timeType]: e.detail.value
             })
         },
 

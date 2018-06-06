@@ -6,11 +6,16 @@ Page({
     data: {
         workInfo: [
             {
-                companyName: '',
-                datesEmployed: '',
-                companyAddress: '',
-                employedProfession: '',
-                id: null
+                companyName: '', // 公司名称
+                datesEmployed: '', // 入职时间
+                companyAddress: '', // 公司地址
+                employedProfession: '', // 在职岗位
+                id: null,
+                resignationTime: '', // 离职时间
+                yourProject: '', // 你的项目
+                projectIntroduction: '', // 项目介绍
+                lookYourProject: '', // 如何查看你的项目
+                jobDuty: '' // 责任描述
             }
         ],
         hideWorkDialog: true,
