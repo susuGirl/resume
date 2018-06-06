@@ -4,8 +4,10 @@
 
 # 项目整体结构
 ![image](https://github.com/susuGirl/resume/blob/master/images/projectStructure.png)
-<!-- https://github.com/susuGirl/resume/blob/master/images/introduction%20(1).jpg -->
-# 教你前端如何一个人从零基础开发完整的小程序项目，包括后台可视化数据库
+![image](https://github.com/susuGirl/resume/blob/master/images/qrcode.jpg)
+# 如何搭建后台
+1、使用知晓云服务 https://cloud.minapp.com<br>
+2、根据知晓云的api文档搭建连接后台，并使用可视化数据库建表<br>
 # 项目介绍（图片介绍）
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction14.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction1.png)
