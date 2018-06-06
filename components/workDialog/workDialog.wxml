@@ -7,13 +7,13 @@
                 <input name="companyName" value="{{ singleWorkInfo.companyName }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
             </view>
             <view>
-                <picker disabled="{{onlyRead}}" data-time-type="datesEmployed" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                <picker disabled="{{onlyRead}}" data-time-type="datesEmployed" mode="date" start="1500-01-01" end="2020-01-01" bindchange="handleDateChange">
                     <text>入职日期</text>
                     <input name="datesEmployed" value="{{ singleWorkInfo.datesEmployed }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
                 </picker>
             </view>
             <view>
-                <picker disabled="{{onlyRead}}" data-time-type="resignationTime" mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                <picker disabled="{{onlyRead}}" data-time-type="resignationTime" mode="date" start="1500-01-01" end="2020-01-01" bindchange="handleDateChange">
                     <text>离职时间</text>
                     <input name="resignationTime" value="{{ singleWorkInfo.resignationTime }}" disabled="{{onlyRead}}" placeholder="请编辑信息"/>
                 </picker>

@@ -32,7 +32,7 @@
 
                     <view>
                         <text>出生日期</text>
-                        <picker mode="date" start="2000-01-01" end="2020-01-01" bindchange="handleDateChange">
+                        <picker mode="date" start="1500-01-01" end="2018-06-06" bindchange="handleDateChange">
                             <input name="birthData" disabled value="{{ baseInfo.birthData }}"  placeholder="请编辑信息"></input>
                         </picker>
                     </view>
