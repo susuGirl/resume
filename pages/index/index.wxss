@@ -1,6 +1,0 @@
-/**index.wxss**/
-button {
-    width: 300rpx;
-    height: 80rpx;
-    margin-top: 50rpx;
-}

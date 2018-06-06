@@ -2,7 +2,6 @@
   "pages": [
     "pages/lookResume/lookResume",
     "pages/myCenter/myCenter",
-    "pages/index/index",
     "pages/baseInfo/baseInfo",
     "pages/workInfo/workInfo",
     "pages/otherInfo/otherInfo",
