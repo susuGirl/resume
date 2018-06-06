@@ -11,17 +11,24 @@
 # 项目介绍（图片介绍）
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction14.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction1.png)
+<br>-----------------------------(*^▽^*)-------------------<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction1.jpg)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction2.jpg)
+<br>-----------------------------(*^▽^*)-------------------<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction6.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction8.png)
+<br>-----------------------------(*^▽^*)-------------------<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction7.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction9.png)
+<br>-----------------------------(*^▽^*)-------------------<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction10.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction11.png)
+<br>-----------------------------(*^▽^*)-------------------<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction2.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction4.png)
+<br>-----------------------------(*^▽^*)-------------------<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction3.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction5.png)
+<br>-----------------------------(*^▽^*)-------------------<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction12.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction13.png)
