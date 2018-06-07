@@ -10,6 +10,7 @@
 # 如何搭建后台 [知晓云]（https://cloud.minapp.com）
 1、使用知晓云服务 https://cloud.minapp.com<br>
 2、根据知晓云的api文档搭建连接后台，并使用可视化数据库建表<br>
+# 搭建小程序页面
 # 项目介绍（图片介绍）
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction14.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction1.png)
