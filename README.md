@@ -3,7 +3,8 @@
 * 该项目实现了个人简历的编辑、修改、展示、转发分享，以及查看他人简历，收藏他人简历，还有最近浏览过的简历。<br>
 * `公开简历/搜索简历/自我介绍（上传附件及图片等）等功能，持续更新中......`
 ![image](https://github.com/susuGirl/resume/blob/master/images/qrcode.jpg)
-# 微信公众号：拂晓的星 fuxiaodexing
+# 微信公众号：拂晓的星 fuxiaodexing，个人微信号：smile-1039795498
+* Vue.js 小程序 JavaScript 资源
 # 项目整体结构
 ![image](https://github.com/susuGirl/resume/blob/master/images/projectStructure.png)
 # 如何搭建后台 [知晓云]（https://cloud.minapp.com）
