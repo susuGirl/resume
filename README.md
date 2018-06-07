@@ -12,7 +12,18 @@
 # 如何搭建后台服务以及数据库操作
 * 使用知晓云服务 https://cloud.minapp.com<br>
 * 根据知晓云的api文档搭建连接后台，并使用可视化数据库建表<br>
-* 待更新......
+* 根据以下图片，即可运行该项目：
+![image](https://github.com/susuGirl/resume/blob/master/images/111.png)
+![image](https://github.com/susuGirl/resume/blob/master/images/222.png)
+---
+![image](https://github.com/susuGirl/resume/blob/master/images/333.png)
+![image](https://github.com/susuGirl/resume/blob/master/images/444.png)
+---
+![image](https://github.com/susuGirl/resume/blob/master/images/555.png)
+![image](https://github.com/susuGirl/resume/blob/master/images/666.png)
+---
+![image](https://github.com/susuGirl/resume/blob/master/images/777.png)
+---
 # 搭建小程序页面的实现
 * 待更新......
 # 项目介绍（图文）
