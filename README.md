@@ -13,6 +13,9 @@
 * 使用知晓云服务 https://cloud.minapp.com<br>
 * 根据知晓云的api文档搭建连接后台，并使用可视化数据库建表<br>
 * 根据以下图片，即可运行该项目：
+  * 工作信息的表：一个人有多份工作信息即有多条数据，由openid查询数据
+  * 其他信息的表：有些特别
+  * 其他表按项目中的字段配置即可，若无法领会这一顿操作，可公众号留言或者微信，近来有些许忙，求职中望理解！！！
 ![image](https://github.com/susuGirl/resume/blob/master/images/111.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/222.png)
 ---
@@ -23,6 +26,7 @@
 ![image](https://github.com/susuGirl/resume/blob/master/images/666.png)
 ---
 ![image](https://github.com/susuGirl/resume/blob/master/images/777.png)
+![image](https://github.com/susuGirl/resume/blob/master/images/888.png)
 ---
 # 搭建小程序页面的实现
 * 待更新......
