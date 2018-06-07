@@ -6,7 +6,7 @@ App({
     fileServer: 'https://cloud.minapp.com',
     loginInfo: null,
     userInfo: null,
-    clientId: '1dd3e890aaacdd76723a', // 从 BaaS 后台获取 ClientID
+    clientId: '', // 从 BaaS 后台获取 ClientID
     systemInfo: null
   },
   
