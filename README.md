@@ -4,14 +4,17 @@
 * 微信小程序：你的专属简历（微信直接搜索即可）或者扫以下小程序二维码<br>
 * `公开简历/搜索简历/自我介绍（上传附件及图片等）等功能，持续更新中......`<br>
 ![image](https://github.com/susuGirl/resume/blob/master/images/qrcode.jpg)
-# 微信公众号：拂晓的星 fuxiaodexing，个人微信号：smile-1039795498
-* Vue.js 小程序 JavaScript 资源
+# 微信公众号：拂晓的星 
+* 微信公众号：fuxiaodexing => Vue.js 小程序 JavaScript 资源
+* 个人微信号：smile-1039795498
 # 项目整体结构
 ![image](https://github.com/susuGirl/resume/blob/master/images/projectStructure.png)
 # 如何搭建后台 [知晓云]（https://cloud.minapp.com）
-1、使用知晓云服务 https://cloud.minapp.com<br>
-2、根据知晓云的api文档搭建连接后台，并使用可视化数据库建表<br>
+* 使用知晓云服务 https://cloud.minapp.com<br>
+* 根据知晓云的api文档搭建连接后台，并使用可视化数据库建表<br>
+* 待更新......
 # 搭建小程序页面
+* 待更新......
 # 项目介绍（图片介绍）
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction14.png)
 ![image](https://github.com/susuGirl/resume/blob/master/images/introduction1.png)
