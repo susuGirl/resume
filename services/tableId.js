@@ -1,22 +1,22 @@
 
 const baseInfo = {
-    createBaseInfo: '31373' // 通过知晓云管理后台获取对应的数据表 ID
+    createBaseInfo: '' // 通过知晓云管理后台获取对应的数据表 ID
 }
 
 const workInfo = {
-    createWorkInfo: '31388'
+    createWorkInfo: ''
 }
 
 const otherInfo = {
-    createOtherInfo: '31391'
+    createOtherInfo: ''
 }
 
 const collectResume = {
-    createCollectResume: '35563'
+    createCollectResume: ''
 }
 
 const recentlyViewed = {
-    createRecentlyViewed: '35760'
+    createRecentlyViewed: ''
 }
 
 module.exports = {
