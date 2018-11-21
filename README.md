@@ -1,10 +1,9 @@
-# resume
+# 一个人从零基础开发完整的小程序项目，包括后台可视化数据库
 * 教你前端如何一个人从零基础开发完整的小程序项目，包括后台可视化数据库，全程一个人即可独立完成。
 * 该项目实现了个人简历的编辑、修改、展示、转发分享，以及查看他人简历，收藏他人简历，还有最近浏览过的简历。
 * 微信小程序：你的专属简历（微信直接搜索即可）或者扫以下小程序二维码
 * `公开简历/搜索简历/自我介绍（上传附件及图片等）等功能，持续更新中......`
 * ![image](https://github.com/susuGirl/resume/blob/master/images/qrcode.jpg)
-## 微信公众号：fuxiaodexing 
 ## 项目整体结构
 * ![image](https://github.com/susuGirl/resume/blob/master/images/projectStructure.png)
 ## 如何搭建后台服务以及数据库操作
@@ -41,10 +40,9 @@
 * ![image](https://github.com/susuGirl/resume/blob/master/images/introduction5.png)
 * ![image](https://github.com/susuGirl/resume/blob/master/images/introduction12.png)
 * ![image](https://github.com/susuGirl/resume/blob/master/images/introduction13.png)
-## 留言
+### 喜欢的话留个足迹star一下吧，微信公众号：fuxiaodexing，博客：[全端菜鸟小姐](https://blog.csdn.net/weixin_41845146)
 * 该项目由作者2017年自学爬坑两个月之作（工作之余的时间），不足之处请自行修改，不可照搬代码。
 * 项目中涉及多处表单，实际上，可自行封装表单，根据数据自动生成页面，这样子修改表单就无需再前端涉及和重新提交小程序审核啦。
 * 还可用nodeJs写自动生成pages下文件以及组件的方法，有机会再分享......
 * emmmm～～～最近小程序出了云开发，试试看，看个人爱好，选择知晓云或者云开发。
-* if (this.useful) please send me a star
 
